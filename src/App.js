@@ -1,13 +1,15 @@
 import React from 'react';
-import logo from './logo.svg';
+import ReactMarkdown from 'react-markdown'
 import './App.css';
 
 function App() {
+
+  const input = '## adsfasdfasdfasdfasfasf'
   return (
     <div className="App">
       <div id="wrapper">
         <div id="left-menu">
-          asdf
+          <ReactMarkdown  source={input} />
         </div>
         <div id="content">
           asfasfd
@@ -16,5 +18,7 @@ function App() {
     </div>
   );
 }
+
+
 
 export default App;
