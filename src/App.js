@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown'
+import input from './markdownBasics/leftMenuTable'
 import './App.css';
 
 function App() {
 
-  const input = '## adsfasdfasdfasdfasfasf'
   return (
     <div className="App">
       <div id="wrapper">
