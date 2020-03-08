@@ -1,5 +1,10 @@
 import React from 'react'
 
-const input = `## Frontend table of content`
+const table = `
+## Frontend table of content
 
-export default input
+1. [asdf] (#asdf)
+2. [nope] (#nope)
+`
+
+export default table

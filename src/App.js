@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown'
-import input from './markdownBasics/leftMenuTable'
+import table from './markdownBasics/leftMenuTable'
+import main from './markdownBasics/main'
 import './App.css';
 
 function App() {
@@ -9,10 +10,10 @@ function App() {
     <div className="App">
       <div id="wrapper">
         <div id="left-menu">
-          <ReactMarkdown  source={input} />
+          <ReactMarkdown source={table} />
         </div>
         <div id="content">
-          asfasfd
+          <ReactMarkdown source={main} escapeHtml={false}/>
         </div>
       </div>
     </div>
