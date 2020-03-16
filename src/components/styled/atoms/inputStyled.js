@@ -7,10 +7,19 @@ border: none;
 height: 100px;
 width: 400px;
 font-size: 25px;
-padding: 15px;
-&:focus {
-border: 5px solid ${props => props.colorScheme.marigold};
-}
+${ props => props.inputStyles }
 `
 
-export default InputStyled
+const InputWrapper = ( {type, inputStyles, text, ...props }) => {
+    console.log(text)
+    return (
+        <InputStyled
+          type={ type }
+          inputStyles = { inputStyles }
+          value = { text }
+          placeholder = { props.placeholder }
+        />
+    )
+}
+
+export default InputWrapper

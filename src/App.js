@@ -6,7 +6,14 @@ function App() {
 
   return (
     <div className="App">
-      <Input />
+      <Input
+        type = { 'text' }
+        placeholder = 'email'
+      />
+      <Input
+        type = { 'button' }
+        text = 'asdf'
+      />
     </div>
   );
 }
