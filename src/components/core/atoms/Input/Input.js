@@ -32,11 +32,17 @@ const Input = ({
                      }`
                 )
                 break
+            case 'file':
+                setInputStyles(
+                    `width: fit-content;
+                     font-size: 10px;
+                     `
+                )
+                break
             default:
                 break
         }
     }, [typeOf])
-
 
     return (
         <InputWrapper
