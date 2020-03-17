@@ -1,11 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { addFileAction } from '../actions/addFileAction'
-import DragAndDrop from '../../components/core/atoms/DragAndDrop'
+import { addOneFileAction } from '../actions/addFileAction'
+import DragAndDrop from '../../components/core/atoms/DragAndDrop/DragAndDrop'
 
 const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators({ addFile: addFileAction }, dispatch)
+    return bindActionCreators({ addFile: addOneFileAction }, dispatch)
 }
 
 const mapStateToProps = (state) => {

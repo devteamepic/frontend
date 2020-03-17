@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import DragAndDropStyled from '../../../styled/atoms/dragAndDropStyled'
+import { connect } from 'react-redux'
+import { addOneFileAction } from '../../../../redux/actions/addFileAction'
 
-const DragAndDrop = () => {
+const DragAndDrop = ({ dispatch, props }) => {
     const [files, setFiles] = useState('')
     var fileArray = []
 
@@ -15,7 +17,7 @@ const DragAndDrop = () => {
                 }
             }
 
-            setFiles(fileArray)
+            dispatch(addOneFileAction(fileArray))
         }
     }
 
@@ -33,4 +35,4 @@ const DragAndDrop = () => {
     )
 }
 
-export default DragAndDrop
+export default connect() (DragAndDrop)

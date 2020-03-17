@@ -1,9 +1,12 @@
 import React from 'react';
 import './App.css';
+import { connect } from 'react-redux'
 import Input from './components/core/atoms/Input/Input'
-import DragAndDrop from './components/core/atoms/DragAndDrop/DragAndDrop'
+import FileContainer from './redux/containers/fileContainer'
 
-function App() {
+function App(props) {
+
+  console.log(props)
 
   return (
     <div className="App">
@@ -18,11 +21,18 @@ function App() {
       <Input
         type = { 'file' }
       />
-      <DragAndDrop />
+      <FileContainer/>
+      <div>
+    { props.files.name }
+      </div>
     </div>
   );
 }
 
+const mapStateToProps = (state) => {
+  return { files: state.files }
+}
 
 
-export default App;
+
+export default connect(mapStateToProps) (App);
