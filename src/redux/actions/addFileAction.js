@@ -1,4 +1,5 @@
 export function addOneFileAction(file) {
+    console.log(file)
     return {
         type: 'NEW_FILE',
         payload: file

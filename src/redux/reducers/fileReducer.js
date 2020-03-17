@@ -3,11 +3,8 @@ export default function(state = [], action) {
         case 'NEW_FILE':
             return action.payload
         case 'MORE_FILES':
-            return [
-                ...state,
-                action.payload
-            ]
+            return action.payload
         default:
-            return { 'name' : 'file not added' }
+            return []
     }
 }

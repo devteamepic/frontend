@@ -6,8 +6,6 @@ import FileContainer from './redux/containers/fileContainer'
 
 function App(props) {
 
-  console.log(props)
-
   return (
     <div className="App">
       <Input

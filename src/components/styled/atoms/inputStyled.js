@@ -11,7 +11,6 @@ ${ props => props.inputStyles }
 `
 
 const InputWrapper = ( {type, inputStyles, text, ...props }) => {
-    console.log(text)
     return (
         <InputStyled
           type={ type }
