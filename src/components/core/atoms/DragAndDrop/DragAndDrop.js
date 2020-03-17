@@ -1,16 +1,26 @@
-import React from 'react'
+import React, { useState } from 'react'
 import DragAndDropStyled from '../../../styled/atoms/dragAndDropStyled'
 
 const DragAndDrop = () => {
+    const [files, setFiles] = useState('')
+    var fileArray = []
 
     const dropHandler = (e) => {
         e.preventDefault()
-        console.log('a')
+
+        if (e.dataTransfer.items) {
+            for (var i = 0; i < e.dataTransfer.items.length; i++) {
+                if (e.dataTransfer.items[i].kind === 'file') {
+                    fileArray.push(e.dataTransfer.items[i].getAsFile())
+                }
+            }
+
+            setFiles(fileArray)
+        }
     }
 
     const dragOverHandler = (e) => {
         e.preventDefault()
-        console.log('b')
     }
 
     return (
