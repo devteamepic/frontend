@@ -1,11 +1,60 @@
-import React from 'react'
-import InputStyled from '../../../styled/atoms/inputStyled'
+import React, { useEffect, useState } from 'react'
+import InputWrapper from '../../../styled/atoms/inputStyled'
 import colorScheme from '../../../../misc/colorScheme'
+import { connect } from 'react-redux'
 
-const Input = () => {
+const Input = ({
+    type,
+    text,
+    placeholder,
+    dispatch,
+    ...props
+}) => {
+    const [typeOf] = useState(type)
+    const [buttonText] = useState(text)
+    const [textPlaceholder] = useState(placeholder)
+    const [inputStyles, setInputStyles] = useState('')
+    const [files, setFiles] = useState([])
+
+    useEffect(() => {
+        switch(typeOf) {
+            case 'button':
+            case 'submit':
+                setInputStyles(
+                    `cursor: pointer;
+                     background-color: ${ colorScheme.marigold }`
+                )
+                break
+            case 'text':
+            case 'password':
+                setInputStyles(
+                    `padding: 15px;
+                     box-sizing: border-box;
+                     &:focus {
+                         border: 5px solid ${ colorScheme.marigold }
+                     }`
+                )
+                break
+            case 'file':
+                setInputStyles(
+                    `width: fit-content;
+                     font-size: 10px;
+                     `
+                )
+                break
+            default:
+                break
+        }
+    }, [typeOf])
+
     return (
-        <InputStyled colorScheme={ colorScheme } />
+        <InputWrapper
+          type = { typeOf }
+          inputStyles = { inputStyles }
+          text = { buttonText }
+          placeholder = { textPlaceholder }
+        />
     )
 }
 
-export default Input
+export default connect() (Input)
