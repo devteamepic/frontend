@@ -3,6 +3,7 @@ import LoginForm from './molecules/LoginForm/LoginForm'
 import { connect } from 'react-redux'
 import '../../App.css'
 import colorScheme from '../../misc/colorScheme'
+import Text from '../core/atoms/Text/Text'
 
 const Test = (props) => {
 
@@ -10,6 +11,9 @@ const Test = (props) => {
         <div id='test'>
           <LoginForm
             colorScheme = { colorScheme }
+          />
+          <Text
+            size = { 'small' }
           />
         </div>
     )
