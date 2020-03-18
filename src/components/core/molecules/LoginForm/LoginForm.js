@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import Input from '../../atoms/Input/Input'
 import { Link } from 'react-router-dom'
 import LoginFormStyled from '../../../styled/molecules/loginFormStyled'
+import Text from '../../atoms/Text/Text'
 
 const LoginForm = ({ dispatch, colorScheme, ...props }) => {
     return (
@@ -24,7 +25,13 @@ const LoginForm = ({ dispatch, colorScheme, ...props }) => {
             text = 'Log in'
           />
         </form>
-        <Link style={{ color: colorScheme.blue }} to='/about'>What is a UNIFOUND</Link>
+        <Link style={{ color: colorScheme.blue }} to='/about'>
+          <Text
+            size = { 'small' }
+          >
+            What is a UNIFOUND
+          </Text>
+        </Link>
       </LoginFormStyled>
     )
 }

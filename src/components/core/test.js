@@ -13,8 +13,10 @@ const Test = (props) => {
             colorScheme = { colorScheme }
           />
           <Text
-            size = { 'small' }
-          />
+            size = { 'large' }
+          >
+            asdfasdf
+          </Text>
         </div>
     )
 }

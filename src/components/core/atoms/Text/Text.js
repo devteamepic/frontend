@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import TextStyled from '../../../styled/atoms/textStyled'
 
-const Text = ({ size, text, ...props }) => {
+const Text = ({ size, children, ...props }) => {
     const [sizes] = useState({
         large: '32px',
         medium: '24px',
@@ -14,7 +14,7 @@ const Text = ({ size, text, ...props }) => {
         <TextStyled
           size = { sizes[size] }
         >
-          asdf
+          { children }
         </TextStyled>
     )
 }
