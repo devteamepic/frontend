@@ -1,14 +1,7 @@
 export function addOneFileAction(file) {
-    console.log(file)
+    console.log('singleFile')
     return {
         type: 'NEW_FILE',
-        payload: file
-    }
-}
-
-export function addMoreFilesAction(file) {
-    return {
-        type: 'MORE_FILES',
         payload: file
     }
 }

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import DragAndDropStyled from '../../../styled/atoms/dragAndDropStyled'
 import { connect } from 'react-redux'
-import { addOneFileAction, addMoreFilesAction } from '../../../../redux/actions/addFileAction'
+import { addOneFileAction } from '../../../../redux/actions/addFileAction'
 
 const DragAndDrop = ({ dispatch, ...props }) => {
+    console.log(props.files)
     const [files, setFiles] = useState([])
-    var tempArr = []
 
     const checkAndSetFiles = (e) => {
         for (var i = 0; i < e.dataTransfer.items.length; i++) {
@@ -19,12 +19,8 @@ const DragAndDrop = ({ dispatch, ...props }) => {
         e.preventDefault()
 
         if (e.dataTransfer.items) {
-            if (files.length === 0) {
-                checkAndSetFiles(e)
-                return
-            }
-
-            dispatch(addMoreFilesAction(files))
+            checkAndSetFiles(e)
+            return
         }
 
     }
@@ -35,8 +31,7 @@ const DragAndDrop = ({ dispatch, ...props }) => {
 
     useEffect(() => {
         dispatch(addOneFileAction(files))
-
-    }, [files])
+    }, [files, dispatch])
 
     return (
         <DragAndDropStyled
