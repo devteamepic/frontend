@@ -22,7 +22,7 @@ const LoginForm = ({ dispatch, ...props }) => {
             text = 'Log in'
           />
         </form>
-        <Link to='/about'>What is a UNIFOUND</Link>
+        <Link style={{ color: '#5580EE' }} to='/about'>What is a UNIFOUND</Link>
       </LoginFormStyled>
     )
 }

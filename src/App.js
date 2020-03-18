@@ -7,7 +7,7 @@ function App(props) {
 
   return (
       <div className="App">
-          <Link to='/test'>Test</Link>
+        <Link style = {{ height: 'fit-content' }} to='/test'>Test</Link>
           <Route path='/test' component={Test}/>
       </div>
   );
