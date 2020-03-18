@@ -2,12 +2,15 @@ import React from 'react'
 import LoginForm from './molecules/LoginForm/LoginForm'
 import { connect } from 'react-redux'
 import '../../App.css'
+import colorScheme from '../../misc/colorScheme'
 
 const Test = (props) => {
 
     return (
         <div id='test'>
-          <LoginForm/>
+          <LoginForm
+            colorScheme = { colorScheme }
+          />
         </div>
     )
 }

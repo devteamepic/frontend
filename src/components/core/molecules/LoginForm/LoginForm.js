@@ -5,9 +5,11 @@ import Input from '../../atoms/Input/Input'
 import { Link } from 'react-router-dom'
 import LoginFormStyled from '../../../styled/molecules/loginFormStyled'
 
-const LoginForm = ({ dispatch, ...props }) => {
+const LoginForm = ({ dispatch, colorScheme, ...props }) => {
     return (
-      <LoginFormStyled>
+      <LoginFormStyled
+        colorScheme = { colorScheme }
+      >
         <form id='login-form'>
           <Input
             type = { 'text' }
@@ -22,7 +24,7 @@ const LoginForm = ({ dispatch, ...props }) => {
             text = 'Log in'
           />
         </form>
-        <Link style={{ color: '#5580EE' }} to='/about'>What is a UNIFOUND</Link>
+        <Link style={{ color: colorScheme.blue }} to='/about'>What is a UNIFOUND</Link>
       </LoginFormStyled>
     )
 }
