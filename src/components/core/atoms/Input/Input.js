@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import InputWrapper from '../../../styled/atoms/inputStyled'
 import colorScheme from '../../../../misc/colorScheme'
+import { connect } from 'react-redux'
 
 const Input = ({
     type,
     text,
     placeholder,
+    dispatch,
     ...props
 }) => {
     const [typeOf] = useState(type)
     const [buttonText] = useState(text)
     const [textPlaceholder] = useState(placeholder)
     const [inputStyles, setInputStyles] = useState('')
+    const [files, setFiles] = useState([])
 
     useEffect(() => {
         switch(typeOf) {
@@ -54,4 +57,4 @@ const Input = ({
     )
 }
 
-export default Input
+export default connect() (Input)

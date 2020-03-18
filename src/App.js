@@ -1,36 +1,16 @@
 import React from 'react';
 import './App.css';
-import { connect } from 'react-redux'
-import Input from './components/core/atoms/Input/Input'
-import FileContainer from './redux/containers/fileContainer'
+import Test from './components/core/test'
+import { Route, Link } from 'react-router-dom'
 
 function App(props) {
 
   return (
-    <div className="App">
-      <Input
-        type = { 'text' }
-        placeholder = 'email'
-      />
-      <Input
-        type = { 'button' }
-        text = 'asdf'
-      />
-      <Input
-        type = { 'file' }
-      />
-      <FileContainer/>
-      <div>
-    { props.files.name }
+      <div className="App">
+          <Link to='/test'>Test</Link>
+          <Route path='/test' component={Test}/>
       </div>
-    </div>
   );
 }
 
-const mapStateToProps = (state) => {
-  return { files: state.files }
-}
-
-
-
-export default connect(mapStateToProps) (App);
+export default App;

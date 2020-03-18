@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import { addOneFileAction } from '../../../../redux/actions/addFileAction'
 
 const DragAndDrop = ({ dispatch, ...props }) => {
-    console.log(props.files)
     const [files, setFiles] = useState([])
 
     const checkAndSetFiles = (e) => {
