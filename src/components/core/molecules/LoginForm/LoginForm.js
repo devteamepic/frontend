@@ -1,11 +1,14 @@
 import React from 'react'
+import '../../../../App.css'
 import { connect } from 'react-redux'
 import Input from '../../atoms/Input/Input'
+import { Link } from 'react-router-dom'
 import LoginFormStyled from '../../../styled/molecules/loginFormStyled'
 
 const LoginForm = ({ dispatch, ...props }) => {
     return (
-        <LoginFormStyled>
+      <LoginFormStyled>
+        <form id='login-form'>
           <Input
             type = { 'text' }
             placeholder = 'email'
@@ -18,7 +21,9 @@ const LoginForm = ({ dispatch, ...props }) => {
             type = { 'submit' }
             text = 'Log in'
           />
-        </LoginFormStyled>
+        </form>
+        <Link to='/about'>What is a UNIFOUND</Link>
+      </LoginFormStyled>
     )
 }
 
