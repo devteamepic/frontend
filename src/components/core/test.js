@@ -13,6 +13,7 @@ const Test = (props) => {
           <RegisterForm
             colorScheme = { colorScheme }
           />
+          <div style = {{ height: '10px' }}/>
            <LoginForm
             colorScheme = { colorScheme }
           />

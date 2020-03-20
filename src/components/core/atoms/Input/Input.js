@@ -34,7 +34,9 @@ const Input = ({
                     `padding: 15px;
                      box-sizing: border-box;
                      &:focus {
-                         border: 5px solid ${ colorScheme.marigold }
+                         border: 5px solid ${ colorScheme.marigold };
+                         padding: 10px;
+                         outline-offset: 0;
                      }`
                 )
                 break
