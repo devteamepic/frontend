@@ -8,8 +8,6 @@ const Text = ({ size, children, ...props }) => {
         small: '16px',
     })
 
-    console.log(sizes[size])
-
     return (
         <TextStyled
           size = { sizes[size] }
