@@ -25,31 +25,37 @@ const RegisterForm = ({ dispatch, colorScheme, loggedIn, ...props }) => {
           callback = { handleSubmit }
         >
           <Input
+            height = '95%'
             type = { 'text' }
             placeholder = 'email'
             callback = { value => setEmail(value) }
           />
           <Input
+            height = '95%'
             type = { 'text' }
             placeholder = 'first name'
             callback = { value => setFirstName(value) }
           />
           <Input
+            height = '95%'
             type = { 'text' }
             placeholder = 'last name'
             callback = { value => setLastName(value) }
           />
           <Input
+            height = '95%'
             type = { 'password' }
             placeholder = 'password'
             callback = { value => setPassword(value) }
           />
           <Input
+            height = '95%'
             type = { 'password' }
             placeholder = 'repeat password'
             callback = { value => setPassword(value) }
           />
           <Input
+            height = '95%'
             type = { 'submit' }
             text = 'Register'
           />

@@ -9,6 +9,7 @@ const Input = ({
     placeholder,
     dispatch,
     callback,
+    height,
     ...props
 }) => {
     const inputRef = useRef()
@@ -16,6 +17,7 @@ const Input = ({
     const [buttonText] = useState(text)
     const [textPlaceholder] = useState(placeholder)
     const [inputStyles, setInputStyles] = useState('')
+    const [incomingHeight] = useState(height)
 
     useEffect(() => {
         switch(typeOf) {
@@ -50,6 +52,7 @@ const Input = ({
 
     return (
         <InputStyled
+          height = { incomingHeight }
           onChange = { e => callback(e.target.value) }
           ref = { inputRef }
           type = { typeOf }

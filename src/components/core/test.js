@@ -13,7 +13,9 @@ const Test = (props) => {
           <RegisterForm
             colorScheme = { colorScheme }
           />
-         
+           <LoginForm
+            colorScheme = { colorScheme }
+          />
         </div>
     )
 }
