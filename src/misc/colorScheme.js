@@ -3,7 +3,6 @@ const colorScheme = {
     steel: '#0A1612',
     denim: '#1A2930',
     marigold: '#F7CE3E',
-    blue: '#5580EE',
 }
 
 export default colorScheme

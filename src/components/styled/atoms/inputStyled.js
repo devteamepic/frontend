@@ -1,14 +1,16 @@
+import React from 'react'
 import styled from 'styled-components'
 
 const InputStyled = styled.input`
 outline: none;
 border: none;
-height: 25%;
-width: 80%;
+height: 100px;
+width: 400px;
 font-size: 25px;
-margin-bottom: 8%;
-text-align: center;
-${ props => props.inputStyles }
+padding: 15px;
+&:focus {
+border: 5px solid ${props => props.colorScheme.marigold};
+}
 `
 
 export default InputStyled

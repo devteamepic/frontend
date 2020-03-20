@@ -1,16 +1,16 @@
 import React from 'react';
 import './App.css';
-import Test from './components/core/test'
-import { Route, Link } from 'react-router-dom'
+import Input from './components/core/atoms/Input/Input'
 
-function App(props) {
+function App() {
 
   return (
-      <div className="App">
-        <Link style = {{ height: 'fit-content' }} to='/test'>Test</Link>
-          <Route path='/test' component={Test}/>
-      </div>
+    <div className="App">
+      <Input />
+    </div>
   );
 }
+
+
 
 export default App;
