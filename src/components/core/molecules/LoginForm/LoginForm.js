@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import '../../../../App.css'
 import { connect } from 'react-redux'
 import Input from '../../atoms/Input/Input'
 import { Link } from 'react-router-dom'
-import LoginFormStyled from '../../../styled/molecules/loginFormStyled'
+import FormStyledWrapper from '../../../styled/molecules/formStyled'
 import Text from '../../atoms/Text/Text'
 import login from '../../../../misc/services/loginService'
 import { request, success, failure } from '../../../../redux/actions/loginAction'
@@ -12,7 +11,6 @@ const LoginForm = ({ dispatch,
                      colorScheme,
                      loggedIn,
                      ...props }) => {
-
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
@@ -35,26 +33,25 @@ const LoginForm = ({ dispatch,
   }, [loggedIn])
 
     return (
-      <LoginFormStyled
+      <FormStyledWrapper
+        type = 'login'
         colorScheme = { colorScheme }
-        onSubmit = { () => handleSubmit() }
+        callback = { handleSubmit }
       >
-        <form id='login-form'>
-          <Input
-            type = { 'text' }
-            placeholder = 'email'
-            callback = { value => setEmail(value) }
-          />
-          <Input
-            type = { 'password' }
-            placeholder = 'password'
-            callback = { value => setPassword(value) }
-          />
-          <Input
-            type = { 'submit' }
-            text = 'Log in'
-          />
-        </form>
+        <Input
+          type = { 'text' }
+          placeholder = 'email'
+          callback = { value => setEmail(value) }
+        />
+        <Input
+          type = { 'password' }
+          placeholder = 'password'
+          callback = { value => setPassword(value) }
+        />
+        <Input
+          type = { 'submit' }
+          text = 'Log in'
+        />
         <Link style={{ color: colorScheme.blue }} to='/about'>
           <Text
             size = { 'small' }
@@ -62,7 +59,7 @@ const LoginForm = ({ dispatch,
             What is a UNIFOUND
           </Text>
         </Link>
-      </LoginFormStyled>
+      </FormStyledWrapper>
     )
 }
 

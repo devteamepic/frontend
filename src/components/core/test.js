@@ -1,5 +1,6 @@
 import React from 'react'
 import LoginForm from './molecules/LoginForm/LoginForm'
+import RegisterForm from './molecules/RegisterForm/RegisterForm'
 import { connect } from 'react-redux'
 import '../../App.css'
 import colorScheme from '../../misc/colorScheme'
@@ -9,14 +10,10 @@ const Test = (props) => {
 
     return (
         <div id='test'>
-          <LoginForm
+          <RegisterForm
             colorScheme = { colorScheme }
           />
-          <Text
-            size = { 'large' }
-          >
-            asdfasdf
-          </Text>
+         
         </div>
     )
 }
