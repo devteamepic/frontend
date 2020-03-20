@@ -45,6 +45,11 @@ const RegisterForm = ({ dispatch, colorScheme, loggedIn, ...props }) => {
             callback = { value => setPassword(value) }
           />
           <Input
+            type = { 'password' }
+            placeholder = 'repeat password'
+            callback = { value => setPassword(value) }
+          />
+          <Input
             type = { 'submit' }
             text = 'Register'
           />

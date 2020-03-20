@@ -8,6 +8,7 @@ width: 80%;
 font-size: 25px;
 margin-bottom: 8%;
 text-align: center;
+position: relative;
 ${ props => props.inputStyles }
 `
 

@@ -73,8 +73,17 @@ body {
   width: 100%;
 }
 
-.form {
+#login {
   height: 60%;
   padding-top: 20%;
   padding-bottom: 10%;
+}
+
+#register{
+  height: 100%;
+  padding-top: 20%;
+  padding-bottom: 10%;
+  display: grid;
+  grid-template-rows: auto auto auto;
+  grid-auto-flow: column;
 }
