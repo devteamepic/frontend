@@ -12,7 +12,6 @@ text-align: center;
 const FormStyledWrapper = ({ children, callback, ...props }) => {
   const [incomingType] = useState(props.type)
 
-  console.log(incomingType)
     return (
         <FormStyled
           colorScheme = { props.colorScheme }

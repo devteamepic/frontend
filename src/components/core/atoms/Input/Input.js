@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react'
 import InputStyled from '../../../styled/atoms/inputStyled'
 import colorScheme from '../../../../misc/colorScheme'
 import { connect } from 'react-redux'
+import { additionalInputStyles } from '../../../../misc/additionalInputStyles'
 
 const Input = ({
     type,
@@ -9,6 +10,7 @@ const Input = ({
     placeholder,
     dispatch,
     callback,
+    validate,
     height,
     ...props
 }) => {
@@ -18,39 +20,37 @@ const Input = ({
     const [textPlaceholder] = useState(placeholder)
     const [inputStyles, setInputStyles] = useState('')
     const [incomingHeight] = useState(height)
+    const [shouldValidate, setShouldValidate] = useState(false)
 
     useEffect(() => {
-        switch(typeOf) {
-            case 'button':
-            case 'submit':
-                setInputStyles(
-                    `cursor: pointer;
-                     background-color: ${ colorScheme.marigold }`
-                )
-                break
-            case 'text':
-            case 'password':
-                setInputStyles(
-                    `padding: 15px;
-                     box-sizing: border-box;
-                     &:focus {
-                         border: 5px solid ${ colorScheme.marigold };
-                         padding: 10px;
-                         outline-offset: 0;
-                     }`
-                )
-                break
-            case 'file':
-                setInputStyles(
-                    `width: fit-content;
+        if (shouldValidate) {
+             setInputStyles(`
+                border: 5px solid ${ colorScheme.watermelon };
+                box-sizing: border-box;
+                padding: 10px;
+            `)
+        } else {
+            switch(typeOf) {
+                case 'button':
+                case 'submit':
+                    setInputStyles(additionalInputStyles.buttonInputStyles(colorScheme))
+                    break
+                case 'text':
+                case 'password':
+                    setInputStyles(additionalInputStyles.textInputStyles(colorScheme))
+                    break
+                case 'file':
+                    setInputStyles(
+                        `width: fit-content;
                      font-size: 10px;
                      `
-                )
-                break
-            default:
-                break
+                    )
+                    break
+                default:
+                    break
+            }
         }
-    }, [typeOf])
+    }, [shouldValidate, typeOf])
 
     return (
         <InputStyled
@@ -61,6 +61,7 @@ const Input = ({
           inputStyles = { inputStyles }
           value = { buttonText }
           placeholder = { textPlaceholder }
+          onBlur = { () => setShouldValidate(validate) }
         />
     )
 }

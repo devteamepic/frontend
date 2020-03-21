@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { connect } from 'react-redux'
 import Input from '../../atoms/Input/Input'
 import { Link } from 'react-router-dom'
@@ -6,12 +6,15 @@ import FormStyledWrapper from '../../../styled/molecules/formStyled'
 import Text from '../../atoms/Text/Text'
 import login from '../../../../misc/services/loginService'
 import { request, success, failure } from '../../../../redux/actions/loginAction'
+import { validator } from '../../../../misc/services/validationService'
 
 const RegisterForm = ({ dispatch, colorScheme, loggedIn, ...props }) => {
+    const inputRef = useRef()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
+    const [formReady, setFormReady] = useState(false)
 
     const handleSubmit = () => {
         alert('register submit')
@@ -47,6 +50,7 @@ const RegisterForm = ({ dispatch, colorScheme, loggedIn, ...props }) => {
             type = { 'password' }
             placeholder = 'password'
             callback = { value => setPassword(value) }
+            validate = { validator.passwordValidate(password) }
           />
           <Input
             height = '95%'
