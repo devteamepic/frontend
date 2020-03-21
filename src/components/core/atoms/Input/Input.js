@@ -20,10 +20,11 @@ const Input = ({
     const [textPlaceholder] = useState(placeholder)
     const [inputStyles, setInputStyles] = useState('')
     const [incomingHeight] = useState(height)
-    const [shouldValidate, setShouldValidate] = useState(false)
+    const [shouldValidate, setShouldValidate] = useState({ status: false, message: '' })
 
     useEffect(() => {
-        if (shouldValidate) {
+        if (shouldValidate && shouldValidate.status) {
+            console.log(shouldValidate.message)
              setInputStyles(`
                 border: 5px solid ${ colorScheme.watermelon };
                 box-sizing: border-box;
