@@ -12,6 +12,7 @@ const RegisterForm = ({ dispatch, colorScheme, loggedIn, ...props }) => {
     const inputRef = useRef()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [matchingPassword, setMatchingPassword] = useState('')
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
     const [formReady, setFormReady] = useState(false)
@@ -32,6 +33,7 @@ const RegisterForm = ({ dispatch, colorScheme, loggedIn, ...props }) => {
             type = { 'text' }
             placeholder = 'email'
             callback = { value => setEmail(value) }
+            validate = { validator.validateEmail(email) }
           />
           <Input
             height = '95%'
@@ -56,7 +58,8 @@ const RegisterForm = ({ dispatch, colorScheme, loggedIn, ...props }) => {
             height = '95%'
             type = { 'password' }
             placeholder = 'repeat password'
-            callback = { value => setPassword(value) }
+            callback = { value => setMatchingPassword(value) }
+            validate = { validator.matchPasswords(password, matchingPassword) }
           />
           <Input
             height = '95%'
