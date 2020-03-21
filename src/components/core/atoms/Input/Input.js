@@ -3,6 +3,7 @@ import InputStyled from '../../../styled/atoms/inputStyled'
 import colorScheme from '../../../../misc/colorScheme'
 import { connect } from 'react-redux'
 import { additionalInputStyles } from '../../../../misc/additionalInputStyles'
+import { emailChange } from '../../../../redux/actions/loginFormInputActions'
 
 const Input = ({
     type,
@@ -57,7 +58,7 @@ const Input = ({
     return (
         <InputStyled
           height = { incomingHeight }
-          onChange = { e => callback(e.target.value) }
+          onChange = { e => dispatch(callback(e.target.value)) }
           ref = { inputRef }
           type = { typeOf }
           inputStyles = { inputStyles }

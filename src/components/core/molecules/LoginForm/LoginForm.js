@@ -6,13 +6,14 @@ import FormStyledWrapper from '../../../styled/molecules/formStyled'
 import Text from '../../atoms/Text/Text'
 import login from '../../../../misc/services/loginService'
 import { request, success, failure } from '../../../../redux/actions/loginAction'
+import { emailChange, passwordChange } from '../../../../redux/actions/loginFormInputActions'
 
 const LoginForm = ({ dispatch,
                      colorScheme,
                      loggedIn,
+                     email,
+                     password,
                      ...props }) => {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
 
   const handleSubmit = () => {
     dispatch(request({ email }))
@@ -41,12 +42,12 @@ const LoginForm = ({ dispatch,
         <Input
           type = { 'text' }
           placeholder = 'email'
-          callback = { value => setEmail(value) }
+          callback = { value => emailChange(value) }
         />
         <Input
           type = { 'password' }
           placeholder = 'password'
-          callback = { value => setPassword(value) }
+          callback = { value => passwordChange(value) }
         />
         <Input
           type = { 'submit' }
@@ -64,9 +65,12 @@ const LoginForm = ({ dispatch,
 }
 
 const mapStateToProps = (state) => {
-  const { loggingIn } = state.authenticate
-  const { loggedIn } = state.authenticate
-  return { loggingIn: loggingIn, loggedIn: loggedIn }
+  return {
+    loggingIn: state.authenticate.loggingIn,
+    loggedIn: state.authenticate.loggedIn,
+    email: state.inputChange.email,
+    password: state.inputChange.password
+  }
 }
 
 export default connect(mapStateToProps) (LoginForm)
