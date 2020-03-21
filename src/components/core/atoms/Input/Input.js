@@ -11,6 +11,7 @@ const Input = ({
     dispatch,
     callback,
     validate,
+    dispatchable,
     height,
     ...props
 }) => {
@@ -24,7 +25,7 @@ const Input = ({
 
     useEffect(() => {
         if (shouldValidate && shouldValidate.status) {
-            console.log(shouldValidate.message)
+            dispatch(dispatchable(shouldValidate.message))
              setInputStyles(`
                 border: 5px solid ${ colorScheme.watermelon };
                 box-sizing: border-box;

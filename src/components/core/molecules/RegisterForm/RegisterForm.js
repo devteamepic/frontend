@@ -5,17 +5,15 @@ import { Link } from 'react-router-dom'
 import FormStyledWrapper from '../../../styled/molecules/formStyled'
 import Text from '../../atoms/Text/Text'
 import login from '../../../../misc/services/loginService'
-import { request, success, failure } from '../../../../redux/actions/loginAction'
+import { emailErrorMessage, passwordErrorMessage, matchPasswordErrorMessage } from '../../../../redux/actions/validationMessageAction'
 import { validator } from '../../../../misc/services/validationService'
 
 const RegisterForm = ({ dispatch, colorScheme, loggedIn, ...props }) => {
-    const inputRef = useRef()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [matchingPassword, setMatchingPassword] = useState('')
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
-    const [formReady, setFormReady] = useState(false)
 
     const handleSubmit = () => {
         alert('register submit')
@@ -34,6 +32,7 @@ const RegisterForm = ({ dispatch, colorScheme, loggedIn, ...props }) => {
             placeholder = 'email'
             callback = { value => setEmail(value) }
             validate = { validator.validateEmail(email) }
+            dispatchable = { emailErrorMessage }
           />
           <Input
             height = '95%'
@@ -53,6 +52,7 @@ const RegisterForm = ({ dispatch, colorScheme, loggedIn, ...props }) => {
             placeholder = 'password'
             callback = { value => setPassword(value) }
             validate = { validator.passwordValidate(password) }
+            dispatchable = { passwordErrorMessage }
           />
           <Input
             height = '95%'
@@ -60,6 +60,7 @@ const RegisterForm = ({ dispatch, colorScheme, loggedIn, ...props }) => {
             placeholder = 'repeat password'
             callback = { value => setMatchingPassword(value) }
             validate = { validator.matchPasswords(password, matchingPassword) }
+            dispatchable = { matchPasswordErrorMessage }
           />
           <Input
             height = '95%'
