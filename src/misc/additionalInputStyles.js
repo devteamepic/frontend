@@ -1,11 +1,11 @@
 const textInputStyles = ( colorScheme ) => {
     return (
         `padding: 15px;
+        outline: none;
         box-sizing: border-box;
         &:focus {
         border: 5px solid ${ colorScheme.marigold };
         padding: 10px;
-        outline-offset: 0;
         }
         `
     )

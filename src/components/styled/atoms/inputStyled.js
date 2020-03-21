@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const InputStyled = styled.input`
-outline: 5px yellow;
+outline: none;
 border: none;
 height: ${ props => props.height || '25%' };
 width: 80%;
