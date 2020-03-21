@@ -73,7 +73,10 @@ const RegisterForm = ({ dispatch, colorScheme, loggedIn, ...props }) => {
 const mapStateToProps = (state) => {
     const { loggingIn } = state.authenticate
     const { loggedIn } = state.authenticate
-    return { loggingIn: loggingIn, loggedIn: loggedIn }
+    return {
+      loggingIn: loggingIn,
+      loggedIn: loggedIn,
+    }
 }
 
 export default connect(mapStateToProps) (RegisterForm)
