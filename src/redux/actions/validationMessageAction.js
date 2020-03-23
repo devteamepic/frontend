@@ -18,3 +18,10 @@ export function matchPasswordErrorMessage(message) {
         payload: message
     }
 }
+
+export function removeErrorMessage(key) {
+    return {
+        type: 'REMOVE_ERROR_MESSAGE',
+        payload: key
+    }
+}

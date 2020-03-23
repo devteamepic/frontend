@@ -15,6 +15,11 @@ const validationErrorMessage = (state = '', action) => {
                 ...state,
                 matchPasswordError: action.payload
             }
+        case 'REMOVE_ERROR_MESSAGE':
+            delete state[action.payload]
+            return {
+                ...state
+            }
         default:
             return state
     }

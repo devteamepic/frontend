@@ -1,18 +1,39 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import ErrorMessage from '../../molecules/ErrorMessage/ErrorMessage'
 import ErrorMessageDialogStyled from '../../../styled/organisms/errorMessageDialogStyled'
 import { connect } from 'react-redux'
+import { removeErrorMessage } from '../../../../redux/actions/validationMessageAction'
 
-const ErrorMessageDialog = ({ errors, ...props }) => {
-    console.log(errors)
+const ErrorMessageDialog = ({
+  errors,
+  dispatch,
+  ...props }) => {
+    const [errorsToDisplay, setErrorsToDisplay] = useState(errors)
+
+    const remover = (key) => {
+      setTimeout(() => {
+        dispatch(removeErrorMessage(key))
+      }, 5000)
+
+    }
+
+    useEffect(() => {
+        setErrorsToDisplay(errors)
+      }, [errors])
+
     return (
         <ErrorMessageDialogStyled>
-          { Object.values(errors).map((error) =>
-            <ErrorMessage
-              key = { error }
-              error = { error }
-            />
-        ) }
+          { Object.keys(errorsToDisplay).map((error) => {
+
+              remover(error)
+
+            return (
+                <ErrorMessage
+                  key = { error }
+                  error = { errorsToDisplay[error] }
+                />
+            )
+          }) }
         </ErrorMessageDialogStyled>
     )
 }

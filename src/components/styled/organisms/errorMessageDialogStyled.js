@@ -2,6 +2,8 @@ import styled from 'styled-components'
 import colorScheme from '../../../misc/colorScheme'
 
 const ErrorMessageDialogStyled = styled.ul`
+position: absolute;
+width: 100%;
 list-style-type: none;
 margin: 0;
 padding: 0;
