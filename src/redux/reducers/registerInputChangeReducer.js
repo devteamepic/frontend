@@ -7,7 +7,6 @@ const initialState = {
 }
 
 const registerInputChange = (state = initialState, action) => {
-    console.table(state)
     switch(action.type) {
         case 'EMAIL_CHANGE':
             return {

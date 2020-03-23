@@ -1,27 +1,20 @@
 import React, { useState, useEffect } from 'react'
-import { connect } from 'react-redux'
 import Text from '../../atoms/Text/Text'
 
 const ErrorMessage = ({ error, ...props }) => {
     const [messageToDisplay, setMessageToDisplay] = useState(error)
 
     useEffect(() => {
-        setMessageToDisplay(error)
+      setMessageToDisplay(error)
     }, [error])
 
     return(
-        <div>
-          <Text
-            size = 'medium'
-          >
-            { messageToDisplay }
-          </Text>
-        </div>
+      <Text
+        size = 'medium'
+      >
+        { messageToDisplay }
+      </Text>
     )
 }
 
-const mapStateToProps = (state) => {
-    return { error : state.validationErrorMessage }
-}
-
-export default connect(mapStateToProps) (ErrorMessage)
+export default ErrorMessage

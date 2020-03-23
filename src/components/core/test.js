@@ -4,8 +4,7 @@ import RegisterForm from './molecules/RegisterForm/RegisterForm'
 import { connect } from 'react-redux'
 import '../../App.css'
 import colorScheme from '../../misc/colorScheme'
-import Text from '../core/atoms/Text/Text'
-import ErrorMessage from '../core/molecules/ErrorMessage/ErrorMessage'
+import ErrorMessageDialog from '../core/organisms/ErrorMessageDialog/ErrorMessageDialog'
 
 const Test = ({ error, ...props }) => {
   const [isErrorMessage, setIsErrorMessage] = useState(error)
@@ -16,7 +15,7 @@ const Test = ({ error, ...props }) => {
 
     return (
         <div id='test'>
-        { isErrorMessage && <ErrorMessage/> }
+        { isErrorMessage && <ErrorMessageDialog/> }
           <RegisterForm
             colorScheme = { colorScheme }
           />

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, {  useEffect } from 'react'
 import { connect } from 'react-redux'
 import Input from '../../atoms/Input/Input'
 import { Link } from 'react-router-dom'

@@ -3,7 +3,6 @@ import InputStyled from '../../../styled/atoms/inputStyled'
 import colorScheme from '../../../../misc/colorScheme'
 import { connect } from 'react-redux'
 import { additionalInputStyles } from '../../../../misc/additionalInputStyles'
-import { emailChange } from '../../../../redux/actions/loginFormInputActions'
 
 const Input = ({
     type,
@@ -12,7 +11,7 @@ const Input = ({
     dispatch,
     callback,
     validate,
-    dispatchable,
+    errorDispatch,
     height,
     ...props
 }) => {
@@ -26,7 +25,7 @@ const Input = ({
 
     useEffect(() => {
         if (shouldValidate && shouldValidate.status) {
-            dispatch(dispatchable(shouldValidate.message))
+            dispatch(errorDispatch(shouldValidate.message))
              setInputStyles(`
                 border: 5px solid ${ colorScheme.watermelon };
                 box-sizing: border-box;
@@ -53,7 +52,7 @@ const Input = ({
                     break
             }
         }
-    }, [shouldValidate, typeOf])
+    }, [shouldValidate, typeOf, dispatch, errorDispatch])
 
     return (
         <InputStyled

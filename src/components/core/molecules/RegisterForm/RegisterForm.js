@@ -1,10 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import Input from '../../atoms/Input/Input'
-import { Link } from 'react-router-dom'
 import FormStyledWrapper from '../../../styled/molecules/formStyled'
-import Text from '../../atoms/Text/Text'
-import login from '../../../../misc/services/loginService'
 import { emailErrorMessage, passwordErrorMessage, matchPasswordErrorMessage } from '../../../../redux/actions/validationMessageAction'
 import { validator } from '../../../../misc/services/validationService'
 import { emailChange, firstNameChange, lastNameChange, passwordChange, matchingPasswordChange } from '../../../../redux/actions/registerFormInputAction'
@@ -36,7 +33,7 @@ const RegisterForm = ({ dispatch,
             placeholder = 'email'
             callback = { value => emailChange(value) }
             validate = { validator.validateEmail(email) }
-            dispatchable = { emailErrorMessage }
+            errorDispatch = { emailErrorMessage }
           />
           <Input
             height = '95%'
@@ -56,7 +53,7 @@ const RegisterForm = ({ dispatch,
             placeholder = 'password'
             callback = { value => passwordChange(value) }
             validate = { validator.passwordValidate(password) }
-            dispatchable = { passwordErrorMessage }
+            errorDispatch = { passwordErrorMessage }
           />
           <Input
             height = '95%'
@@ -64,7 +61,7 @@ const RegisterForm = ({ dispatch,
             placeholder = 'repeat password'
             callback = { value => matchingPasswordChange(value) }
             validate = { validator.matchPasswords(password, matchingPassword) }
-            dispatchable = { matchPasswordErrorMessage }
+            errorDispatch = { matchPasswordErrorMessage }
           />
           <Input
             height = '95%'
