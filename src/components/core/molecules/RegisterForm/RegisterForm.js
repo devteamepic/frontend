@@ -7,17 +7,21 @@ import Text from '../../atoms/Text/Text'
 import login from '../../../../misc/services/loginService'
 import { emailErrorMessage, passwordErrorMessage, matchPasswordErrorMessage } from '../../../../redux/actions/validationMessageAction'
 import { validator } from '../../../../misc/services/validationService'
+import { emailChange, firstNameChange, lastNameChange, passwordChange, matchingPasswordChange } from '../../../../redux/actions/registerFormInputAction'
 
-const RegisterForm = ({ dispatch, colorScheme, loggedIn, ...props }) => {
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [matchingPassword, setMatchingPassword] = useState('')
-    const [firstName, setFirstName] = useState('')
-    const [lastName, setLastName] = useState('')
+const RegisterForm = ({ dispatch,
+                        colorScheme,
+                        loggedIn,
+                        email,
+                        firstName,
+                        lastName,
+                        password,
+                        matchingPassword,
+                        ...props }) => {
 
     const handleSubmit = () => {
-        alert('register submit')
         console.table({ email, firstName, lastName, password })
+        alert('register submit')
     }
 
     return (
@@ -30,7 +34,7 @@ const RegisterForm = ({ dispatch, colorScheme, loggedIn, ...props }) => {
             height = '95%'
             type = { 'text' }
             placeholder = 'email'
-            callback = { value => setEmail(value) }
+            callback = { value => emailChange(value) }
             validate = { validator.validateEmail(email) }
             dispatchable = { emailErrorMessage }
           />
@@ -38,19 +42,19 @@ const RegisterForm = ({ dispatch, colorScheme, loggedIn, ...props }) => {
             height = '95%'
             type = { 'text' }
             placeholder = 'first name'
-            callback = { value => setFirstName(value) }
+            callback = { value => firstNameChange(value) }
           />
           <Input
             height = '95%'
             type = { 'text' }
             placeholder = 'last name'
-            callback = { value => setLastName(value) }
+            callback = { value => lastNameChange(value) }
           />
           <Input
             height = '95%'
             type = { 'password' }
             placeholder = 'password'
-            callback = { value => setPassword(value) }
+            callback = { value => passwordChange(value) }
             validate = { validator.passwordValidate(password) }
             dispatchable = { passwordErrorMessage }
           />
@@ -58,7 +62,7 @@ const RegisterForm = ({ dispatch, colorScheme, loggedIn, ...props }) => {
             height = '95%'
             type = { 'password' }
             placeholder = 'repeat password'
-            callback = { value => setMatchingPassword(value) }
+            callback = { value => matchingPasswordChange(value) }
             validate = { validator.matchPasswords(password, matchingPassword) }
             dispatchable = { matchPasswordErrorMessage }
           />
@@ -72,11 +76,14 @@ const RegisterForm = ({ dispatch, colorScheme, loggedIn, ...props }) => {
 }
 
 const mapStateToProps = (state) => {
-    const { loggingIn } = state.authenticate
-    const { loggedIn } = state.authenticate
     return {
-      loggingIn: loggingIn,
-      loggedIn: loggedIn,
+      loggingIn: state.authenticate.loggingIn,
+      loggedIn: state.authenticate.loggedIn,
+      email: state.registerInputChange.email,
+      firstName: state.registerInputChange.firstName,
+      lastName: state.registerInputChange.lastName,
+      password: state.registerInputChange.password,
+      matchingPassword: state.registerInputChange.matchingPassword,
     }
 }
 

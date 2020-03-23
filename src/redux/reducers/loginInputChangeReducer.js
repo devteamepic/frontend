@@ -3,7 +3,7 @@ const initialState = {
     password: ''
 }
 
-const loginInputChange = (state = initialState, action) => {
+const inputChange = (state = initialState, action) => {
     switch(action.type) {
         case 'EMAIL_CHANGE':
             return {
@@ -20,4 +20,4 @@ const loginInputChange = (state = initialState, action) => {
     }
 }
 
-export default loginInputChange
+export default inputChange

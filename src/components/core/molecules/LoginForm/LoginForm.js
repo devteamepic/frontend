@@ -68,8 +68,8 @@ const mapStateToProps = (state) => {
   return {
     loggingIn: state.authenticate.loggingIn,
     loggedIn: state.authenticate.loggedIn,
-    email: state.inputChange.email,
-    password: state.inputChange.password
+    email: state.loginInputChange.email,
+    password: state.loginInputChange.password
   }
 }
 
