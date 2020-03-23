@@ -9,11 +9,13 @@ const ErrorMessage = ({ error, ...props }) => {
     }, [error])
 
     return(
-      <Text
-        size = 'medium'
-      >
-        { messageToDisplay }
-      </Text>
+      <li>
+        <Text
+          size = 'medium'
+        >
+          { messageToDisplay }
+        </Text>
+      </li>
     )
 }
 
