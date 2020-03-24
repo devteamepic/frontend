@@ -19,7 +19,7 @@ const FormStyledWrapper = ({ children, callback, ...props }) => {
         >
           <form
             id={ incomingType }
-            onSubmit = { () => callback() }
+            onSubmit = { (e) => callback(e) }
           >
             { children }
           </form>

@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import Input from '../../atoms/Input/Input'
 import FormStyledWrapper from '../../../styled/molecules/formStyled'
+import register from '../../../../misc/services/registerService'
 import { emailErrorMessage, passwordErrorMessage, matchPasswordErrorMessage } from '../../../../redux/actions/validationMessageAction'
 import { validator } from '../../../../misc/services/validationService'
 import { emailChange, firstNameChange, lastNameChange, passwordChange, matchingPasswordChange } from '../../../../redux/actions/registerFormInputAction'
@@ -16,9 +17,18 @@ const RegisterForm = ({ dispatch,
                         matchingPassword,
                         ...props }) => {
 
-    const handleSubmit = () => {
-        console.table({ email, firstName, lastName, password })
-        alert('register submit')
+    const handleSubmit = (e) => {
+      e.preventDefault()
+      alert('asdf')
+      register(email, firstName, lastName, password)
+        .then(response => {
+            alert('here')
+            console.log(response)
+        })
+        .catch(errorResponse => {
+          alert(errorResponse)
+            console.log(errorResponse)
+        })
     }
 
     return (

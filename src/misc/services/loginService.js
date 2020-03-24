@@ -26,8 +26,10 @@ const login = (email, password) => {
         body: formData,
         redirect: 'follow',
     }
-    return fetch('http://localhost:8080/api/v1/auth/sign_in', requestOptions)
+    return fetch('http://134.122.65.136/api/v1/auth/sign_in', requestOptions)
         .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
 }
 
 export default login

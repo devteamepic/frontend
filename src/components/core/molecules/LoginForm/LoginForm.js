@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import FormStyledWrapper from '../../../styled/molecules/formStyled'
 import Text from '../../atoms/Text/Text'
 import login from '../../../../misc/services/loginService'
-import { request, success, failure } from '../../../../redux/actions/loginAction'
+//import { request, success, failure } from '../../../../redux/actions/loginAction'
 import { emailChange, passwordChange } from '../../../../redux/actions/loginFormInputActions'
 
 const LoginForm = ({ dispatch,
@@ -16,16 +16,9 @@ const LoginForm = ({ dispatch,
                      ...props }) => {
 
   const handleSubmit = () => {
-    dispatch(request({ email }))
 
     login(email, password)
-        .then(user => {
-            dispatch(success(user))
-          },
-          error => {
-            dispatch(failure(error.toString()))
-          }
-        )
+           
   }
 
   useEffect(() => {
