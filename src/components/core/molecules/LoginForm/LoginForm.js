@@ -1,60 +1,66 @@
-import React, { useState, useEffect } from 'react'
-import '../../../../App.css'
+import React, {  useEffect } from 'react'
 import { connect } from 'react-redux'
 import Input from '../../atoms/Input/Input'
 import { Link } from 'react-router-dom'
-import LoginFormStyled from '../../../styled/molecules/loginFormStyled'
+import FormStyledWrapper from '../../../styled/molecules/formStyled'
 import Text from '../../atoms/Text/Text'
 import login from '../../../../misc/services/loginService'
 import { request, success, failure } from '../../../../redux/actions/loginAction'
+import { emailChange, passwordChange } from '../../../../redux/actions/loginFormInputActions'
+import { loginErrorMessage } from '../../../../redux/actions/validationMessageAction'
 
-const LoginForm = ({ dispatch,
-                     colorScheme,
-                     loggedIn,
-                     ...props }) => {
+const LoginForm = ({
+  dispatch,
+  colorScheme,
+  loggingIn,
+  loggedIn,
+  email,
+  password,
+  ...props }) => {
 
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault()
     dispatch(request({ email }))
 
     login(email, password)
-        .then(user => {
-            dispatch(success(user))
-          },
-          error => {
-            dispatch(failure(error.toString()))
-          }
-        )
+      .then(response => {
+        dispatch(success({ email: response.email, fullName: response.full_name }))
+      })
+      .catch(error => {
+        dispatch(failure(error))
+      })
   }
 
   useEffect(() => {
     // PIECE OF SHIT
-    if (loggedIn) console.log('logged in successfully')
-  }, [loggedIn])
+    if (loggedIn) {
+      console.log('logged in successfully')
+    }
+    else if (loggingIn) {
+      dispatch(loginErrorMessage('Invalid email or password. Or bad internet connection.'))
+    }
+  }, [loggedIn, loggingIn])
 
     return (
-      <LoginFormStyled
+      <FormStyledWrapper
+        type = 'login'
         colorScheme = { colorScheme }
-        onSubmit = { () => handleSubmit() }
+        callback = { handleSubmit }
       >
-        <form id='login-form'>
-          <Input
-            type = { 'text' }
-            placeholder = 'email'
-            callback = { value => setEmail(value) }
-          />
-          <Input
-            type = { 'password' }
-            placeholder = 'password'
-            callback = { value => setPassword(value) }
-          />
-          <Input
-            type = { 'submit' }
-            text = 'Log in'
-          />
-        </form>
+        <Input
+          type = { 'text' }
+          placeholder = 'email'
+          callback = { value => emailChange(value) }
+        />
+        <Input
+          type = { 'password' }
+          placeholder = 'password'
+          callback = { value => passwordChange(value) }
+        />
+        <Input
+          type = { 'submit' }
+          text = 'Log in'
+        />
         <Link style={{ color: colorScheme.blue }} to='/about'>
           <Text
             size = { 'small' }
@@ -62,14 +68,17 @@ const LoginForm = ({ dispatch,
             What is a UNIFOUND
           </Text>
         </Link>
-      </LoginFormStyled>
+      </FormStyledWrapper>
     )
 }
 
 const mapStateToProps = (state) => {
-  const { loggingIn } = state.authenticate
-  const { loggedIn } = state.authenticate
-  return { loggingIn: loggingIn, loggedIn: loggedIn }
+  return {
+    loggingIn: state.authenticate.loggingIn,
+    loggedIn: state.authenticate.loggedIn,
+    email: state.loginInputChange.email,
+    password: state.loginInputChange.password
+  }
 }
 
 export default connect(mapStateToProps) (LoginForm)
