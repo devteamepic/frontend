@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import Test from './components/core/test'
 import { Route, Link } from 'react-router-dom'
-import LoginForm from './components/core/molecules/LoginForm/LoginForm'
+import LoginForm from './components/core/organisms/LoginForm/LoginForm'
 import colorScheme from './misc/colorScheme'
 import { connect } from 'react-redux'
 import ErrorMessageDialog from './components/core/organisms/ErrorMessageDialog/ErrorMessageDialog'
