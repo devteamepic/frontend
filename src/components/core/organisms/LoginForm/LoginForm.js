@@ -39,7 +39,7 @@ const LoginForm = ({
     else if (loggingIn) {
       dispatch(loginErrorMessage('Invalid email or password. Or bad internet connection.'))
     }
-  }, [loggedIn, loggingIn])
+  }, [loggedIn, loggingIn, dispatch])
 
     return (
       <FormStyledWrapper

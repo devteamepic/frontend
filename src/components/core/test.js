@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import RegisterForm from './molecules/RegisterForm/RegisterForm'
+import RegisterForm from './organisms/RegisterForm/RegisterForm'
 import { connect } from 'react-redux'
 import '../../App.css'
 import colorScheme from '../../misc/colorScheme'
