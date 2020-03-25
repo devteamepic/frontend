@@ -1,11 +1,12 @@
 import React from 'react'
 import { Route, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
+import Test from  '../../test'
 
-export const PrivateRoute = ({ componenst: Component, loggedIn, ...rest }) => {
+export const PrivateRoute = ({ loggedIn, ...rest }) => {
     return (
             loggedIn
-                ? <Component {...rest}/>
+                ? <Test />
             : <Redirect to={{ pathname: '/login', state: { from: rest.location } }} />
     )
 }

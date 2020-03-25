@@ -1,7 +1,7 @@
 import React, {  useEffect } from 'react'
 import { connect } from 'react-redux'
 import Input from '../../atoms/Input/Input'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import FormStyledWrapper from '../../../styled/molecules/formStyled'
 import Text from '../../atoms/Text/Text'
 import login from '../../../../misc/services/loginService'
@@ -27,6 +27,7 @@ const LoginForm = ({
         dispatch(success({ email: response.email, fullName: response.full_name }))
       })
       .catch(error => {
+        console.log(error)
         dispatch(failure(error))
       })
   }
@@ -35,11 +36,13 @@ const LoginForm = ({
     // PIECE OF SHIT
     if (loggedIn) {
       console.log('logged in successfully')
+        props.history.push('/')
     }
     else if (loggingIn) {
+      console.log('error occured here')
       dispatch(loginErrorMessage('Invalid email or password. Or bad internet connection.'))
     }
-  }, [loggedIn, loggingIn, dispatch])
+  }, [loggedIn, loggingIn, dispatch, props])
 
     return (
       <FormStyledWrapper

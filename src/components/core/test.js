@@ -14,11 +14,7 @@ const Test = ({ error, ...props }) => {
 
     return (
         <div id='test'>
-        { isErrorMessage && <ErrorMessageDialog/> }
-          <RegisterForm
-            colorScheme = { colorScheme }
-          />
-
+          alskfjlaskdfj
         </div>
     )
 }
