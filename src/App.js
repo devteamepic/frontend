@@ -1,33 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './App.css';
 import Test from './components/core/test'
-import { Route, Link } from 'react-router-dom'
-import LoginForm from './components/core/organisms/LoginForm/LoginForm'
-import colorScheme from './misc/colorScheme'
-import { connect } from 'react-redux'
-import ErrorMessageDialog from './components/core/organisms/ErrorMessageDialog/ErrorMessageDialog'
+import LoginPage from './components/core/organisms/LoginForm/LoginForm'
+import PrivateRoute from './components/core/atoms/PrivateRoute/PrivateRoute'
+import { Route, Switch } from 'react-router-dom'
 
-function App({ error, ...props }) {
-  const [isErrorMessage, setIsErrorMessage] = useState(error)
-
-  useEffect(() => {
-    setIsErrorMessage(error)
-  }, [error])
+function App() {
 
   return (
       <div className="App">
-        { isErrorMessage && <ErrorMessageDialog/> }
-        <Link style = {{ height: 'fit-content' }} to='/test'>Test</Link>
-        <Route path='/test' component={Test}/>
-        <LoginForm
-          colorScheme = { colorScheme }
-        />
+        <Switch>
+          <PrivateRoute exact path='/test' component={Test}/>
+          <PrivateRoute exact path='/' component={Test}/>
+          <Route path='/login' component={LoginPage}/>
+        </Switch>
       </div>
   );
 }
 
-const mapStateToProps = (state) => {
-  return { error : state.validationErrorMessage }
-}
-
-export default connect(mapStateToProps) (App);
+export default App

@@ -8,10 +8,10 @@ import login from '../../../../misc/services/loginService'
 import { request, success, failure } from '../../../../redux/actions/loginAction'
 import { emailChange, passwordChange } from '../../../../redux/actions/loginFormInputActions'
 import { loginErrorMessage } from '../../../../redux/actions/validationMessageAction'
+import colorScheme from '../../../../misc/colorScheme'
 
 const LoginForm = ({
   dispatch,
-  colorScheme,
   loggingIn,
   loggedIn,
   email,
