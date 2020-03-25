@@ -9,13 +9,14 @@ import { request, success, failure } from '../../../../redux/actions/loginAction
 import { emailChange, passwordChange } from '../../../../redux/actions/loginFormInputActions'
 import { loginErrorMessage } from '../../../../redux/actions/validationMessageAction'
 
-const LoginForm = ({ dispatch,
-                     colorScheme,
-                     loggingIn,
-                     loggedIn,
-                     email,
-                     password,
-                     ...props }) => {
+const LoginForm = ({
+  dispatch,
+  colorScheme,
+  loggingIn,
+  loggedIn,
+  email,
+  password,
+  ...props }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()

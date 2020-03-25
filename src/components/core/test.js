@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import LoginForm from './molecules/LoginForm/LoginForm'
 import RegisterForm from './molecules/RegisterForm/RegisterForm'
 import { connect } from 'react-redux'
 import '../../App.css'
@@ -19,10 +18,7 @@ const Test = ({ error, ...props }) => {
           <RegisterForm
             colorScheme = { colorScheme }
           />
-          <div style = {{ height: '10px' }}/>
-           <LoginForm
-            colorScheme = { colorScheme }
-          />
+
         </div>
     )
 }

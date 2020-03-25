@@ -13,6 +13,9 @@ const register = (email, firstName, lastName, password) => {
         formdata: formData,
         headers: { 'Content-Type': 'multipart/form-data' }
     })
+        .then(response => {
+            response.text()
+        })
 }
 
 export default register
