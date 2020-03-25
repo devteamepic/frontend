@@ -20,6 +20,10 @@ const validationErrorMessage = (state = '', action) => {
             return {
                 ...state
             }
+        case 'LOGIN_ERROR':
+            return {
+                loginError: action.payload
+            }
         default:
             return state
     }

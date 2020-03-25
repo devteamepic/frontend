@@ -7,6 +7,7 @@ import Text from '../../atoms/Text/Text'
 import login from '../../../../misc/services/loginService'
 import { request, success, failure } from '../../../../redux/actions/loginAction'
 import { emailChange, passwordChange } from '../../../../redux/actions/loginFormInputActions'
+import { loginErrorMessage } from '../../../../redux/actions/validationMessageAction'
 
 const LoginForm = ({ dispatch,
                      colorScheme,
@@ -35,7 +36,7 @@ const LoginForm = ({ dispatch,
       console.log('logged in successfully')
     }
     else if (loggingIn) {
-      console.log('not logged in')
+      dispatch(loginErrorMessage('Invalid email or password'))
     }
   }, [loggedIn, loggingIn])
 

@@ -19,10 +19,8 @@ const RegisterForm = ({ dispatch,
 
     const handleSubmit = (e) => {
       e.preventDefault()
-      alert('asdf')
       register(email, firstName, lastName, password)
         .then(response => {
-            alert('here')
             console.log(response)
         })
         .catch(errorResponse => {

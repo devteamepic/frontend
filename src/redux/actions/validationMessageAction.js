@@ -25,3 +25,10 @@ export function removeErrorMessage(key) {
         payload: key
     }
 }
+
+export function loginErrorMessage(message) {
+    return {
+        type: 'LOGIN_ERROR',
+        payload: message
+    }
+}
