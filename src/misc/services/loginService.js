@@ -4,6 +4,7 @@ const login = (email, password) => {
     var formData = new FormData()
     formData.append('email', email)
     formData.append('password', password)
+    console.log('in login')
 
     return axios({
         method: 'POST',
@@ -11,6 +12,9 @@ const login = (email, password) => {
         formdata: formData,
         headers: { 'Content-Type': 'multipart/form-data' }
     })
+        .then(response => {
+            response.text()
+        })
 }
 
 export default login

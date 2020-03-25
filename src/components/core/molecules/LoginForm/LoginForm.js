@@ -10,17 +10,19 @@ import { emailChange, passwordChange } from '../../../../redux/actions/loginForm
 
 const LoginForm = ({ dispatch,
                      colorScheme,
+                     loggingIn,
                      loggedIn,
                      email,
                      password,
                      ...props }) => {
 
   const handleSubmit = (e) => {
+    e.preventDefault()
     dispatch(request({ email }))
 
     login(email, password)
       .then(response => {
-        dispatch(success({ email: response.email, full_name: response.full_name }))
+        dispatch(success({ email: response.email, fullName: response.full_name }))
       })
       .catch(error => {
         dispatch(failure(error))
@@ -29,8 +31,13 @@ const LoginForm = ({ dispatch,
 
   useEffect(() => {
     // PIECE OF SHIT
-    if (loggedIn) console.log('logged in successfully')
-  }, [loggedIn])
+    if (loggedIn) {
+      console.log('logged in successfully')
+    }
+    else if (loggingIn) {
+      console.log('not logged in')
+    }
+  }, [loggedIn, loggingIn])
 
     return (
       <FormStyledWrapper
