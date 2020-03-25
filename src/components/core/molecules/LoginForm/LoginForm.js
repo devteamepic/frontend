@@ -37,7 +37,7 @@ const LoginForm = ({
       console.log('logged in successfully')
     }
     else if (loggingIn) {
-      dispatch(loginErrorMessage('Invalid email or password'))
+      dispatch(loginErrorMessage('Invalid email or password. Or bad internet connection.'))
     }
   }, [loggedIn, loggingIn])
 
