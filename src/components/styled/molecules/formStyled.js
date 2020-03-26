@@ -7,6 +7,7 @@ width: ${ props => props.type === 'login' ? '500px' : '900px' };
 height: 80%;
 background-color: ${ props => props.colorScheme.steel };
 text-align: center;
+margin: auto;
 `
 
 const FormStyledWrapper = ({ children, callback, ...props }) => {
