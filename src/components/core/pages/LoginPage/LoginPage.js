@@ -19,40 +19,40 @@ const LoginPage = ({ error, ...props }) => {
           colorScheme = { colorScheme }
         >
           { errorMessage && <ErrorDialog/> }
-          <div style={{ height: '100%', color: 'white', width: '100%', backgroundColor: colorScheme.denim, textAlign: 'center' }}>
-            <Text
-              size = 'large'
-            >
-              UNIFOUND
-            </Text>
-            <Text
-              size = 'medium'
-            >
-              was created with help of
-            </Text>
-            <Link style={{ color: colorScheme.blue }} to='/openSourceWiki'>
+          <div style={{ height: '100%', color: 'white', width: '100%', backgroundColor: colorScheme.denim, textAlign: 'center', paddingTop: '25%', boxSizing: 'border-box' }}>
+              <Text
+                size = 'large'
+              >
+                UNIFOUND
+              </Text>
               <Text
                 size = 'medium'
               >
-                open source
+                was created with help of
               </Text>
-            </Link>
-            <Text
-              size = 'medium'
-            >
-              technologies like:
-            </Text>
-            <Link style={{ color: colorScheme.blue }} to='/openSourceWiki'>
+              <Link style={{ color: colorScheme.blue }} to='/openSourceWiki'>
+                <Text
+                  size = 'medium'
+                >
+                  open source
+                </Text>
+              </Link>
               <Text
                 size = 'medium'
               >
-                arxiv and etc.
+                technologies like:
               </Text>
-            </Link>
-          </div>
-            <LoginForm
-              colorScheme = { colorScheme }
-            />
+              <Link style={{ color: colorScheme.blue }} to='/openSourceWiki'>
+                <Text
+                  size = 'medium'
+                  >
+                  arxiv and etc.
+                </Text>
+              </Link>
+            </div>
+          <LoginForm
+            colorScheme = { colorScheme }
+          />
         </LoginPageStyled>
     )
 }

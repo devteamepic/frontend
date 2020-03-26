@@ -1,7 +1,7 @@
 import React, {  useEffect } from 'react'
 import { connect } from 'react-redux'
 import Input from '../../atoms/Input/Input'
-import { Link, Redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import FormStyledWrapper from '../../../styled/molecules/formStyled'
 import Text from '../../atoms/Text/Text'
 import login from '../../../../misc/services/loginService'
