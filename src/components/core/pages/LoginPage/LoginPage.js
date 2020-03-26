@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import Text from '../../atoms/Text/Text'
 import ErrorDialog from '../../organisms/ErrorMessageDialog/ErrorMessageDialog'
 import LoginForm from '../../organisms/LoginForm/LoginForm'
@@ -24,6 +25,30 @@ const LoginPage = ({ error, ...props }) => {
             >
               UNIFOUND
             </Text>
+            <Text
+              size = 'medium'
+            >
+              was created with help of
+            </Text>
+            <Link style={{ color: colorScheme.blue }} to='/openSourceWiki'>
+              <Text
+                size = 'medium'
+              >
+                open source
+              </Text>
+            </Link>
+            <Text
+              size = 'medium'
+            >
+              technologies like:
+            </Text>
+            <Link style={{ color: colorScheme.blue }} to='/openSourceWiki'>
+              <Text
+                size = 'medium'
+              >
+                arxiv and etc.
+              </Text>
+            </Link>
           </div>
             <LoginForm
               colorScheme = { colorScheme }

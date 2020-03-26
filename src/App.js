@@ -15,6 +15,10 @@ function App() {
           <PrivateRoute exact path='/' component={Test}/>
           <Route path='/login' component={LoginPage}/>
           <Route path='/register' component={RegisterPage}/>
+          <Route path='/openSourceWiki' component={() => {
+            window.location.href = 'https://en.wikipedia.org/wiki/Open_source'
+            return null
+          }}/>
         </Switch>
       </div>
   );
