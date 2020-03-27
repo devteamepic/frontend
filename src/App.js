@@ -19,6 +19,14 @@ function App() {
             window.location.href = 'https://en.wikipedia.org/wiki/Open_source'
             return null
           }}/>
+          <Route path='/arxiv' component={() => {
+            window.location.href = 'https://arxiv.org'
+            return null
+          }}/>
+          <Route path='/github' component={() => {
+            window.location.href = 'https://github.com/devteamepic'
+            return null
+          }}/>
         </Switch>
       </div>
   );

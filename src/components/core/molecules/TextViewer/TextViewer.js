@@ -19,6 +19,8 @@ const TextViewer = ({ childrenData, ...props }) => {
                       </Text>
                   )
               } else if (child.component === 'link')  {
+                console.log(child.link)
+                console.log(child.textValue)
                 return (
                   <Link
                     to = { child.link }
