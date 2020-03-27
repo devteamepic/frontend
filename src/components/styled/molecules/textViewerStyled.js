@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const TextHolderStyled = styled.div`
+const TextViewerStyled = styled.div`
 height: 40%;
 color: white;
 width: 60%;
@@ -9,4 +9,4 @@ margin-left: 20%;
 margin-top: 30%;
 `
 
-export default TextHolderStyled
+export default TextViewerStyled

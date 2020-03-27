@@ -2,12 +2,12 @@ import React, { useState } from 'react'
 import Text from '../../atoms/Text/Text'
 import { Link } from 'react-router-dom'
 import colorScheme from '../../../../misc/colorScheme'
-import TextHolderStyled from '../../../styled/organisms/textHolderStyled'
+import TextViewerStyled from '../../../styled/molecules/textViewerStyled'
 
 const TextViewer = ({ childrenData, ...props }) => {
     const [children] = useState(childrenData)
     return (
-      <TextHolderStyled>
+      <TextViewerStyled>
           { children.map(child => {
               if (child.component === 'text') {
                   return (
@@ -34,8 +34,7 @@ const TextViewer = ({ childrenData, ...props }) => {
               }
               return (<><br/><br/></>)
           }) }
-
-      </TextHolderStyled>
+      </TextViewerStyled>
     )
 }
 
