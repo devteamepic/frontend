@@ -2,11 +2,12 @@ import React, { useState } from 'react'
 import Text from '../../atoms/Text/Text'
 import { Link } from 'react-router-dom'
 import colorScheme from '../../../../misc/colorScheme'
+import TextHolderStyled from '../../../styled/organisms/textHolderStyled'
 
 const TextViewer = ({ childrenData, ...props }) => {
     const [children] = useState(childrenData)
     return (
-        <div style={{ height: '40%', color: 'white', width: '60%', textAlign: 'center', marginLeft: '20%', marginTop: '30%' }}>
+      <TextHolderStyled>
           { children.map(child => {
               if (child.component === 'text') {
                   return (
@@ -33,7 +34,8 @@ const TextViewer = ({ childrenData, ...props }) => {
               }
               return (<><br/><br/></>)
           }) }
-        </div>
+
+      </TextHolderStyled>
     )
 }
 
