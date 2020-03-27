@@ -64,6 +64,15 @@ const LoginForm = ({
           type = { 'submit' }
           text = 'Log in'
         />
+        <Link style={{ color: colorScheme.blue, width: 'fit-content' }} to='/register'>
+          <Text
+            isHeader = { true }
+            size = { 'small' }
+          >
+            Register
+          </Text>
+        </Link>
+        <br/>
         <Link style={{ color: colorScheme.blue }} to='/about'>
           <Text
             isHeader = { true }
