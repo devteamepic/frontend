@@ -5,20 +5,10 @@ import ErrorDialog from '../../organisms/ErrorMessageDialog/ErrorMessageDialog'
 import LoginForm from '../../organisms/LoginForm/LoginForm'
 import colorScheme from '../../../../misc/colorScheme'
 import LoginPageStyled from '../../../styled/pages/loginPageStyled'
+import { loginPageText } from '../../../../misc/loginPageText'
 
 const LoginPage = ({ error, ...props }) => {
     const [errorMessage, setErrorMessage] = useState(error)
-    const [some] = useState([
-      { component: 'text', size: 'large', textValue: 'UNIFOUND', isHeader: true },
-      { component: 'text', size: 'medium', textValue: 'was created using ' },
-      { component: 'link', link: '/openSourceWiki', textValue: 'open source' },
-      { component: 'text', size: 'medium', textValue: ' technologies such as: ' },
-      { component: 'link', link: '/openSourceWiki', textValue: 'arxiv.org' },
-      { },
-      { component: 'text', size: 'medium', textValue: 'If you are developer we welcome you to our ' },
-      { component: 'link', link: '/openSourceWiki', textValue: 'github' },
-      { component: 'text', size: 'medium', textValue: '. We will be happy to answer you questions!' },
-    ])
 
     useEffect(() => {
         setErrorMessage(error)
@@ -30,7 +20,7 @@ const LoginPage = ({ error, ...props }) => {
         >
           { errorMessage && <ErrorDialog/> }
           <div style={{ height: '100%', width: '100%', backgroundColor: colorScheme.denim }}>
-            <TextViewer childrenData={some}/>
+            <TextViewer childrenData={loginPageText}/>
           </div>
           <LoginForm
             colorScheme = { colorScheme }
