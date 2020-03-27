@@ -9,8 +9,15 @@ import LoginPageStyled from '../../../styled/pages/loginPageStyled'
 const LoginPage = ({ error, ...props }) => {
     const [errorMessage, setErrorMessage] = useState(error)
     const [some] = useState([
-      { component: 'text', size: 'large', textValue: 'UNIFOUND' },
-      { component: 'link', link: '/openSourceWiki', textValue: 'open source' }
+      { component: 'text', size: 'large', textValue: 'UNIFOUND', isHeader: true },
+      { component: 'text', size: 'medium', textValue: 'was created using ' },
+      { component: 'link', link: '/openSourceWiki', textValue: 'open source' },
+      { component: 'text', size: 'medium', textValue: ' technologies such as: ' },
+      { component: 'link', link: '/openSourceWiki', textValue: 'arxiv.org' },
+      { },
+      { component: 'text', size: 'medium', textValue: 'If you are developer we welcome you to our ' },
+      { component: 'link', link: '/openSourceWiki', textValue: 'github' },
+      { component: 'text', size: 'medium', textValue: '. We will be happy to answer you questions!' },
     ])
 
     useEffect(() => {
@@ -22,7 +29,7 @@ const LoginPage = ({ error, ...props }) => {
           colorScheme = { colorScheme }
         >
           { errorMessage && <ErrorDialog/> }
-          <div style={{ height: '100%', color: 'white', width: '100%', backgroundColor: colorScheme.denim, textAlign: 'center', paddingTop: '25%', boxSizing: 'border-box' }}>
+          <div style={{ height: '100%', width: '100%', backgroundColor: colorScheme.denim }}>
             <TextViewer childrenData={some}/>
           </div>
           <LoginForm

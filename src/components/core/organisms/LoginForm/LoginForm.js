@@ -66,6 +66,7 @@ const LoginForm = ({
         />
         <Link style={{ color: colorScheme.blue }} to='/about'>
           <Text
+            isHeader = { true }
             size = { 'small' }
           >
             What is a UNIFOUND

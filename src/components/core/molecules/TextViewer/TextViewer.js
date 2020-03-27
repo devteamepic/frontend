@@ -6,25 +6,32 @@ import colorScheme from '../../../../misc/colorScheme'
 const TextViewer = ({ childrenData, ...props }) => {
     const [children] = useState(childrenData)
     return (
-        <div style={{ height: '100%', color: 'white', width: '100%', backgroundColor: colorScheme.denim, textAlign: 'center', paddingTop: '25%', boxSizing: 'border-box' }}>
+        <div style={{ height: '40%', color: 'white', width: '60%', textAlign: 'center', marginLeft: '20%', marginTop: '30%' }}>
           { children.map(child => {
               if (child.component === 'text') {
                   return (
                       <Text
+                        isHeader = { child.isHeader }
                         size = { child.size }
                       >
                         { child.textValue }
                       </Text>
                   )
-              }
-              return (
+              } else if (child.component === 'link')  {
+                return (
                   <Link
                     to = { child.link }
-                    style={{ color: colorScheme.blue }}
+                    style={{ color: colorScheme.blue, fontFamily: 'Roboto' }}
                   >
-                    { child.textValue }
+                    <Text
+                      size = { 'medium' }
+                    >
+                      { child.textValue }
+                    </Text>
                   </Link>
-              )
+                )
+              }
+              return (<><br/><br/></>)
           }) }
         </div>
     )
