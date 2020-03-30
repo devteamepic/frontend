@@ -39,7 +39,6 @@ const LoginForm = ({
         props.history.push('/')
     }
     else if (loggingIn) {
-      console.log('error occured here')
       dispatch(loginErrorMessage('Invalid email or password. Or bad internet connection.'))
     }
   }, [loggedIn, loggingIn, dispatch, props])

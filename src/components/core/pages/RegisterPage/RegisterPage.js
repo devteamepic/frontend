@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import Text from '../../atoms/Text/Text'
 import { connect } from 'react-redux'
 import TextViewer from '../../molecules/TextViewer/TextViewer'
 import RegisterForm from '../../organisms/RegisterForm/RegisterForm'

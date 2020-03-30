@@ -14,6 +14,7 @@ const TextViewer = ({ childrenData, color, ...props }) => {
               if (child.component === 'text') {
                   return (
                       <Text
+                        key = { child.textValue }
                         isHeader = { child.isHeader }
                         size = { child.size }
                       >
@@ -21,10 +22,9 @@ const TextViewer = ({ childrenData, color, ...props }) => {
                       </Text>
                   )
               } else if (child.component === 'link')  {
-                console.log(child.link)
-                console.log(child.textValue)
                 return (
                   <Link
+                    key = { child.link }
                     to = { child.link }
                     style={{ color: colorScheme.blue, fontFamily: 'Roboto' }}
                   >
