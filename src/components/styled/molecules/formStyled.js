@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
+import Text from '../../core/atoms/Text/Text'
 import '../../../App.css'
 
 const FormStyled = styled.div`
@@ -8,6 +10,7 @@ height: 80%;
 background-color: ${ props => props.colorScheme.steel };
 text-align: center;
 margin: auto;
+${ props => props.type === 'register' && 'margin-top: 10%;' }
 `
 
 const FormStyledWrapper = ({ children, callback, ...props }) => {
@@ -24,6 +27,17 @@ const FormStyledWrapper = ({ children, callback, ...props }) => {
           >
             { children }
           </form>
+          <div style={{ marginTop: '5%' }}>
+            <Link
+              to = '/login'
+            >
+              <Text
+                size = 'small'
+              >
+                Log In
+              </Text>
+            </Link>
+          </div>
         </FormStyled>
     )
 }

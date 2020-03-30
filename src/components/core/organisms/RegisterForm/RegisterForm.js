@@ -59,23 +59,17 @@ const RegisterForm = ({
           />
           <Input
             height = '95%'
-            type = { 'text' }
-            placeholder = 'first name'
-            callback = { value => firstNameChange(value) }
-          />
-          <Input
-            height = '95%'
-            type = { 'text' }
-            placeholder = 'last name'
-            callback = { value => lastNameChange(value) }
-          />
-          <Input
-            height = '95%'
             type = { 'password' }
             placeholder = 'password'
             callback = { value => passwordChange(value) }
             validate = { validator.passwordValidate(password) }
             errorDispatch = { passwordErrorMessage }
+          />
+          <Input
+            height = '95%'
+            type = { 'text' }
+            placeholder = 'first name'
+            callback = { value => firstNameChange(value) }
           />
           <Input
             height = '95%'
@@ -87,9 +81,16 @@ const RegisterForm = ({
           />
           <Input
             height = '95%'
+            type = { 'text' }
+            placeholder = 'last name'
+            callback = { value => lastNameChange(value) }
+          />
+          <Input
+            height = '95%'
             type = { 'submit' }
             text = 'Register'
           />
+
         </FormStyledWrapper>
     )
 }

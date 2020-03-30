@@ -4,7 +4,7 @@ import TextViewer from '../../molecules/TextViewer/TextViewer'
 import ErrorDialog from '../../organisms/ErrorMessageDialog/ErrorMessageDialog'
 import LoginForm from '../../organisms/LoginForm/LoginForm'
 import colorScheme from '../../../../misc/colorScheme'
-import LoginPageStyled from '../../../styled/pages/loginPageStyled'
+import LogRegPagesStyled from '../../../styled/pages/logRegPagesStyled'
 import { loginPageText } from '../../../../misc/loginPageText'
 
 const LoginPage = ({ error, ...props }) => {
@@ -15,17 +15,18 @@ const LoginPage = ({ error, ...props }) => {
     }, [error])
 
     return (
-        <LoginPageStyled
+        <LogRegPagesStyled
           colorScheme = { colorScheme }
+          isLogin = { true }
         >
           { errorMessage && <ErrorDialog/> }
           <div style={{ height: '100%', width: '100%', backgroundColor: colorScheme.denim }}>
-            <TextViewer childrenData={loginPageText}/>
+            <TextViewer childrenData={ loginPageText }/>
           </div>
           <LoginForm
             colorScheme = { colorScheme }
           />
-        </LoginPageStyled>
+        </LogRegPagesStyled>
     )
 }
 
