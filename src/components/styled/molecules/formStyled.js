@@ -27,17 +27,19 @@ const FormStyledWrapper = ({ children, callback, ...props }) => {
           >
             { children }
           </form>
-          <div style={{ marginTop: '5%' }}>
-            <Link
-              to = '/login'
-            >
-              <Text
-                size = 'small'
+          { incomingType === 'register' &&
+            <div style={{ marginTop: '5%' }}>
+              <Link
+                to = '/login'
               >
-                Log In
-              </Text>
-            </Link>
-          </div>
+                <Text
+                  size = 'small'
+                >
+                  Log In
+                </Text>
+              </Link>
+            </div>
+          }
         </FormStyled>
     )
 }
