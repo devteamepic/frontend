@@ -4,10 +4,12 @@ import { Link } from 'react-router-dom'
 import colorScheme from '../../../../misc/colorScheme'
 import TextViewerStyled from '../../../styled/molecules/textViewerStyled'
 
-const TextViewer = ({ childrenData, ...props }) => {
+const TextViewer = ({ childrenData, color, ...props }) => {
     const [children] = useState(childrenData)
     return (
-      <TextViewerStyled>
+      <TextViewerStyled
+        style = {{ color: color }}
+      >
           { children.map(child => {
               if (child.component === 'text') {
                   return (

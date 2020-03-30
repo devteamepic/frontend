@@ -10,7 +10,7 @@ height: 80%;
 background-color: ${ props => props.colorScheme.steel };
 text-align: center;
 margin: auto;
-${ props => props.type === 'register' && 'margin-top: 10%;' }
+${ props => props.type === 'register' && 'margin-top: 5%;' }
 `
 
 const FormStyledWrapper = ({ children, callback, ...props }) => {

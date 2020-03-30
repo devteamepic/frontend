@@ -6,8 +6,7 @@ import RegisterForm from '../../organisms/RegisterForm/RegisterForm'
 import colorScheme from '../../../../misc/colorScheme'
 import LogRegPagesStyled from '../../../styled/pages/logRegPagesStyled'
 import ErrorDialog from '../../organisms/ErrorMessageDialog/ErrorMessageDialog'
-import { loginPageText } from '../../../../misc/loginPageText'
-import { Link } from 'react-router-dom'
+import { registerPageText } from '../../../../misc/registerPageText'
 
 const RegisterPage = ({ error, ...props }) => {
     const [errorMessage, setErrorMessage] = useState(error)
@@ -21,13 +20,15 @@ const RegisterPage = ({ error, ...props }) => {
           colorScheme = { colorScheme }
         >
           { errorMessage && <ErrorDialog/> }
-          <TextViewer childrenData={ loginPageText }/>
+          <TextViewer
+            childrenData={ registerPageText }
+            color = 'black'
+          />
           <div style={{ height: '100%', width: '100%', backgroundColor: colorScheme.denim }}>
             <RegisterForm
               styles={{ marginTop: '10% !important' }}
               colorScheme = { colorScheme }
             />
-
           </div>
 
         </LogRegPagesStyled>
