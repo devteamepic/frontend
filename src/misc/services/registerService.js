@@ -11,7 +11,7 @@ const register = (email, firstName, lastName, password) => {
         redirect: 'follow'
     };
 
-    return fetch("http://134.122.65.136/api/v1/auth/sign_in", requestOptions)
+    return fetch("http://134.122.65.136/api/v1/auth/sign_up", requestOptions)
         .then(response => response)
 }
 

@@ -16,8 +16,6 @@ const LoginForm = ({
   email,
   password,
   ...props }) => {
-
-    const [token, setToken] = useState('')
     const [response, setResponse] = useState('')
 
   const handleSubmit = (e) => {
@@ -42,7 +40,7 @@ const LoginForm = ({
     else if (loggedIn === false) {
       dispatch(loginErrorMessage('Invalid email or password. Or bad internet connection.'))
     }
-  }, [loggedIn, dispatch, props])
+  }, [response, loggedIn, dispatch, props])
 
     return (
       <FormStyledWrapper

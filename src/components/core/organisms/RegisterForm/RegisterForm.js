@@ -1,12 +1,14 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import Input from '../../atoms/Input/Input'
 import FormStyledWrapper from '../../../styled/molecules/formStyled'
 import register from '../../../../misc/services/registerService'
+import { Link, Redirect } from 'react-router-dom'
 import { emailErrorMessage, passwordErrorMessage, matchPasswordErrorMessage } from '../../../../redux/actions/validationMessageAction'
 import { request, success, failure } from '../../../../redux/actions/loginAction'
 import { validator } from '../../../../misc/services/validationService'
 import { emailChange, firstNameChange, lastNameChange, passwordChange, matchingPasswordChange } from '../../../../redux/actions/registerFormInputAction'
+import login from '../../../../misc/services/loginService'
 
 const RegisterForm = ({
   dispatch,
@@ -19,6 +21,7 @@ const RegisterForm = ({
   password,
   matchingPassword,
   ...props }) => {
+    const [response, setResponse] = useState('')
 
     const handleSubmit = (e) => {
       e.preventDefault()
@@ -27,7 +30,16 @@ const RegisterForm = ({
 
       register(email, firstName, lastName, password)
         .then(response => {
-          dispatch(success({ email: response.email, fullName: response.full_name }))
+          login(email, password)
+            .then(response => {
+              console.log(response)
+              setResponse(JSON.parse(response))
+              dispatch(success({ email: response.email, fullName: response.full_name }))
+            })
+            .catch(error => {
+              console.log(error)
+              dispatch(failure(error))
+            })
         })
         .catch(errorResponse => {
           dispatch(failure(errorResponse))
@@ -36,12 +48,12 @@ const RegisterForm = ({
 
     useEffect(() => {
       if (loggedIn) {
-        console.log('registered and logged in successfully')
+        localStorage.setItem('token', response.access_token)
       }
-      else if (loggingIn) {
+      else if (loggedIn === false) {
         console.log('wtf')
       }
-    }, [loggedIn, loggingIn])
+    }, [response, loggedIn, loggingIn])
 
     return (
         <FormStyledWrapper
@@ -49,6 +61,7 @@ const RegisterForm = ({
           colorScheme = { colorScheme }
           callback = { handleSubmit }
         >
+          { loggedIn && <Redirect to='/test'/> }
           <Input
             height = '95%'
             type = { 'text' }
