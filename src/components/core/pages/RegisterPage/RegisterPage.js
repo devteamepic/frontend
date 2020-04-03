@@ -19,10 +19,10 @@ const RegisterPage = ({ error, ...props }) => {
           colorScheme = { colorScheme }
         >
           { errorMessage && <ErrorDialog/> }
-          <TextViewer
-            childrenData={ registerPageText }
-            color = 'black'
-          />
+            <TextViewer
+              childrenData={ registerPageText }
+              color = 'black'
+            />
           <div style={{ height: '100%', width: '100%', backgroundColor: colorScheme.denim }}>
             <RegisterForm
               styles={{ marginTop: '10% !important' }}

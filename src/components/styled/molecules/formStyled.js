@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import colorScheme from '../../../misc/colorScheme'
 import { Link } from 'react-router-dom'
 import Text from '../../core/atoms/Text/Text'
 import '../../../App.css'
@@ -28,9 +29,10 @@ const FormStyledWrapper = ({ children, callback, ...props }) => {
             { children }
           </form>
           { incomingType === 'register' &&
-            <div style={{ marginTop: '5%' }}>
+            <div style={{ marginTop: '10%' }}>
               <Link
                 to = '/login'
+                style = {{ color: colorScheme.blue }}
               >
                 <Text
                   size = 'small'

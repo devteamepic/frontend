@@ -8,7 +8,7 @@ const login = (email, password) => {
 
     return axios({
         method: 'POST',
-        url: 'http://localhost:8080/api/v1/auth/sign_in',
+        url: 'http://134.122.65.136/api/v1/auth/sign_in',
         formdata: formData,
         headers: { 'Content-Type': 'multipart/form-data' }
     })
