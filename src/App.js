@@ -6,7 +6,9 @@ import RegisterPage from './components/core/pages/RegisterPage/RegisterPage'
 import PrivateRoute from './components/core/atoms/PrivateRoute/PrivateRoute'
 import { Route, Switch } from 'react-router-dom'
 
-function App() {
+function App(props) {
+
+  console.log(props)
 
   return (
       <div className="App">

@@ -1,7 +1,7 @@
 import React, {  useEffect } from 'react'
 import { connect } from 'react-redux'
 import Input from '../../atoms/Input/Input'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import FormStyledWrapper from '../../../styled/molecules/formStyled'
 import Text from '../../atoms/Text/Text'
 import login from '../../../../misc/services/loginService'
@@ -12,7 +12,6 @@ import colorScheme from '../../../../misc/colorScheme'
 
 const LoginForm = ({
   dispatch,
-  loggingIn,
   loggedIn,
   email,
   password,
@@ -33,15 +32,13 @@ const LoginForm = ({
   }
 
   useEffect(() => {
-    // PIECE OF SHIT
     if (loggedIn) {
-      console.log('logged in successfully')
-        props.history.push('/')
+      console.log(props)
     }
-    else if (loggingIn) {
+    else if (loggedIn === false) {
       dispatch(loginErrorMessage('Invalid email or password. Or bad internet connection.'))
     }
-  }, [loggedIn, loggingIn, dispatch, props])
+  }, [loggedIn, dispatch, props])
 
     return (
       <FormStyledWrapper
@@ -49,6 +46,7 @@ const LoginForm = ({
         colorScheme = { colorScheme }
         callback = { handleSubmit }
       >
+        { loggedIn && <Redirect to='/test'/> }
         <Input
           type = { 'text' }
           placeholder = 'email'
@@ -86,7 +84,6 @@ const LoginForm = ({
 
 const mapStateToProps = (state) => {
   return {
-    loggingIn: state.authenticate.loggingIn,
     loggedIn: state.authenticate.loggedIn,
     email: state.loginInputChange.email,
     password: state.loginInputChange.password
