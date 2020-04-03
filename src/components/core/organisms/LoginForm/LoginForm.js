@@ -1,4 +1,4 @@
-import React, {  useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import Input from '../../atoms/Input/Input'
 import { Link, Redirect } from 'react-router-dom'
@@ -17,12 +17,16 @@ const LoginForm = ({
   password,
   ...props }) => {
 
+    const [token, setToken] = useState('')
+    const [response, setResponse] = useState('')
+
   const handleSubmit = (e) => {
     e.preventDefault()
     dispatch(request({ email }))
 
     login(email, password)
       .then(response => {
+        setResponse(JSON.parse(response))
         dispatch(success({ email: response.email, fullName: response.full_name }))
       })
       .catch(error => {
@@ -33,7 +37,7 @@ const LoginForm = ({
 
   useEffect(() => {
     if (loggedIn) {
-      console.log(props)
+      localStorage.setItem('token', response.access_token)
     }
     else if (loggedIn === false) {
       dispatch(loginErrorMessage('Invalid email or password. Or bad internet connection.'))

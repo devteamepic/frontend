@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import '../../App.css'
 
 const Test = ({ error, ...props }) => {
+  console.log(localStorage.getItem('token'))
     return (
         <div id='test'>
           alskfjlaskdfj
