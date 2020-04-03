@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import '../../App.css'
 import colorScheme from '../../misc/colorScheme'
 import Text from '../core/atoms/Text/Text'
+import DragAndDrop from './atoms/DragAndDrop/DragAndDrop'
 
 const Test = (props) => {
 
@@ -17,6 +18,7 @@ const Test = (props) => {
           >
             asdfasdf
           </Text>
+          <DragAndDrop/>
         </div>
     )
 }

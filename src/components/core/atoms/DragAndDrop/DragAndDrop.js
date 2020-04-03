@@ -42,4 +42,8 @@ const DragAndDrop = ({ dispatch, ...props }) => {
     )
 }
 
-export default connect() (DragAndDrop)
+const mapStateToProps = (state) => {
+    return { files: state.files }
+}
+
+export default connect(mapStateToProps) (DragAndDrop)
