@@ -1,30 +1,29 @@
-import React from 'react'
-import LoginForm from './molecules/LoginForm/LoginForm'
+import React, { useState, useEffect } from 'react'
+import RegisterForm from './organisms/RegisterForm/RegisterForm'
 import { connect } from 'react-redux'
 import '../../App.css'
 import colorScheme from '../../misc/colorScheme'
-import Text from '../core/atoms/Text/Text'
-import DragAndDrop from './atoms/DragAndDrop/DragAndDrop'
+import ErrorMessageDialog from '../core/organisms/ErrorMessageDialog/ErrorMessageDialog'
 
-const Test = (props) => {
+const Test = ({ error, ...props }) => {
+  const [isErrorMessage, setIsErrorMessage] = useState(error)
+
+  useEffect(() => {
+    setIsErrorMessage(error)
+  }, [error])
 
     return (
         <div id='test'>
-          <LoginForm
+        { isErrorMessage && <ErrorMessageDialog/> }
+          <RegisterForm
             colorScheme = { colorScheme }
           />
-          <Text
-            size = { 'large' }
-          >
-            asdfasdf
-          </Text>
-          <DragAndDrop/>
         </div>
     )
 }
 
 const mapStateToProps = (state) => {
-  return { files: state.files }
+  return { error : state.validationErrorMessage }
 }
 
 export default connect(mapStateToProps) (Test)
