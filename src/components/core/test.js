@@ -1,29 +1,43 @@
 import React, { useState, useEffect } from 'react'
-import RegisterForm from './organisms/RegisterForm/RegisterForm'
 import { connect } from 'react-redux'
 import '../../App.css'
-import colorScheme from '../../misc/colorScheme'
-import ErrorMessageDialog from '../core/organisms/ErrorMessageDialog/ErrorMessageDialog'
+import DragAndDrop from '../core/atoms/DragAndDrop/DragAndDrop'
+import Input from '../core/atoms/Input/Input'
+import Text from '../core/atoms/Text/Text'
 
-const Test = ({ error, ...props }) => {
-  const [isErrorMessage, setIsErrorMessage] = useState(error)
+const Test = ({ files, ...props }) => {
+  const [file, setFile] = useState(files)
+
+  console.log(file)
 
   useEffect(() => {
-    setIsErrorMessage(error)
-  }, [error])
+    setFile(files)
+  }, [files])
 
     return (
         <div id='test'>
-        { isErrorMessage && <ErrorMessageDialog/> }
-          <RegisterForm
-            colorScheme = { colorScheme }
+          <div style={{ height: '500px', width: '500px' }}>
+            <DragAndDrop
+              height = { '500px' }
+            />
+          </div>
+          <Text
+            size = 'large'
+          >
+            { file.length !== 0 && file[0].name }
+          </Text>
+          <Input
+            type = 'file'
           />
         </div>
     )
 }
 
 const mapStateToProps = (state) => {
-  return { error : state.validationErrorMessage }
+  return {
+    error : state.validationErrorMessage,
+    files: state.files
+  }
 }
 
 export default connect(mapStateToProps) (Test)

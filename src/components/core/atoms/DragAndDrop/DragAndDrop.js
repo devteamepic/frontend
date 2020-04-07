@@ -2,9 +2,15 @@ import React, { useState, useEffect } from 'react'
 import DragAndDropStyled from '../../../styled/atoms/dragAndDropStyled'
 import { connect } from 'react-redux'
 import { addOneFileAction } from '../../../../redux/actions/addFileAction'
+import Text from '../Text/Text'
 
-const DragAndDrop = ({ dispatch, ...props }) => {
+const DragAndDrop = ({ dispatch, height, ...props }) => {
     const [files, setFiles] = useState([])
+    const [lineHeight, setLineHeight] = useState(height)
+
+    useEffect(() => {
+        setLineHeight(height)
+    }, [height])
 
     const checkAndSetFiles = (e) => {
         for (var i = 0; i < e.dataTransfer.items.length; i++) {
@@ -21,7 +27,6 @@ const DragAndDrop = ({ dispatch, ...props }) => {
             checkAndSetFiles(e)
             return
         }
-
     }
 
     const dragOverHandler = (e) => {
@@ -36,8 +41,13 @@ const DragAndDrop = ({ dispatch, ...props }) => {
         <DragAndDropStyled
           onDrop = { dropHandler }
           onDragOver = { dragOverHandler }
+          lineHeight = { lineHeight }
         >
+          <Text
+            size = 'large'
+          >
           +
+          </Text>
         </DragAndDropStyled>
     )
 }
