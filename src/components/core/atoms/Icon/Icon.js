@@ -15,8 +15,6 @@ const Icon = ({ icon, heightParam, widthParam, ...props }) => {
         person: profIcon
     })
 
-    console.log(icons[icon])
-
     return(
         <IconStyled
           height = { height }

@@ -5,11 +5,12 @@ import DragAndDrop from '../core/atoms/DragAndDrop/DragAndDrop'
 import Input from '../core/atoms/Input/Input'
 import Text from '../core/atoms/Text/Text'
 import Icon from '../core/atoms/Icon/Icon'
+import { concernTrigger } from '../../redux/actions/concernAction'
 
-const Test = ({ files, ...props }) => {
+const Test = ({ files, concern, ...props }) => {
   const [file, setFile] = useState(files)
 
-  console.log(file)
+  console.log(concern)
 
   useEffect(() => {
     setFile(files)
@@ -33,7 +34,8 @@ const Test = ({ files, ...props }) => {
             { file.length !== 0 && file[0].name }
           </Text>
           <Input
-            type = 'file'
+            type = 'checkbox'
+            callback = { value => concernTrigger() }
           />
         </div>
     )
@@ -42,7 +44,8 @@ const Test = ({ files, ...props }) => {
 const mapStateToProps = (state) => {
   return {
     error : state.validationErrorMessage,
-    files: state.files
+    files: state.files,
+    concern: state.concern
   }
 }
 

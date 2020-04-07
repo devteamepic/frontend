@@ -41,6 +41,9 @@ const Input = ({
                 case 'password':
                     setInputStyles(additionalInputStyles.textInputStyles(colorScheme))
                     break
+                case 'checkbox':
+                    setInputStyles(additionalInputStyles.checkboxInputStyles(colorScheme))
+                    break
                 case 'file':
                     setInputStyles(
                         `width: fit-content;

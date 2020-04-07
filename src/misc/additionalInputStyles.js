@@ -19,7 +19,23 @@ const buttonInputStyles = ( colorScheme ) => {
     )
 }
 
+const checkboxInputStyles = (colorScheme) => {
+    return (
+        `
+         appearance: none;
+         height: 25px;
+         width: 25px;
+         border-radius: 5px;
+         border: 5px solid ${ colorScheme.steel };
+         &:checked{
+         background-color: ${ colorScheme.marigold }
+         }
+         `
+    )
+}
+
 export const additionalInputStyles = {
     textInputStyles,
-    buttonInputStyles
+    buttonInputStyles,
+    checkboxInputStyles
 }
