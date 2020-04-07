@@ -4,6 +4,7 @@ import '../../App.css'
 import DragAndDrop from '../core/atoms/DragAndDrop/DragAndDrop'
 import Input from '../core/atoms/Input/Input'
 import Text from '../core/atoms/Text/Text'
+import Icon from '../core/atoms/Icon/Icon'
 
 const Test = ({ files, ...props }) => {
   const [file, setFile] = useState(files)
@@ -16,6 +17,11 @@ const Test = ({ files, ...props }) => {
 
     return (
         <div id='test'>
+          <Icon
+            icon = 'file'
+            heightParam = '100px'
+            widthParam = '100px'
+          />
           <div style={{ height: '500px', width: '500px' }}>
             <DragAndDrop
               height = { '500px' }
