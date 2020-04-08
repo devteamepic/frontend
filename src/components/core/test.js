@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import '../../App.css'
-import DragAndDrop from '../core/atoms/DragAndDrop/DragAndDrop'
-import Input from '../core/atoms/Input/Input'
-import Text from '../core/atoms/Text/Text'
-import Icon from '../core/atoms/Icon/Icon'
-import { concernTrigger } from '../../redux/actions/concernAction'
+import FileItem from '../core/molecules/FileItem/FileItem'
 
 const Test = ({ files, concern, ...props }) => {
   const [file, setFile] = useState(files)
@@ -16,31 +12,10 @@ const Test = ({ files, concern, ...props }) => {
 
     return (
         <div id='test'>
-          <Icon
-            icon = 'file'
-            heightParam = '100px'
-            widthParam = '100px'
-          />
-          <div style={{ height: '500px', width: '500px' }}>
-            <DragAndDrop
-              height = { '500px' }
-            />
-          </div>
-          <Text
-            size = 'large'
-          >
-            { file.length !== 0 && file[0].name }
-          </Text>
-          <Input
-            type = 'checkbox'
-            callback = { value => concernTrigger() }
-          />
-          <Input
-            type = 'submit'
-            text = 'submit'
-            disabled = { concern.isConcerned }
-            callback = { value => console.log('asdf') }
-          />
+          <ul style={{ listStyleType: 'none', width: '500px', backgroundColor: 'green', margin: '0', padding: '20px 0 1px 0', boxSizing: 'border-box' }}>
+            <FileItem/>
+            <FileItem/>
+          </ul>
         </div>
     )
 }
