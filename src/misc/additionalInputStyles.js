@@ -14,7 +14,12 @@ const textInputStyles = ( colorScheme ) => {
 const buttonInputStyles = ( colorScheme ) => {
     return (
         `cursor: pointer;
-         background-color: ${ colorScheme.marigold }
+         background-color: ${ colorScheme.marigold };
+&:disabled{
+background-color: ${ colorScheme.steel };
+color: ${ colorScheme.marigold };
+cursor: not-allowed;
+}
         `
     )
 }

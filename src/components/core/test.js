@@ -10,8 +10,6 @@ import { concernTrigger } from '../../redux/actions/concernAction'
 const Test = ({ files, concern, ...props }) => {
   const [file, setFile] = useState(files)
 
-  console.log(concern)
-
   useEffect(() => {
     setFile(files)
   }, [files])
@@ -36,6 +34,12 @@ const Test = ({ files, concern, ...props }) => {
           <Input
             type = 'checkbox'
             callback = { value => concernTrigger() }
+          />
+          <Input
+            type = 'submit'
+            text = 'submit'
+            disabled = { concern.isConcerned }
+            callback = { value => console.log('asdf') }
           />
         </div>
     )
