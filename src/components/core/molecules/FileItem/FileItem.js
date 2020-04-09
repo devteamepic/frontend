@@ -14,13 +14,23 @@ const FileItem = () => {
             widthParam = '110px'
             icon = 'file'
           />
-          <div>
+          <div style={{ textOverflow: 'ellipsis', whiteSpace: 'nowrap', overflow: 'hidden' }}>
             <Text
               size = 'medium'
             >
               Cold black holes or families of D-brans
             </Text>
+            <Text
+              size = 'medium'
+            >
+              File size: 5MB
+            </Text>
           </div>
+          <Icon
+            heightParam = '100%'
+            widthParam = '50px'
+            icon = 'cross'
+          />
         </FileItemStyled>
     )
 }
