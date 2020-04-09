@@ -8,7 +8,7 @@ margin: 0 20px 20px 20px;
 padding: 20px 20px 0 20px;
 box-sizing: border-box;
 display: grid;
-grid-template-columns: 110px auto auto;
+grid-template-columns: 110px 250px auto;
 `
 
 export default FileItemStyled

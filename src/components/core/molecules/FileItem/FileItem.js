@@ -1,10 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import FileItemStyled from '../../../styled/molecules/fileItemStyled'
 import colorScheme from '../../../../misc/colorScheme'
 import Icon from '../../atoms/Icon/Icon'
 import Text from '../../atoms/Text/Text'
 
-const FileItem = () => {
+const FileItem = ({ fileName, fileSize, ...props }) => {
+  const [name] = useState(fileName)
+  const [size] = useState(fileSize)
+
+  const handleClick = () => {
+    alert('hi')
+  }
+
     return (
         <FileItemStyled
           colorScheme = { colorScheme }
@@ -18,19 +25,33 @@ const FileItem = () => {
             <Text
               size = 'medium'
             >
-              Cold black holes or families of D-brans
+              { name }
             </Text>
             <Text
               size = 'medium'
             >
-              File size: 5MB
+              File size: { size }
             </Text>
           </div>
-          <Icon
-            heightParam = '100%'
-            widthParam = '50px'
-            icon = 'cross'
-          />
+          <button
+            onClick = { handleClick }
+            style = {{
+              outline: 'none',
+              border: 'none',
+              background: 'none',
+              width: '50px',
+              height: '50px',
+              margin: '50% 0 0 50%',
+              padding: '0',
+              transform: 'translateY(25%) translateX(-25%)'
+            }}
+          >
+            <Icon
+              heightParam = '50px'
+              widthParam = '50px'
+              icon = 'cross'
+            />
+          </button>
         </FileItemStyled>
     )
 }
