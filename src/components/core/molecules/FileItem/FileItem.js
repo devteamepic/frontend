@@ -3,13 +3,14 @@ import FileItemStyled from '../../../styled/molecules/fileItemStyled'
 import colorScheme from '../../../../misc/colorScheme'
 import Icon from '../../atoms/Icon/Icon'
 import Text from '../../atoms/Text/Text'
+import { removeFileAction } from '../../../../redux/actions/addFileAction'
+import { connect } from 'react-redux'
 
-const FileItem = ({ fileName, fileSize, ...props }) => {
-  const [name] = useState(fileName)
-  const [size] = useState(fileSize)
+const FileItem = ({ fileObject, dispatch, ...props }) => {
+  const [file] = useState(fileObject)
 
   const handleClick = () => {
-    alert('hi')
+    dispatch(removeFileAction(file))
   }
 
     return (
@@ -25,12 +26,12 @@ const FileItem = ({ fileName, fileSize, ...props }) => {
             <Text
               size = 'medium'
             >
-              { name }
+              { file.name }
             </Text>
             <Text
               size = 'medium'
             >
-              File size: { size }
+              File size: { file.size }
             </Text>
           </div>
           <button
@@ -56,4 +57,4 @@ const FileItem = ({ fileName, fileSize, ...props }) => {
     )
 }
 
-export default FileItem
+export default connect() (FileItem)

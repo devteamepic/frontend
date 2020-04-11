@@ -5,11 +5,10 @@ import FileItem from '../core/molecules/FileItem/FileItem'
 import DragAndDrop from '../core/atoms/DragAndDrop/DragAndDrop'
 import Input from '../core/atoms/Input/Input'
 
-const Test = ({ files, concern, ...props }) => {
+const Test = ({ files, concern, dispatch, ...props }) => {
   const [file, setFile] = useState(files)
 
   useEffect(() => {
-    console.table(files)
     setFile(files)
   }, [files])
 
@@ -29,8 +28,8 @@ const Test = ({ files, concern, ...props }) => {
             { file.map(file => {
                 return (
                   <FileItem
-                    fileName = { file.name }
-                    fileSize = { file.size }
+                    key = { file.size }
+                    fileObject = { file }
                   />
                 )
               })

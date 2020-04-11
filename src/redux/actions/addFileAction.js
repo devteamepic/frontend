@@ -4,3 +4,10 @@ export function addOneFileAction(file) {
         payload: file
     }
 }
+
+export function removeFileAction(file) {
+    return {
+        type: 'REMOVE_FILE',
+        payload: file
+    }
+}
