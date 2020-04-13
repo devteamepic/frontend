@@ -35,12 +35,12 @@ const ProfItem = ({ fileObject, dispatch, ...props }) => {
             </Text>
           </div>
           <div
-            style = {{ paddingTop: '55%' }}
+            style = {{ paddingTop: '35%' }}
           >
             <Text
               size = 'large'
             >
-              80%
+              100%
             </Text>
           </div>
           <button
@@ -53,7 +53,8 @@ const ProfItem = ({ fileObject, dispatch, ...props }) => {
               height: '50px',
               margin: isUpsideDown ? '0 0 0 25px' : '25px  0 0 25px',
               padding: '0',
-              transform: 'translateY(25%) translateX(-25%)'
+              transform: 'translateY(25%) translateX(-25%)',
+              transition: '0.5s ease all'
             }}
           >
             <Icon
@@ -63,6 +64,21 @@ const ProfItem = ({ fileObject, dispatch, ...props }) => {
               icon = 'v'
             />
           </button>
+          { isUpsideDown &&
+            <div style={{ gridColumn: '1/5', height: '200px', padding: '10px 10px 10px 0',  wordWrap: 'break-word', width: '100%' }}>
+              <Text
+                size = 'medium'
+              >
+                Email: dmarkitanov@gmail.com
+              </Text>
+              <Text
+                size = 'medium'
+              >
+                Related Article:
+                Research Of Results Of Gold Atom Nucleus Collapse Inside The RHIC
+              </Text>
+            </div>
+          }
         </ProfItemStyled>
     )
 }
