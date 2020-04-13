@@ -16,8 +16,6 @@ const Icon = ({ icon, heightParam, widthParam, degree, ...props }) => {
         person: profIcon
     })
 
-    console.log(rotateDegree)
-
     useEffect(() => {
         setRotateDegree(degree)
     }, [degree])

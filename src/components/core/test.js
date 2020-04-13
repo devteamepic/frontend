@@ -26,6 +26,8 @@ const Test = ({ files, concern, dispatch, ...props }) => {
           />
           <ul style={{ listStyleType: 'none', width: '500px', backgroundColor: 'green', margin: '0', padding: '20px 0 1px 0', boxSizing: 'border-box', minHeight: '100px' }}>
             <ProfItem/>
+            <ProfItem/>
+            <ProfItem/>
           </ul>
         </div>
     )
