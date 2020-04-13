@@ -42,7 +42,7 @@ const FileItem = ({ fileObject, dispatch, ...props }) => {
               background: 'none',
               width: '50px',
               height: '50px',
-              margin: '50% 0 0 50%',
+              margin: '25px 0 0 25px',
               padding: '0',
               transform: 'translateY(25%) translateX(-25%)'
             }}
