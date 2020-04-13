@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import '../../App.css'
-import FileItem from '../core/molecules/FileItem/FileItem'
+import ProfItem from '../core/molecules/ProfItem/ProfItem'
 import DragAndDrop from '../core/atoms/DragAndDrop/DragAndDrop'
 import Input from '../core/atoms/Input/Input'
 
@@ -25,15 +25,7 @@ const Test = ({ files, concern, dispatch, ...props }) => {
             type = 'file'
           />
           <ul style={{ listStyleType: 'none', width: '500px', backgroundColor: 'green', margin: '0', padding: '20px 0 1px 0', boxSizing: 'border-box', minHeight: '100px' }}>
-            { file.map(file => {
-                return (
-                  <FileItem
-                    key = { file.size }
-                    fileObject = { file }
-                  />
-                )
-              })
-            }
+            <ProfItem/>
           </ul>
         </div>
     )
