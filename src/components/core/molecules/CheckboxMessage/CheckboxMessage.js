@@ -17,7 +17,7 @@ const CheckboxMessage = ({ textColor, children, ...props }) => {
             type = 'checkbox'
           />
           <Text
-            size = 'medium'
+            size = 'small'
           >
             { text }
           </Text>
