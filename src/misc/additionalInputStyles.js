@@ -15,11 +15,11 @@ const buttonInputStyles = ( colorScheme ) => {
     return (
         `cursor: pointer;
          background-color: ${ colorScheme.marigold };
-&:disabled{
-background-color: ${ colorScheme.steel };
-color: ${ colorScheme.marigold };
-cursor: not-allowed;
-}
+         &:disabled{
+         background-color: ${ colorScheme.steel };
+         color: ${ colorScheme.marigold };
+         cursor: not-allowed;
+         }
         `
     )
 }
@@ -30,6 +30,7 @@ const checkboxInputStyles = (colorScheme) => {
          appearance: none;
          height: 25px;
          width: 25px;
+         background-color: white;
          border-radius: 5px;
          border: 5px solid ${ colorScheme.steel };
          margin: 0;

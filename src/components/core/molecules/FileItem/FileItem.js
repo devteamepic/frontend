@@ -25,11 +25,14 @@ const FileItem = ({ fileObject, dispatch, ...props }) => {
           <div style={{ textOverflow: 'ellipsis', whiteSpace: 'nowrap', overflow: 'hidden' }}>
             <Text
               size = 'medium'
+              isHeader = { true }
             >
               { file.name }
             </Text>
+            <><br/><br/></>
             <Text
               size = 'medium'
+              isHeader = { true }
             >
               File size: { file.size }
             </Text>

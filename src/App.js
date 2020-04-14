@@ -3,18 +3,16 @@ import './App.css';
 import Test from './components/core/test'
 import LoginPage from './components/core/pages/LoginPage/LoginPage'
 import RegisterPage from './components/core/pages/RegisterPage/RegisterPage'
+import HomePage from './components/core/pages/HomePage/HomePage'
 import PrivateRoute from './components/core/atoms/PrivateRoute/PrivateRoute'
 import { Route, Switch } from 'react-router-dom'
 
 function App(props) {
-
-  console.log(props)
-
   return (
       <div className="App">
         <Switch>
           <PrivateRoute exact path='/test' component={Test}/>
-          <PrivateRoute exact path='/' component={Test}/>
+          <Route exact path='/' component={HomePage}/>
           <Route path='/login' component={LoginPage}/>
           <Route path='/register' component={RegisterPage}/>
           <Route path='/openSourceWiki' component={() => {
