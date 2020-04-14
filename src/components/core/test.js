@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import '../../App.css'
 import ProfItem from '../core/molecules/ProfItem/ProfItem'
+import FileItem from '../core/molecules/FileItem/FileItem'
 import DragAndDrop from '../core/atoms/DragAndDrop/DragAndDrop'
 import Input from '../core/atoms/Input/Input'
 import CheckboxMessage from '../core/molecules/CheckboxMessage/CheckboxMessage'
+import List from '../core/organisms/List/List'
 
 const Test = ({ files, concern, dispatch, ...props }) => {
   const [file, setFile] = useState(files)
@@ -15,26 +17,54 @@ const Test = ({ files, concern, dispatch, ...props }) => {
 
     return (
         <div id='test'>
-          <div
-            style = {{ width: '200px', height: '200px' }}
+          <List
+            color = 'steel'
           >
-            <DragAndDrop
-              height = '200px'
+            <FileItem
+              fileObject = {{
+                name: 'asdf',
+                size: 'asdf'
+              }}
             />
+            <FileItem
+              fileObject = {{
+                name: 'asdf',
+                size: 'asdf'
+              }}
+            />
+            <FileItem
+              fileObject = {{
+                name: 'asdf',
+                size: 'asdf'
+              }}
+            />
+            <FileItem
+              fileObject = {{
+                name: 'asdf',
+                size: 'asdf'
+              }}
+            />
+            <FileItem
+              fileObject = {{
+                name: 'asdf',
+                size: 'asdf'
+              }}
+            />
+          </List>
+          <div style={{ height: '100px' }}>
           </div>
-          <Input
-            type = 'file'
-          />
-          <CheckboxMessage
-            textColor = 'watermelon'
+          <List
+            color = 'denim'
           >
-            I give my concent to UNIFOUND to process my thesis
-          </CheckboxMessage>
-          <ul style={{ listStyleType: 'none', width: '500px', backgroundColor: 'green', margin: '0', padding: '20px 0 1px 0', boxSizing: 'border-box', minHeight: '100px' }}>
             <ProfItem/>
             <ProfItem/>
             <ProfItem/>
-          </ul>
+            <ProfItem/>
+            <ProfItem/>
+            <ProfItem/>
+            <ProfItem/>
+            <ProfItem/>
+          </List>
         </div>
     )
 }
