@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import '../../App.css'
+import ProfItem from '../core/molecules/ProfItem/ProfItem'
 import DragAndDrop from '../core/atoms/DragAndDrop/DragAndDrop'
 import Input from '../core/atoms/Input/Input'
-import Text from '../core/atoms/Text/Text'
-import Icon from '../core/atoms/Icon/Icon'
-import { concernTrigger } from '../../redux/actions/concernAction'
+import CheckboxMessage from '../core/molecules/CheckboxMessage/CheckboxMessage'
 
-const Test = ({ files, concern, ...props }) => {
+const Test = ({ files, concern, dispatch, ...props }) => {
   const [file, setFile] = useState(files)
 
   useEffect(() => {
@@ -16,31 +15,26 @@ const Test = ({ files, concern, ...props }) => {
 
     return (
         <div id='test'>
-          <Icon
-            icon = 'file'
-            heightParam = '100px'
-            widthParam = '100px'
-          />
-          <div style={{ height: '500px', width: '500px' }}>
+          <div
+            style = {{ width: '200px', height: '200px' }}
+          >
             <DragAndDrop
-              height = { '500px' }
+              height = '200px'
             />
           </div>
-          <Text
-            size = 'large'
+          <Input
+            type = 'file'
+          />
+          <CheckboxMessage
+            textColor = 'watermelon'
           >
-            { file.length !== 0 && file[0].name }
-          </Text>
-          <Input
-            type = 'checkbox'
-            callback = { value => concernTrigger() }
-          />
-          <Input
-            type = 'submit'
-            text = 'submit'
-            disabled = { concern.isConcerned }
-            callback = { value => console.log('asdf') }
-          />
+            I give my concent to UNIFOUND to process my thesis
+          </CheckboxMessage>
+          <ul style={{ listStyleType: 'none', width: '500px', backgroundColor: 'green', margin: '0', padding: '20px 0 1px 0', boxSizing: 'border-box', minHeight: '100px' }}>
+            <ProfItem/>
+            <ProfItem/>
+            <ProfItem/>
+          </ul>
         </div>
     )
 }
