@@ -2,14 +2,24 @@ import React, { useState, useEffect } from 'react'
 import DragAndDropStyled from '../../../styled/atoms/dragAndDropStyled'
 import { connect } from 'react-redux'
 import { addOneFileAction } from '../../../../redux/actions/addFileAction'
+import Text from '../Text/Text'
 
-const DragAndDrop = ({ dispatch, ...props }) => {
-    const [files, setFiles] = useState([])
+const DragAndDrop = ({ files, dispatch, height, ...props }) => {
+    const [file, setFiles] = useState(files)
+    const [lineHeight, setLineHeight] = useState(height)
+
+    useEffect(() => {
+        setLineHeight(height)
+    }, [height])
+
+    useEffect(() => {
+        setFiles(files)
+    }, [files])
 
     const checkAndSetFiles = (e) => {
         for (var i = 0; i < e.dataTransfer.items.length; i++) {
             if (e.dataTransfer.items[i].kind === 'file') {
-                setFiles([...files, e.dataTransfer.items[i].getAsFile()])
+                setFiles([...file, e.dataTransfer.items[i].getAsFile()])
             }
         }
     }
@@ -21,7 +31,6 @@ const DragAndDrop = ({ dispatch, ...props }) => {
             checkAndSetFiles(e)
             return
         }
-
     }
 
     const dragOverHandler = (e) => {
@@ -29,17 +38,26 @@ const DragAndDrop = ({ dispatch, ...props }) => {
     }
 
     useEffect(() => {
-        dispatch(addOneFileAction(files))
-    }, [files, dispatch])
+        dispatch(addOneFileAction(file))
+    }, [file, dispatch])
 
     return (
         <DragAndDropStyled
           onDrop = { dropHandler }
           onDragOver = { dragOverHandler }
+          lineHeight = { lineHeight }
         >
+          <Text
+            size = 'large'
+          >
           +
+          </Text>
         </DragAndDropStyled>
     )
 }
 
-export default connect() (DragAndDrop)
+const mapStateToProps = (state) => {
+    return { files: state.files }
+}
+
+export default connect(mapStateToProps) (DragAndDrop)

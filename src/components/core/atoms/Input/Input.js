@@ -13,6 +13,7 @@ const Input = ({
     validate,
     errorDispatch,
     height,
+    disabled,
     ...props
 }) => {
     const inputRef = useRef()
@@ -22,6 +23,11 @@ const Input = ({
     const [inputStyles, setInputStyles] = useState('')
     const [incomingHeight] = useState(height)
     const [shouldValidate, setShouldValidate] = useState({ status: false, message: '' })
+    const [isDisabled, setIsDisabled] = useState(disabled)
+
+    useEffect(() => {
+        setIsDisabled(disabled)
+    }, [disabled])
 
     useEffect(() => {
         if (shouldValidate && shouldValidate.status) {
@@ -40,6 +46,9 @@ const Input = ({
                 case 'text':
                 case 'password':
                     setInputStyles(additionalInputStyles.textInputStyles(colorScheme))
+                    break
+                case 'checkbox':
+                    setInputStyles(additionalInputStyles.checkboxInputStyles(colorScheme))
                     break
                 case 'file':
                     setInputStyles(
@@ -64,6 +73,7 @@ const Input = ({
           value = { buttonText }
           placeholder = { textPlaceholder }
           onBlur = { () => setShouldValidate(validate) }
+          disabled = { isDisabled }
         />
     )
 }
