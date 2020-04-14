@@ -19,9 +19,6 @@ function App({ error, ...props }) {
         { isErrorMessage && <ErrorMessageDialog/> }
         <Link style = {{ height: 'fit-content' }} to='/test'>Test</Link>
         <Route path='/test' component={Test}/>
-        <LoginForm
-          colorScheme = { colorScheme }
-        />
       </div>
   );
 }
