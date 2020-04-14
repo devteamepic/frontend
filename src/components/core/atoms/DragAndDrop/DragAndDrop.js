@@ -7,6 +7,9 @@ import Text from '../Text/Text'
 const DragAndDrop = ({ files, dispatch, height, ...props }) => {
     const [file, setFiles] = useState(files)
     const [lineHeight, setLineHeight] = useState(height)
+    const [fileInput, setFileInput] = useState(document.createElement('input'))
+
+    fileInput.setAttribute('type', 'file')
 
     useEffect(() => {
         setLineHeight(height)
@@ -16,10 +19,24 @@ const DragAndDrop = ({ files, dispatch, height, ...props }) => {
         setFiles(files)
     }, [files])
 
-    const checkAndSetFiles = (e) => {
-        for (var i = 0; i < e.dataTransfer.items.length; i++) {
-            if (e.dataTransfer.items[i].kind === 'file') {
-                setFiles([...file, e.dataTransfer.items[i].getAsFile()])
+    useEffect(() => {
+        console.log('asdf')
+    }, [fileInput.files])
+
+    fileInput.onchange = (e) => {
+        e.preventDefault()
+        console.log(fileInput.files[0])
+    }
+
+    const selectFile = () => {
+        fileInput.click()
+    }
+
+    const checkAndSetFiles = (fileArray) => {
+        console.log(fileArray[0].getAsFile())
+        for (var i = 0; i < fileArray.length; i++) {
+            if (fileArray[i].kind === 'file') {
+                setFiles([...file, fileArray[i].getAsFile()])
             }
         }
     }
@@ -28,7 +45,7 @@ const DragAndDrop = ({ files, dispatch, height, ...props }) => {
         e.preventDefault()
 
         if (e.dataTransfer.items) {
-            checkAndSetFiles(e)
+            checkAndSetFiles(e.dataTransfer.items)
             return
         }
     }
@@ -43,6 +60,7 @@ const DragAndDrop = ({ files, dispatch, height, ...props }) => {
 
     return (
         <DragAndDropStyled
+          onClick = { () => selectFile() }
           onDrop = { dropHandler }
           onDragOver = { dragOverHandler }
           lineHeight = { lineHeight }
