@@ -20,12 +20,7 @@ const HomePage = ({ concern, files, ...props }) => {
 
   useEffect(() => {
     setFileArray(files)
-
-    if (fileArray !== [] && isConcerned) {
-      console.log('asdf')
-      setDisabled(false)
-    }
-  }, [files, isConcerned])
+  }, [files])
 
   useEffect(() => {
     setIsConcerned(!concern.isConcerned)
@@ -70,13 +65,13 @@ const HomePage = ({ concern, files, ...props }) => {
               <List
                 color = 'steel'
               >
-                { fileArray.map(file => {
-                  return(
+                { fileArray.map(file => (
                     <FileItem
+                      key = { file.size }
                       fileObject = { file }
                     />
                   )
-                })}
+                )}
               </List>
             </div>
           </div>

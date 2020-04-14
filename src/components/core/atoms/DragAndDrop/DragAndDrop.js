@@ -20,10 +20,6 @@ const DragAndDrop = ({ files, dispatch, height, ...props }) => {
         checkAndSetFiles(fileInput.files)
     }
 
-    const selectFile = () => {
-        fileInput.click()
-    }
-
     const checkAndSetFiles = (fileArray) => {
         for (var i = 0; i < fileArray.length; i++) {
             if (fileArray[i].kind === 'file') {

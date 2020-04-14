@@ -3,9 +3,11 @@ export default function(state = [], action) {
         case 'NEW_FILE':
             return action.payload
         case 'REMOVE_FILE':
-            let index = state.indexOf(action.payload)
-            let newState = [...state]
-            return [ ...newState.slice(0, index), ...newState.slice(index + 1) ]
+            const index = state.indexOf(action.payload)
+            let newArray = [...state]
+            newArray.splice(index, 1)
+            console.log(newArray)
+            return newArray
         default:
             return state
     }

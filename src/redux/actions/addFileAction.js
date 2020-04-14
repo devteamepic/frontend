@@ -6,6 +6,7 @@ export function addOneFileAction(file) {
 }
 
 export function removeFileAction(file) {
+    console.log(file)
     return {
         type: 'REMOVE_FILE',
         payload: file
