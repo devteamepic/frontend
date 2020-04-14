@@ -20,12 +20,10 @@ const DragAndDrop = ({ files, dispatch, height, ...props }) => {
     }, [files])
 
     useEffect(() => {
-        console.log('asdf')
     }, [fileInput.files])
 
     fileInput.onchange = (e) => {
         e.preventDefault()
-        console.log(fileInput.files[0])
     }
 
     const selectFile = () => {
@@ -33,7 +31,6 @@ const DragAndDrop = ({ files, dispatch, height, ...props }) => {
     }
 
     const checkAndSetFiles = (fileArray) => {
-        console.log(fileArray[0].getAsFile())
         for (var i = 0; i < fileArray.length; i++) {
             if (fileArray[i].kind === 'file') {
                 setFiles([...file, fileArray[i].getAsFile()])

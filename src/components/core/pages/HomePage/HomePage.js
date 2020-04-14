@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import HomePageStyled from '../../../styled/pages/homePageStyled'
 import colorScheme from '../../../../misc/colorScheme'
 import Text from '../../atoms/Text/Text'
@@ -8,8 +8,29 @@ import List from '../../organisms/List/List'
 import FileItem from '../../molecules/FileItem/FileItem'
 import ProfItem from '../../molecules/ProfItem/ProfItem'
 import CheckboxMessage from '../../molecules/CheckboxMessage/CheckboxMessage'
+import { concernTrigger } from '../../../../redux/actions/concernAction'
+import { connect } from 'react-redux'
 
-const HomePage = () => {
+const HomePage = ({ concern, files, ...props }) => {
+  const [isConcerned, setIsConcerned] = useState(!concern.isConcerned)
+  const [fileArray, setFileArray] = useState(files)
+  const [disabled, setDisabled] = useState(true)
+
+  console.log(fileArray)
+
+  useEffect(() => {
+    setFileArray(files)
+
+    if (fileArray !== [] && isConcerned) {
+      console.log('asdf')
+      setDisabled(false)
+    }
+  }, [files, isConcerned])
+
+  useEffect(() => {
+    setIsConcerned(!concern.isConcerned)
+  }, [concern])
+
     return (
         <HomePageStyled
           colorScheme = { colorScheme }
@@ -30,6 +51,7 @@ const HomePage = () => {
               <div style={{ marginTop: '10%' }}>
                 <CheckboxMessage
                   textColor = 'watermelon'
+                  callback = { concernTrigger }
                 >
                   I give my concern to UNIFOUND to process my thesis
                 </CheckboxMessage>
@@ -48,36 +70,13 @@ const HomePage = () => {
               <List
                 color = 'steel'
               >
-                <FileItem
-                  fileObject = {{
-                      name: 'asdf',
-                    size: 'asdf'
-                  }}
-                />
-                <FileItem
-                  fileObject = {{
-                      name: 'asdf',
-                    size: 'asdf'
-                  }}
-                />
-                <FileItem
-                  fileObject = {{
-                      name: 'asdf',
-                    size: 'asdf'
-                  }}
-                />
-                <FileItem
-                  fileObject = {{
-                      name: 'asdf',
-                    size: 'asdf'
-                  }}
-                />
-                <FileItem
-                  fileObject = {{
-                      name: 'asdf',
-                    size: 'asdf'
-                  }}
-                />
+                { fileArray.map(file => {
+                  return(
+                    <FileItem
+                      fileObject = { file }
+                    />
+                  )
+                })}
               </List>
             </div>
           </div>
@@ -89,6 +88,7 @@ const HomePage = () => {
               <Input
                 type = { 'submit' }
                 height = '100%'
+                disabled = { disabled }
               />
               </div>
               <List
@@ -108,4 +108,11 @@ const HomePage = () => {
     )
 }
 
-export default HomePage
+const mapStateToProps = (state) => {
+  return {
+    concern: state.concern,
+    files: state.files
+  }
+}
+
+export default connect(mapStateToProps) (HomePage)
