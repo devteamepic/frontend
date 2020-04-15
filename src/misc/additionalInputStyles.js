@@ -16,6 +16,7 @@ const buttonInputStyles = ( colorScheme ) => {
         `cursor: pointer;
          background-color: ${ colorScheme.marigold };
          &:disabled{
+         border: 5px solid ${ colorScheme.marigold };
          background-color: ${ colorScheme.steel };
          color: ${ colorScheme.marigold };
          cursor: not-allowed;

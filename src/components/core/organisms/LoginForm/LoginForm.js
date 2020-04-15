@@ -17,6 +17,7 @@ const LoginForm = ({
   password,
   ...props }) => {
     const [response, setResponse] = useState('')
+    const [disabled, setDisabled] = useState(true)
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -32,6 +33,10 @@ const LoginForm = ({
         dispatch(failure(error))
       })
   }
+
+    useEffect(() => {
+      setDisabled(email === '' || password === '')
+    }, [email, password])
 
   useEffect(() => {
     if (loggedIn) {
@@ -62,6 +67,7 @@ const LoginForm = ({
         <Input
           type = { 'submit' }
           text = 'Log in'
+          disabled = { disabled }
         />
         <Link style={{ color: colorScheme.blue, width: 'fit-content' }} to='/register'>
           <Text
