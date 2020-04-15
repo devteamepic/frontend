@@ -12,19 +12,21 @@ import { concernTrigger } from '../../../../redux/actions/concernAction'
 import { connect } from 'react-redux'
 
 const HomePage = ({ concern, files, ...props }) => {
-  const [isConcerned, setIsConcerned] = useState(!concern.isConcerned)
+  const [isConcerned, setIsConcerned] = useState(concern.isConcerned)
   const [fileArray, setFileArray] = useState(files)
   const [disabled, setDisabled] = useState(true)
 
   console.log(fileArray)
+  console.log(isConcerned)
 
   useEffect(() => {
+    setIsConcerned(concern.isConcerned)
     setFileArray(files)
-  }, [files])
+  }, [concern, files])
 
   useEffect(() => {
-    setIsConcerned(!concern.isConcerned)
-  }, [concern])
+    setDisabled(!(fileArray.length !== 0 && isConcerned))
+  }, [fileArray, isConcerned])
 
     return (
         <HomePageStyled
