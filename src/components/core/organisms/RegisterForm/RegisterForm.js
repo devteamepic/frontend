@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import Input from '../../atoms/Input/Input'
 import FormStyledWrapper from '../../../styled/molecules/formStyled'
 import register from '../../../../misc/services/registerService'
-import { Link, Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import { emailErrorMessage, passwordErrorMessage, matchPasswordErrorMessage } from '../../../../redux/actions/validationMessageAction'
 import { request, success, failure } from '../../../../redux/actions/loginAction'
 import { validator } from '../../../../misc/services/validationService'
@@ -20,8 +20,12 @@ const RegisterForm = ({
   lastName,
   password,
   matchingPassword,
+  emailError,
   ...props }) => {
     const [response, setResponse] = useState('')
+    const [disabled, setDisabled] = useState(true)
+
+    console.log(emailError)
 
     const handleSubmit = (e) => {
       e.preventDefault()
@@ -45,6 +49,10 @@ const RegisterForm = ({
           dispatch(failure(errorResponse))
         })
     }
+
+    useEffect(() => {
+      setDisabled(validator.validateEmail(email).status || validator.passwordValidate(password).status || !matchingPassword || !firstName || !lastName || password !== matchingPassword)
+    }, [email, password, matchingPassword, firstName, lastName])
 
     useEffect(() => {
       if (loggedIn) {
@@ -102,6 +110,7 @@ const RegisterForm = ({
             height = '95%'
             type = { 'submit' }
             text = 'Register'
+            disabled = { disabled }
           />
 
         </FormStyledWrapper>
@@ -117,6 +126,7 @@ const mapStateToProps = (state) => {
       lastName: state.registerInputChange.lastName,
       password: state.registerInputChange.password,
       matchingPassword: state.registerInputChange.matchingPassword,
+      emailError: state.validationErrorMessage.emailError
     }
 }
 
