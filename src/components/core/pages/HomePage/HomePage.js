@@ -16,8 +16,9 @@ const HomePage = ({ concern, files, ...props }) => {
   const [fileArray, setFileArray] = useState(files)
   const [disabled, setDisabled] = useState(true)
 
-  console.log(fileArray)
-  console.log(isConcerned)
+  const handleSubmit = (e) => {
+    e.preventDefault()
+  }
 
   useEffect(() => {
     setIsConcerned(concern.isConcerned)
@@ -82,11 +83,17 @@ const HomePage = ({ concern, files, ...props }) => {
               <div
                 style = {{ textAlign: 'center', height: '100px' }}
               >
-              <Input
-                type = { 'submit' }
-                height = '100%'
-                disabled = { disabled }
-              />
+                <form
+                  style={{ width: '100%', height: '100%' }}
+                  onSubmit = { e => handleSubmit(e) }
+                >
+                  <Input
+                    type = { 'submit' }
+                    height = '100%'
+                    disabled = { disabled }
+                    text = 'Submit'
+                  />
+                </form>
               </div>
               <List
                 color = 'denim'
