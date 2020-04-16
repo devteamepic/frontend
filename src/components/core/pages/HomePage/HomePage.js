@@ -10,6 +10,7 @@ import ProfItem from '../../molecules/ProfItem/ProfItem'
 import CheckboxMessage from '../../molecules/CheckboxMessage/CheckboxMessage'
 import { concernTrigger } from '../../../../redux/actions/concernAction'
 import { connect } from 'react-redux'
+import { fileService } from '../../../../misc/services/fileService'
 
 const HomePage = ({ concern, files, ...props }) => {
   const [isConcerned, setIsConcerned] = useState(concern.isConcerned)
@@ -18,6 +19,15 @@ const HomePage = ({ concern, files, ...props }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+
+    fileService.send(fileArray, localStorage.getItem('userId'))
+      .then(response => {
+        console.log(response)
+      })
+      .catch(error => {
+        console.log('asdf')
+        console.log(error)
+      })
   }
 
   useEffect(() => {

@@ -69,7 +69,7 @@ const RegisterForm = ({
           colorScheme = { colorScheme }
           callback = { handleSubmit }
         >
-          { loggedIn && <Redirect to='/test'/> }
+          { loggedIn && <Redirect to='/home'/> }
           <Input
             height = '95%'
             type = { 'text' }

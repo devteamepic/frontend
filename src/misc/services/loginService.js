@@ -10,7 +10,12 @@ const login = (email, password) => {
     };
 
     return fetch("http://134.122.65.136/api/v1/auth/sign_in", requestOptions)
-        .then(response => response.text())
+        .then(response => {
+            if (response.ok) {
+                return response.text()
+            }
+            return new Error(response.status)
+        })
 }
 
 export default login

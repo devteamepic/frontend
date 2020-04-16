@@ -41,6 +41,7 @@ const LoginForm = ({
   useEffect(() => {
     if (loggedIn) {
       localStorage.setItem('token', response.access_token)
+      localStorage.setItem('userId', response.user_id)
     }
     else if (loggedIn === false) {
       dispatch(loginErrorMessage('Invalid email or password. Or bad internet connection.'))
@@ -53,7 +54,7 @@ const LoginForm = ({
         colorScheme = { colorScheme }
         callback = { handleSubmit }
       >
-        { loggedIn && <Redirect to='/test'/> }
+        { loggedIn && <Redirect to='/home'/> }
         <Input
           type = { 'text' }
           placeholder = 'email'

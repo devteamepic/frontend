@@ -1,13 +1,26 @@
 import React from 'react'
-import { Redirect } from 'react-router-dom'
+import { Route, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
-import Test from  '../../test'
 
-export const PrivateRoute = ({ loggedIn, ...rest }) => {
+export const PrivateRoute = ({ component: Component, loggedIn, ...rest }) => {
+    console.log(loggedIn)
+    console.log(localStorage)
     return (
-            loggedIn
-                ? <Test />
-            : <Redirect to={{ pathname: '/login', state: { from: rest.location } }} />
+        <Route
+          { ...rest }
+          render = {props =>
+                    localStorage.getItem('token') ? (
+                        <Component {...props}/>
+                    ) : (
+                        <Redirect
+                          to = {{
+                              pathname: '/login',
+                              state: { from: props.location }
+                          }}
+                        />
+                    )
+                   }
+        />
     )
 }
 
