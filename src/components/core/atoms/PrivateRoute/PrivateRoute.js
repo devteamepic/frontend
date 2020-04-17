@@ -3,8 +3,6 @@ import { Route, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 export const PrivateRoute = ({ component: Component, loggedIn, ...rest }) => {
-    console.log(loggedIn)
-    console.log(localStorage)
     return (
         <Route
           { ...rest }
