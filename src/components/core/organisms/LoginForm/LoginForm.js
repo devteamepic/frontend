@@ -17,7 +17,6 @@ const LoginForm = ({
   password,
   ...props }) => {
     const [response, setResponse] = useState('')
-    const [disabled, setDisabled] = useState(true)
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -29,14 +28,11 @@ const LoginForm = ({
         dispatch(success({ email: response.email, fullName: response.full_name }))
       })
       .catch(error => {
-        console.log(error)
+        dispatch(emailChange(''))
+        dispatch(passwordChange(''))
         dispatch(failure(error))
       })
   }
-
-    useEffect(() => {
-      setDisabled(email === '' || password === '')
-    }, [email, password])
 
   useEffect(() => {
     if (loggedIn) {
@@ -59,16 +55,17 @@ const LoginForm = ({
           type = { 'text' }
           placeholder = 'email'
           callback = { value => emailChange(value) }
+          inputValue = { email }
         />
         <Input
           type = { 'password' }
           placeholder = 'password'
           callback = { value => passwordChange(value) }
+          inputValue = { password }
         />
         <Input
           type = { 'submit' }
           text = 'Log in'
-          disabled = { disabled }
         />
         <Link style={{ color: colorScheme.blue, width: 'fit-content' }} to='/register'>
           <Text
