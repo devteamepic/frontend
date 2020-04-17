@@ -20,12 +20,14 @@ const HomePage = ({ concern, files, ...props }) => {
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    fileService.send(fileArray, localStorage.getItem('userId'))
+    fileService.send(fileArray, localStorage.getItem('userId'), localStorage.getItem('token'))
       .then(response => {
+        alert(response)
         console.log(response)
       })
       .catch(error => {
         console.log('asdf')
+        alert(error)
         console.log(error)
       })
   }
