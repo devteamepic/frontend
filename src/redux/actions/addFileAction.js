@@ -5,8 +5,14 @@ export function addOneFileAction(file) {
     }
 }
 
+export function addFilesAction(fileArray) {
+    return {
+        type: 'NEW_FILE_ARRAY',
+        payload: fileArray
+    }
+}
+
 export function removeFileAction(file) {
-    console.log(file)
     return {
         type: 'REMOVE_FILE',
         payload: file

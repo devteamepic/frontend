@@ -1,7 +1,8 @@
-const send = (fileArray, userId, token) => {
+const send = (file, userId, token) => {
     var formData = new FormData()
-    formData.append('file', fileArray[0], fileArray[0].name)
-    formData.append('name', 'scan')
+    formData.append('file', file, file.name)
+    formData.append('name', file.name)
+    formData.append('size', file.size)
 
     var requestOptions = {
         method: 'POST',
@@ -9,7 +10,6 @@ const send = (fileArray, userId, token) => {
         redirect: 'follow',
         headers: new Headers({
             'Authorization' : 'Bearer ' + token,
-            "Access-Control-Allow-Origin" : "*"
         })
     }
 
@@ -17,6 +17,20 @@ const send = (fileArray, userId, token) => {
         .then(response => response.text())
 }
 
+const fetchUserData = (userId, token) => {
+    var requestOptions = {
+        method: 'GET',
+        redirect: 'follow',
+        headers: new Headers({
+            'Authorization' : 'Bearer ' + token,
+        })
+    }
+
+    return fetch('http://134.122.65.136/api/v1/users/' + userId + '/documents', requestOptions)
+        .then(response => response.text())
+}
+
 export const fileService = {
     send,
+    fetchUserData
 }

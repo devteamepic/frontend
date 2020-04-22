@@ -12,24 +12,45 @@ import { concernTrigger } from '../../../../redux/actions/concernAction'
 import { connect } from 'react-redux'
 import { fileService } from '../../../../misc/services/fileService'
 
-const HomePage = ({ concern, files, ...props }) => {
+const HomePage = ({ concern, files, dispatch, ...props }) => {
   const [isConcerned, setIsConcerned] = useState(concern.isConcerned)
   const [fileArray, setFileArray] = useState(files)
   const [disabled, setDisabled] = useState(true)
 
+//  useEffect(() => {
+//    if (shouldFetch) {
+//      fileService.fetchUserData(localStorage.getItem('userId'), localStorage.getItem('token'))
+//                 .then(response => {
+//                   var parsedFileArray = JSON.parse(response)
+//                   setFileArray(parsedFileArray)
+//                   dispatch(addFilesAction(fileArray))
+//                   setShouldFetch(false)
+//                 })
+//                 .catch(error => {
+//                   console.log(error)
+//                   setShouldFetch(false)
+//                 })
+//    }
+//  }, [shouldFetch, dispatch, fileArray])
+
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    fileService.send(fileArray, localStorage.getItem('userId'), localStorage.getItem('token'))
-      .then(response => {
-        alert(response)
-        console.log(response)
-      })
-      .catch(error => {
-        console.log('asdf')
-        alert(error)
-        console.log(error)
-      })
+    fileArray.map(file => {
+      console.log(file)
+      fileService.send(file, localStorage.getItem('userId'), localStorage.getItem('token'))
+                 .then(response => {
+                   alert(response)
+                   console.log(response)
+                 })
+                 .catch(error => {
+                   console.log('asdf')
+                   alert(error)
+                   console.log(error)
+                 })
+      return null
+    })
+
   }
 
   useEffect(() => {
@@ -82,7 +103,7 @@ const HomePage = ({ concern, files, ...props }) => {
               >
                 { fileArray.map(file => (
                     <FileItem
-                      key = { file.size }
+                      key = { file.id }
                       fileObject = { file }
                     />
                   )
