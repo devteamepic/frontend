@@ -4,11 +4,14 @@ import { Link } from 'react-router-dom'
 import colorScheme from '../../../../misc/colorScheme'
 import TextViewerStyled from '../../../styled/molecules/textViewerStyled'
 
-const TextViewer = ({ childrenData, color, ...props }) => {
+const TextViewer = ({ childrenData, color, notDescription, additionalStyles, ...props }) => {
+  const [shouldChange] = useState(notDescription)
     const [children] = useState(childrenData)
+  console.log(additionalStyles)
     return (
       <TextViewerStyled
-        style = {{ color: color }}
+        shouldChange = { shouldChange }
+        additionalStyles = { additionalStyles }
       >
           { children.map(child => {
               if (child.component === 'text') {
@@ -36,7 +39,7 @@ const TextViewer = ({ childrenData, color, ...props }) => {
                   </Link>
                 )
               }
-              return (<><br/><br/></>)
+              return (<><br/></>)
           }) }
       </TextViewerStyled>
     )

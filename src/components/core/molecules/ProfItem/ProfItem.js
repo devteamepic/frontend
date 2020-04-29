@@ -1,92 +1,108 @@
 import React, { useState } from 'react'
 import ProfItemStyled from '../../../styled/molecules/profItemStyled'
-import colorScheme from '../../../../misc/colorScheme'
 import Icon from '../../atoms/Icon/Icon'
 import Text from '../../atoms/Text/Text'
+import TextViewer from '../TextViewer/TextViewer'
 import { connect } from 'react-redux'
+import colorScheme from '../../../../misc/colorScheme'
 
 const ProfItem = ({ fileObject, dispatch, ...props }) => {
-    const [isUpsideDown, setIsUpsideDown] = useState(false)
+  const [isUpsideDown, setIsUpsideDown] = useState(false)
+  const [previewStyles] = useState(`
+    color: ${ colorScheme.marigold };
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    text-align: left;
+    width: 175px;
+    height: 100%;
+  `)
+  const [expandedTextStyles] = useState(`
+    color: ${ colorScheme.marigold };
+    grid-column: 1/5;
+    height: 200px;
+    padding: 10px 10px 10px 0;
+    width: 100%;
+    text-align: left;
+  `)
+  const [preview] = useState([
+    { component: 'text', size: 'small', textValue: 'Markitanov Denis', isHeader: true },
+    { },
+    { component: 'text', size: 'small', textValue: 'KBTU', isHeader: true },
+    { },
+    { component: 'text', size: 'small', textValue: 'Master of Computer Science', isHeader: true },
+  ])
+  const [fullText] = useState([
+    { component: 'text', size: 'small', textValue: 'Email: dmarkitanov@gmail.com', isHeader: true },
+    { },
+    { },
+    { component: 'text', size: 'small', textValue: 'Related article: The Archlinux based operating system with custom kernel', isHeader: true },
+    { },
+    { },
+    { component: 'text', size: 'small', textValue: 'Master of Computer Science', isHeader: true },
+  ])
 
-    const handleClick = () => {
-        setIsUpsideDown(!isUpsideDown)
-    }
+  /**
+   * Handles the onclick that extenst the element
+   */
+  const handleClick = () => {
+    setIsUpsideDown(!isUpsideDown)
+  }
 
-    return (
-        <ProfItemStyled
-          colorScheme = { colorScheme }
-          shouldExpand = { isUpsideDown }
+  return (
+    <ProfItemStyled
+      shouldExpand = { isUpsideDown }
+    >
+      <Icon
+        heightParam = '110px'
+        widthParam = '80px'
+        icon = 'person'
+      />
+      <TextViewer
+        childrenData={ preview }
+        color = { colorScheme.marigold }
+        notDescription = { true }
+        additionalStyles = { previewStyles }
+      />
+      <div
+        style = {{ paddingTop: '35%' }}
+      >
+        <Text
+          size = 'large'
         >
-          <Icon
-            heightParam = '110px'
-            widthParam = '110px'
-            icon = 'person'
-          />
-          <div style={{ textOverflow: 'ellipsis', whiteSpace: 'nowrap', overflow: 'hidden' }}>
-            <Text
-              size = 'medium'
-              isHeader = { true }
-            >
-              asdf
-            </Text>
-            <><br/><br/></>
-            <Text
-              size = 'medium'
-              isHeader = { true }
-            >
-              asdf
-            </Text>
-          </div>
-          <div
-            style = {{ paddingTop: '35%' }}
-          >
-            <Text
-              size = 'large'
-            >
-              100%
-            </Text>
-          </div>
-          <button
-            onClick = { handleClick }
-            style = {{
-              outline: 'none',
-              border: 'none',
-              background: 'none',
-              width: '50px',
-              height: '50px',
-              margin: isUpsideDown ? '0 0 0 25px' : '25px  0 0 25px',
-              padding: '0',
-              transform: 'translateY(25%) translateX(-25%)',
-              transition: '0.5s ease all'
-            }}
-          >
-            <Icon
-              degree = { isUpsideDown ? '180' : '0' }
-              heightParam = '50px'
-              widthParam = '50px'
-              icon = 'v'
-            />
-          </button>
-          { isUpsideDown &&
-            <div style={{ gridColumn: '1/5', height: '200px', padding: '10px 10px 10px 0',  wordWrap: 'break-word', width: '100%' }}>
-              <Text
-                size = 'medium'
-                isHeader = { true }
-              >
-                Email: dmarkitanov@gmail.com
-              </Text>
-              <><br/><br/></>
-              <Text
-                isHeader = { true }
-                size = 'medium'
-              >
-                Related Article:
-                Research Of Results Of Gold Atom Nucleus Collapse Inside The RHIC
-              </Text>
-            </div>
-          }
-        </ProfItemStyled>
-    )
+          100%
+        </Text>
+      </div>
+      <button
+        onClick = { handleClick }
+        style = {{
+          outline: 'none',
+          border: 'none',
+          background: 'none',
+          width: '50px',
+          height: '50px',
+          margin: isUpsideDown ? '0 0 0 25px' : '25px  0 0 25px',
+          padding: '0',
+          transform: 'translateY(25%) translateX(-25%)',
+          transition: '0.5s ease all'
+        }}
+      >
+        <Icon
+          degree = { isUpsideDown ? '180' : '0' }
+          heightParam = '50px'
+          widthParam = '50px'
+          icon = 'v'
+        />
+      </button>
+      { isUpsideDown &&
+        <TextViewer
+          childrenData={ fullText }
+          notDescription = { true }
+          additionalStyles = { expandedTextStyles }
+        />
+      }
+    </ProfItemStyled>
+  )
 }
 
 export default connect() (ProfItem)
