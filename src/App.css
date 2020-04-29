@@ -73,8 +73,18 @@ body {
   width: 100%;
 }
 
-#login-form {
+#login {
   height: 60%;
+  position: relative;
+  padding: 10%;
   padding-top: 20%;
-  padding-bottom: 10%;
+}
+
+#register{
+  height: 60%;
+  display: grid;
+  padding: 10% 0 0 10%;
+  grid-template-columns: auto auto;
+  grid-auto-flow: row;
+  row-gap: 8%;
 }
