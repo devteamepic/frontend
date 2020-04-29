@@ -6,20 +6,27 @@ import Text from '../Text/Text'
 
 const DragAndDrop = ({ files, dispatch, height, ...props }) => {
     const [file, setFiles] = useState(files)
-    const [lineHeight, setLineHeight] = useState(height)
+    const [lineHeight] = useState(height)
+    const [fileInput] = useState(document.createElement('input'))
 
-    useEffect(() => {
-        setLineHeight(height)
-    }, [height])
+    fileInput.setAttribute('type', 'file')
 
     useEffect(() => {
         setFiles(files)
     }, [files])
 
-    const checkAndSetFiles = (e) => {
-        for (var i = 0; i < e.dataTransfer.items.length; i++) {
-            if (e.dataTransfer.items[i].kind === 'file') {
-                setFiles([...file, e.dataTransfer.items[i].getAsFile()])
+    fileInput.onchange = (e) => {
+        e.preventDefault()
+        checkAndSetFiles(fileInput.files)
+    }
+
+    const checkAndSetFiles = (fileArray) => {
+        for (var i = 0; i < fileArray.length; i++) {
+            if (fileArray[i].kind === 'file') {
+                setFiles([...file, fileArray[i].getAsFile()])
+            }
+            else {
+                setFiles([...file, fileArray[i]])
             }
         }
     }
@@ -28,7 +35,7 @@ const DragAndDrop = ({ files, dispatch, height, ...props }) => {
         e.preventDefault()
 
         if (e.dataTransfer.items) {
-            checkAndSetFiles(e)
+            checkAndSetFiles(e.dataTransfer.items)
             return
         }
     }
@@ -43,6 +50,7 @@ const DragAndDrop = ({ files, dispatch, height, ...props }) => {
 
     return (
         <DragAndDropStyled
+          onClick = { () => fileInput.click() }
           onDrop = { dropHandler }
           onDragOver = { dragOverHandler }
           lineHeight = { lineHeight }

@@ -4,6 +4,7 @@ const initialState = {
 }
 
 const loginInputChange = (state = initialState, action) => {
+    console.log(action)
     switch(action.type) {
         case 'EMAIL_CHANGE':
             return {
@@ -16,7 +17,7 @@ const loginInputChange = (state = initialState, action) => {
                 password: action.payload
             }
         default:
-            return initialState
+            return state
     }
 }
 

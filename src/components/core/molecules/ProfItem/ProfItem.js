@@ -25,11 +25,14 @@ const ProfItem = ({ fileObject, dispatch, ...props }) => {
           <div style={{ textOverflow: 'ellipsis', whiteSpace: 'nowrap', overflow: 'hidden' }}>
             <Text
               size = 'medium'
+              isHeader = { true }
             >
               asdf
             </Text>
+            <><br/><br/></>
             <Text
               size = 'medium'
+              isHeader = { true }
             >
               asdf
             </Text>
@@ -68,10 +71,13 @@ const ProfItem = ({ fileObject, dispatch, ...props }) => {
             <div style={{ gridColumn: '1/5', height: '200px', padding: '10px 10px 10px 0',  wordWrap: 'break-word', width: '100%' }}>
               <Text
                 size = 'medium'
+                isHeader = { true }
               >
                 Email: dmarkitanov@gmail.com
               </Text>
+              <><br/><br/></>
               <Text
+                isHeader = { true }
                 size = 'medium'
               >
                 Related Article:

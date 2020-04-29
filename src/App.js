@@ -1,30 +1,47 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './App.css';
-import Test from './components/core/test'
-import { Route, Link } from 'react-router-dom'
-import LoginForm from './components/core/organisms/LoginForm/LoginForm'
-import colorScheme from './misc/colorScheme'
-import { connect } from 'react-redux'
-import ErrorMessageDialog from './components/core/organisms/ErrorMessageDialog/ErrorMessageDialog'
+import reducers from './redux/reducers'
+import LoginPage from './components/core/pages/LoginPage/LoginPage'
+import RegisterPage from './components/core/pages/RegisterPage/RegisterPage'
+import HomePage from './components/core/pages/HomePage/HomePage'
+import PrivateRoute from './components/core/atoms/PrivateRoute/PrivateRoute'
+import { Route, Switch, Redirect, BrowserRouter } from 'react-router-dom'
+import {applyMiddleware, createStore} from "redux";
+import {Provider} from 'react-redux'
 
-function App({ error, ...props }) {
-  const [isErrorMessage, setIsErrorMessage] = useState(error)
+const createStoreMiddleware = applyMiddleware()(createStore)
 
-  useEffect(() => {
-    setIsErrorMessage(error)
-  }, [error])
-
+function App(props) {
   return (
-      <div className="App">
-        { isErrorMessage && <ErrorMessageDialog/> }
-        <Link style = {{ height: 'fit-content' }} to='/test'>Test</Link>
-        <Route path='/test' component={Test}/>
-      </div>
+      <Provider store={createStoreMiddleware(reducers)}>
+        <BrowserRouter>
+          <div className="App">
+
+            <Switch>
+              <Route exact path='/login' component={LoginPage}/>
+              <Route exact path='/register' component={RegisterPage}/>
+              <PrivateRoute exact path='/home' component={HomePage}/>
+              <Route path='/openSourceWiki' component={() => {
+                window.location.href = 'https://en.wikipedia.org/wiki/Open_source'
+                return null
+              }}/>
+              <Redirect exact from="/" to="/home" />
+              <Route path='/arxiv' component={() => {
+                window.location.href = 'https://arxiv.org'
+                return null
+              }}/>
+              <Route path='/github' component={() => {
+                window.location.href = 'https://github.com/devteamepic'
+                return null
+              }}/>
+            </Switch>
+
+          </div>
+        </BrowserRouter>
+      </Provider>
+
   );
 }
 
-const mapStateToProps = (state) => {
-  return { error : state.validationErrorMessage }
-}
+export default App
 
-export default connect(mapStateToProps) (App);

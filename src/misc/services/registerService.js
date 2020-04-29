@@ -1,21 +1,18 @@
-import axios from 'axios'
-
 const register = (email, firstName, lastName, password) => {
-    var formData = new FormData()
-    formData.set('email', email)
-    formData.set('password', password)
-    formData.set('first_name', firstName)
-    formData.set('last_name', lastName)
+    var formdata = new FormData()
+    formdata.set('email', email)
+    formdata.set('password', password)
+    formdata.set('first_name', firstName)
+    formdata.set('last_name', lastName)
 
-    return axios({
+    var requestOptions = {
         method: 'POST',
-        url: 'http://134.122.65.136/api/v1/auth/sign_up',
-        formdata: formData,
-        headers: { 'Content-Type': 'multipart/form-data' }
-    })
-        .then(response => {
-            response.text()
-        })
+        body: formdata,
+        redirect: 'follow'
+    };
+
+    return fetch("http://134.122.65.136/api/v1/auth/sign_up", requestOptions)
+        .then(response => response)
 }
 
 export default register

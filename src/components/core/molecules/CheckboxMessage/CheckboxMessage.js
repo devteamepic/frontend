@@ -4,7 +4,7 @@ import Input from '../../atoms/Input/Input'
 import CheckboxMessageStyled from '../../../styled/molecules/checkboxMessage'
 import colorScheme from '../../../../misc/colorScheme'
 
-const CheckboxMessage = ({ textColor, children, ...props }) => {
+const CheckboxMessage = ({ textColor, children, callback, ...props }) => {
     const [text] = useState(children)
     const [color] = useState(textColor)
 
@@ -15,6 +15,7 @@ const CheckboxMessage = ({ textColor, children, ...props }) => {
         >
           <Input
             type = 'checkbox'
+            callback = { callback }
           />
           <Text
             size = 'small'

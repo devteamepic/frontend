@@ -14,6 +14,7 @@ const Input = ({
     errorDispatch,
     height,
     disabled,
+    inputValue,
     ...props
 }) => {
     const inputRef = useRef()
@@ -24,6 +25,11 @@ const Input = ({
     const [incomingHeight] = useState(height)
     const [shouldValidate, setShouldValidate] = useState({ status: false, message: '' })
     const [isDisabled, setIsDisabled] = useState(disabled)
+    const [value, setValue] = useState(inputValue)
+
+    useEffect(() => {
+        setValue(inputValue)
+    }, [inputValue])
 
     useEffect(() => {
         setIsDisabled(disabled)
@@ -65,12 +71,13 @@ const Input = ({
 
     return (
         <InputStyled
+          autoComplete = 'off'
           height = { incomingHeight }
           onChange = { e => dispatch(callback(e.target.value)) }
           ref = { inputRef }
           type = { typeOf }
           inputStyles = { inputStyles }
-          value = { buttonText }
+          value = { buttonText || value }
           placeholder = { textPlaceholder }
           onBlur = { () => setShouldValidate(validate) }
           disabled = { isDisabled }
