@@ -35,6 +35,9 @@ const Input = ({
         setIsDisabled(disabled)
     }, [disabled])
 
+    /**
+     * This useEffect is for style management
+     */
     useEffect(() => {
         if (shouldValidate && shouldValidate.status) {
             dispatch(errorDispatch(shouldValidate.message))
@@ -56,13 +59,6 @@ const Input = ({
                 case 'checkbox':
                     setInputStyles(additionalInputStyles.checkboxInputStyles(colorScheme))
                     break
-                case 'file':
-                    setInputStyles(
-                        `width: fit-content;
-                     font-size: 10px;
-                     `
-                    )
-                    break
                 default:
                     break
             }
@@ -71,16 +67,16 @@ const Input = ({
 
     return (
         <InputStyled
-          autoComplete = 'off'
-          height = { incomingHeight }
-          onChange = { e => dispatch(callback(e.target.value)) }
           ref = { inputRef }
+          autoComplete = 'off'
           type = { typeOf }
-          inputStyles = { inputStyles }
+          disabled = { isDisabled }
+          height = { incomingHeight }
           value = { buttonText || value }
           placeholder = { textPlaceholder }
+          inputStyles = { inputStyles }
+          onChange = { e => dispatch(callback(e.target.value)) }
           onBlur = { () => setShouldValidate(validate) }
-          disabled = { isDisabled }
         />
     )
 }
