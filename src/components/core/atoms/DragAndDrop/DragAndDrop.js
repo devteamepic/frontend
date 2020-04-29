@@ -19,11 +19,20 @@ const DragAndDrop = ({ files, dispatch, height, ...props }) => {
         dispatch(addOneFileAction(file))
     }, [file, dispatch])
 
+    /**
+     * When file input is changed (after files are selected via click)
+     * calls the function to check its content
+     * @param { Object } e Event.
+     */
     fileInput.onchange = (e) => {
         e.preventDefault()
         checkAndSetFiles(fileInput.files)
     }
 
+    /**
+     * User to catch the Drop
+     * @param { Object } e Event.
+     */
     const dropHandler = (e) => {
         e.preventDefault()
 
@@ -33,10 +42,20 @@ const DragAndDrop = ({ files, dispatch, height, ...props }) => {
         }
     }
 
+    /**
+     * Just prevents the reload after the drag is over (as far as
+     * i remember)
+     * @param { Object } e Event.
+     */
     const dragOverHandler = (e) => {
         e.preventDefault()
     }
 
+    /**
+     * Checks if incoming objects of array are files (drop and onclick
+     * return different types)
+     * @param { Array } fileArray Array of fresh dragged or selected documents.
+     */
     const checkAndSetFiles = (fileArray) => {
         for (var i = 0; i < fileArray.length; i++) {
             if (fileArray[i].kind === 'file') {
