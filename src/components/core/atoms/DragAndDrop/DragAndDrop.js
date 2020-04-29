@@ -15,20 +15,13 @@ const DragAndDrop = ({ files, dispatch, height, ...props }) => {
         setFiles(files)
     }, [files])
 
+    useEffect(() => {
+        dispatch(addOneFileAction(file))
+    }, [file, dispatch])
+
     fileInput.onchange = (e) => {
         e.preventDefault()
         checkAndSetFiles(fileInput.files)
-    }
-
-    const checkAndSetFiles = (fileArray) => {
-        for (var i = 0; i < fileArray.length; i++) {
-            if (fileArray[i].kind === 'file') {
-                setFiles([...file, fileArray[i].getAsFile()])
-            }
-            else {
-                setFiles([...file, fileArray[i]])
-            }
-        }
     }
 
     const dropHandler = (e) => {
@@ -44,9 +37,16 @@ const DragAndDrop = ({ files, dispatch, height, ...props }) => {
         e.preventDefault()
     }
 
-    useEffect(() => {
-        dispatch(addOneFileAction(file))
-    }, [file, dispatch])
+    const checkAndSetFiles = (fileArray) => {
+        for (var i = 0; i < fileArray.length; i++) {
+            if (fileArray[i].kind === 'file') {
+                setFiles([...file, fileArray[i].getAsFile()])
+            }
+            else {
+                setFiles([...file, fileArray[i]])
+            }
+        }
+    }
 
     return (
         <DragAndDropStyled
@@ -58,7 +58,7 @@ const DragAndDrop = ({ files, dispatch, height, ...props }) => {
           <Text
             size = 'large'
           >
-          +
+            +
           </Text>
         </DragAndDropStyled>
     )
