@@ -3,11 +3,10 @@ import ProfItemStyled from '../../../styled/molecules/profItemStyled'
 import Icon from '../../atoms/Icon/Icon'
 import Text from '../../atoms/Text/Text'
 import TextViewer from '../TextViewer/TextViewer'
-import { connect } from 'react-redux'
 import colorScheme from '../../../../misc/colorScheme'
 import { profItemPreviewTextGenerator, profItemFullTextGenerator } from '../../../../misc/profItemText'
 
-const ProfItem = ({ dispatch, ...props }) => {
+const ProfItem = ({ ...props }) => {
   const [isUpsideDown, setIsUpsideDown] = useState(false)
   const [previewStyles] = useState(`
     color: ${ colorScheme.marigold };
@@ -92,4 +91,4 @@ const ProfItem = ({ dispatch, ...props }) => {
   )
 }
 
-export default connect() (ProfItem)
+export default ProfItem
