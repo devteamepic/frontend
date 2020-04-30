@@ -5,8 +5,9 @@ import Text from '../../atoms/Text/Text'
 import TextViewer from '../TextViewer/TextViewer'
 import { connect } from 'react-redux'
 import colorScheme from '../../../../misc/colorScheme'
+import { profItemPreviewTextGenerator, profItemFullTextGenerator } from '../../../../misc/profItemText'
 
-const ProfItem = ({ fileObject, dispatch, ...props }) => {
+const ProfItem = ({ dispatch, ...props }) => {
   const [isUpsideDown, setIsUpsideDown] = useState(false)
   const [previewStyles] = useState(`
     color: ${ colorScheme.marigold };
@@ -25,22 +26,8 @@ const ProfItem = ({ fileObject, dispatch, ...props }) => {
     width: 100%;
     text-align: left;
   `)
-  const [preview] = useState([
-    { component: 'text', size: 'small', textValue: 'Markitanov Denis', isHeader: true },
-    { },
-    { component: 'text', size: 'small', textValue: 'KBTU', isHeader: true },
-    { },
-    { component: 'text', size: 'small', textValue: 'Master of Computer Science', isHeader: true },
-  ])
-  const [fullText] = useState([
-    { component: 'text', size: 'small', textValue: 'Email: dmarkitanov@gmail.com', isHeader: true },
-    { },
-    { },
-    { component: 'text', size: 'small', textValue: 'Related article: The Archlinux based operating system with custom kernel', isHeader: true },
-    { },
-    { },
-    { component: 'text', size: 'small', textValue: 'Master of Computer Science', isHeader: true },
-  ])
+  const [preview] = useState(profItemPreviewTextGenerator('Denis Markitanov', 'KBTU', 'MCS'))
+  const [fullText] = useState(profItemFullTextGenerator('dmarkitanov@gmail.com', 'Archlinux based OS with custom kernel', 'Master of Computer Science'))
 
   /**
    * Handles the onclick that extenst the element
