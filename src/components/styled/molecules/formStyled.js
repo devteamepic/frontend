@@ -8,7 +8,7 @@ import '../../../App.css'
 const FormStyled = styled.div`
 width: ${ props => props.type === 'login' ? '500px' : '900px' };
 height: 80%;
-background-color: ${ props => props.colorScheme.steel };
+background-color: ${ colorScheme.steel };
 text-align: center;
 margin: auto;
 ${ props => props.type === 'register' && 'margin-top: 5%;' }
@@ -19,11 +19,10 @@ const FormStyledWrapper = ({ children, callback, ...props }) => {
 
     return (
         <FormStyled
-          colorScheme = { props.colorScheme }
           type = { incomingType }
         >
           <form
-            id={ incomingType }
+            id = { incomingType }
             onSubmit = { (e) => callback(e) }
           >
             { children }
