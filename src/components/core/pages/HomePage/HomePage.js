@@ -103,7 +103,7 @@ const HomePage = ({ concern, files, dispatch, ...props }) => {
               >
                 { fileArray.map(file => (
                     <FileItem
-                      key = { file.id }
+                      key = { file.size }
                       fileObject = { file }
                     />
                   )

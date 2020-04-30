@@ -82,7 +82,7 @@ const ProfItem = ({ ...props }) => {
       </button>
       { isUpsideDown &&
         <TextViewer
-          childrenData={ fullText }
+          childrenData = { fullText }
           notDescription = { true }
           additionalStyles = { expandedTextStyles }
         />
