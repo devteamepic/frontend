@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import colorScheme from '../../../misc/colorScheme'
 
 const TextViewerStyled = styled.div`
 height: 40%;

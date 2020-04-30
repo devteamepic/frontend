@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import ProfItemStyled from '../../../styled/molecules/profItemStyled'
+import ProfItemStyled from '../../../styled/organisms/profItemStyled'
 import Icon from '../../atoms/Icon/Icon'
 import Text from '../../atoms/Text/Text'
-import TextViewer from '../TextViewer/TextViewer'
+import TextViewer from '../../molecules/TextViewer/TextViewer'
 import colorScheme from '../../../../misc/colorScheme'
 import { profItemPreviewTextGenerator, profItemFullTextGenerator } from '../../../../misc/profItemText'
 
