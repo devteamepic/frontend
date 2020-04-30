@@ -7,6 +7,7 @@ import TextViewerStyled from '../../../styled/molecules/textViewerStyled'
 const TextViewer = ({ childrenData, color, notDescription, additionalStyles, ...props }) => {
   const [shouldChange] = useState(notDescription)
   const [children] = useState(childrenData)
+
   return (
     <TextViewerStyled
       shouldChange = { shouldChange }
