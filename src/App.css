@@ -84,7 +84,8 @@ body {
   height: 60%;
   display: grid;
   padding: 10% 0 0 10%;
-  grid-template-columns: auto auto;
-  grid-auto-flow: row;
+  grid-template-columns: auto quto;
+  grid-template-rows: auto auto auto;
+  grid-auto-flow: column;
   row-gap: 8%;
 }

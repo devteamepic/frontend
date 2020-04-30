@@ -25,8 +25,11 @@ const RegisterForm = ({
     const [response, setResponse] = useState('')
     const [disabled, setDisabled] = useState(true)
 
-    console.log(emailError)
-
+    /**
+     * Handled the form submition and calls register service.
+     * On success calls a login service.
+     * @param { Object } e Event.
+     */
     const handleSubmit = (e) => {
       e.preventDefault()
 
@@ -50,8 +53,14 @@ const RegisterForm = ({
         })
     }
 
+    /**
+     * Validation useEffect
+     */
     useEffect(() => {
-      setDisabled(validator.validateEmail(email).status || validator.passwordValidate(password).status || !matchingPassword || !firstName || !lastName || password !== matchingPassword)
+      setDisabled(validator.validateEmail(email).status
+                  || validator.passwordValidate(password).status
+                  || !matchingPassword
+                  || !firstName || !lastName || password !== matchingPassword)
     }, [email, password, matchingPassword, firstName, lastName])
 
     useEffect(() => {
@@ -66,7 +75,6 @@ const RegisterForm = ({
     return (
         <FormStyledWrapper
           type = 'register'
-          colorScheme = { colorScheme }
           callback = { handleSubmit }
         >
           { loggedIn && <Redirect to='/home'/> }
@@ -80,6 +88,18 @@ const RegisterForm = ({
           />
           <Input
             height = '95%'
+            type = { 'text' }
+            placeholder = 'first name'
+            callback = { value => firstNameChange(value) }
+          />
+          <Input
+            height = '95%'
+            type = { 'text' }
+            placeholder = 'last name'
+            callback = { value => lastNameChange(value) }
+          />
+          <Input
+            height = '95%'
             type = { 'password' }
             placeholder = 'password'
             callback = { value => passwordChange(value) }
@@ -88,23 +108,11 @@ const RegisterForm = ({
           />
           <Input
             height = '95%'
-            type = { 'text' }
-            placeholder = 'first name'
-            callback = { value => firstNameChange(value) }
-          />
-          <Input
-            height = '95%'
             type = { 'password' }
             placeholder = 'repeat password'
             callback = { value => matchingPasswordChange(value) }
             validate = { validator.matchPasswords(password, matchingPassword) }
             errorDispatch = { matchPasswordErrorMessage }
-          />
-          <Input
-            height = '95%'
-            type = { 'text' }
-            placeholder = 'last name'
-            callback = { value => lastNameChange(value) }
           />
           <Input
             height = '95%'
