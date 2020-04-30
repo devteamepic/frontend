@@ -5,8 +5,8 @@ import Text from '../../atoms/Text/Text'
 import Input from '../../atoms/Input/Input'
 import DragAndDrop from '../../atoms/DragAndDrop/DragAndDrop'
 import List from '../../organisms/List/List'
-import FileItem from '../../molecules/FileItem/FileItem'
-import ProfItem from '../../molecules/ProfItem/ProfItem'
+import FileItem from '../../organisms/FileItem/FileItem'
+import ProfItem from '../../organisms/ProfItem/ProfItem'
 import CheckboxMessage from '../../molecules/CheckboxMessage/CheckboxMessage'
 import { concernTrigger } from '../../../../redux/actions/concernAction'
 import { connect } from 'react-redux'
@@ -103,7 +103,7 @@ const HomePage = ({ concern, files, dispatch, ...props }) => {
               >
                 { fileArray.map(file => (
                     <FileItem
-                      key = { file.id }
+                      key = { file.size }
                       fileObject = { file }
                     />
                   )
