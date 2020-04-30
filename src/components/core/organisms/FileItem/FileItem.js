@@ -5,9 +5,9 @@ import Icon from '../../atoms/Icon/Icon'
 import TextViewer from '../TextViewer/TextViewer'
 import { removeFileAction } from '../../../../redux/actions/addFileAction'
 import { connect } from 'react-redux'
+import { fileItemTextGenerator } from '../../../../misc/fileItemText'
 
 const FileItem = ({ fileObject, dispatch, ...props }) => {
-  const [file] = useState(fileObject)
   const [additionalStyles] = useState(`
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -16,15 +16,10 @@ const FileItem = ({ fileObject, dispatch, ...props }) => {
     width: 100%;
     text-align: left;
   `)
-  const [fileText] = useState([
-    { component: 'text', size: 'medium', textValue: fileObject.name, isHeader: true },
-    { },
-    { },
-    { component: 'text', size: 'medium', textValue: fileObject.size, isHeader: true },
-  ])
+  const [fileText] = useState(fileItemTextGenerator(fileObject.name, fileObject.size))
 
   const handleClick = () => {
-    dispatch(removeFileAction(file))
+    dispatch(removeFileAction(fileObject))
   }
 
   return (

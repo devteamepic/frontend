@@ -20,13 +20,12 @@ const ProfItem = ({ ...props }) => {
   const [expandedTextStyles] = useState(`
     color: ${ colorScheme.marigold };
     grid-column: 1/5;
-    height: 200px;
     padding: 10px 10px 10px 0;
     width: 100%;
     text-align: left;
   `)
-  const [preview] = useState(profItemPreviewTextGenerator('Denis Markitanov', 'KBTU', 'MCS'))
-  const [fullText] = useState(profItemFullTextGenerator('dmarkitanov@gmail.com', 'Archlinux based OS with custom kernel', 'Master of Computer Science'))
+  const [preview] = useState(profItemPreviewTextGenerator('D. Markitanov', 'KBTU', 'MCS'))
+  const [fullText] = useState(profItemFullTextGenerator('Denis Markitanov', 'dmarkitanov@gmail.com', 'Archlinux based OS with custom kernel', 'Master of Computer Science'))
 
   /**
    * Handles the onclick that extenst the element

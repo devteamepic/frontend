@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import colorScheme from '../../../misc/colorScheme'
 
 const additionalStyles = `
-  height: 350px;
+  height: 450px;
 `
 
 const ProfItemStyled = styled.li`
