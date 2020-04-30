@@ -6,43 +6,42 @@ import TextViewerStyled from '../../../styled/molecules/textViewerStyled'
 
 const TextViewer = ({ childrenData, color, notDescription, additionalStyles, ...props }) => {
   const [shouldChange] = useState(notDescription)
-    const [children] = useState(childrenData)
-  console.log(additionalStyles)
-    return (
-      <TextViewerStyled
-        shouldChange = { shouldChange }
-        additionalStyles = { additionalStyles }
-      >
-          { children.map(child => {
-              if (child.component === 'text') {
-                  return (
-                      <Text
-                        key = { child.textValue }
-                        isHeader = { child.isHeader }
-                        size = { child.size }
-                      >
-                        { child.textValue }
-                      </Text>
-                  )
-              } else if (child.component === 'link')  {
-                return (
-                  <Link
-                    key = { child.link }
-                    to = { child.link }
-                    style={{ color: colorScheme.blue, fontFamily: 'Roboto' }}
-                  >
-                    <Text
-                      size = { 'medium' }
-                    >
-                      { child.textValue }
-                    </Text>
-                  </Link>
-                )
-              }
-              return (<><br/></>)
-          }) }
-      </TextViewerStyled>
-    )
+  const [children] = useState(childrenData)
+  return (
+    <TextViewerStyled
+      shouldChange = { shouldChange }
+      additionalStyles = { additionalStyles }
+    >
+      { children.map(child => {
+        if (child.component === 'text') {
+          return (
+            <Text
+              key = { child.textValue }
+              isHeader = { child.isHeader }
+              size = { child.size }
+            >
+              { child.textValue }
+            </Text>
+          )
+        } else if (child.component === 'link')  {
+          return (
+            <Link
+              key = { child.link }
+              to = { child.link }
+              style={{ color: colorScheme.blue, fontFamily: 'Roboto' }}
+            >
+              <Text
+                size = { 'medium' }
+              >
+                { child.textValue }
+              </Text>
+            </Link>
+          )
+        }
+        return (<><br/></>)
+      }) }
+    </TextViewerStyled>
+  )
 }
 
 export default TextViewer
