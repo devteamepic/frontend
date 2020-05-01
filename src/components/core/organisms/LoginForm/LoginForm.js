@@ -4,7 +4,7 @@ import Input from '../../atoms/Input/Input'
 import { Redirect } from 'react-router-dom'
 import FormStyledWrapper from '../../../styled/molecules/formStyled'
 import login from '../../../../misc/services/loginService'
-import { request, success, failure } from '../../../../redux/actions/loginAction'
+import { loginActions } from '../../../../redux/actions/loginActions'
 import { emailChange, passwordChange } from '../../../../redux/actions/loginFormInputActions'
 import { loginErrorMessage } from '../../../../redux/actions/validationMessageAction'
 import TextViewer from '../../molecules/TextViewer/TextViewer'
@@ -28,17 +28,16 @@ const LoginForm = ({
    */
   const handleSubmit = (e) => {
     e.preventDefault()
-    dispatch(request({ email }))
 
     login(email, password)
       .then(response => {
         setResponse(JSON.parse(response))
-        dispatch(success({ email: response.email, fullName: response.full_name }))
+        dispatch(loginActions.success({ email: response.email, fullName: response.full_name }))
       })
       .catch(error => {
         dispatch(emailChange(''))
         dispatch(passwordChange(''))
-        dispatch(failure(error))
+        dispatch(loginActions.failure(error))
       })
   }
 

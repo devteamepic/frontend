@@ -5,7 +5,7 @@ import FormStyledWrapper from '../../../styled/molecules/formStyled'
 import register from '../../../../misc/services/registerService'
 import { Redirect } from 'react-router-dom'
 import { emailErrorMessage, passwordErrorMessage, matchPasswordErrorMessage } from '../../../../redux/actions/validationMessageAction'
-import { request, success, failure } from '../../../../redux/actions/loginAction'
+import { loginActions } from '../../../../redux/actions/loginActions'
 import { validator } from '../../../../misc/services/validationService'
 import { emailChange, firstNameChange, lastNameChange, passwordChange, matchingPasswordChange } from '../../../../redux/actions/registerFormInputAction'
 import TextViewer from '../../molecules/TextViewer/TextViewer'
@@ -34,23 +34,21 @@ const RegisterForm = ({
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    dispatch(request({ email }))
-
     register(email, firstName, lastName, password)
       .then(response => {
         login(email, password)
           .then(response => {
             console.log(response)
             setResponse(JSON.parse(response))
-            dispatch(success({ email: response.email, fullName: response.full_name }))
+            dispatch(loginActions.success({ email: response.email, fullName: response.full_name }))
           })
           .catch(error => {
             console.log(error)
-            dispatch(failure(error))
+            dispatch(loginActions.failure(error))
           })
       })
       .catch(errorResponse => {
-        dispatch(failure(errorResponse))
+        dispatch(loginActions.failure(errorResponse))
       })
   }
 
