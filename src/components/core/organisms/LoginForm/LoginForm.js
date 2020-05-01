@@ -5,7 +5,7 @@ import { Redirect } from 'react-router-dom'
 import FormStyledWrapper from '../../../styled/molecules/formStyled'
 import login from '../../../../misc/services/loginService'
 import { loginActions } from '../../../../redux/actions/loginActions'
-import { emailChange, passwordChange } from '../../../../redux/actions/loginFormInputActions'
+import { loginFormInputActions } from '../../../../redux/actions/loginFormInputActions'
 import { loginErrorMessage } from '../../../../redux/actions/validationMessageAction'
 import TextViewer from '../../molecules/TextViewer/TextViewer'
 import { loginFormLinks } from '../../../../misc/loginFormLinks'
@@ -35,8 +35,8 @@ const LoginForm = ({
         dispatch(loginActions.success({ email: response.email, fullName: response.full_name }))
       })
       .catch(error => {
-        dispatch(emailChange(''))
-        dispatch(passwordChange(''))
+        dispatch(loginFormInputActions.emailChange(''))
+        dispatch(loginFormInputActions.passwordChange(''))
         dispatch(loginActions.failure(error))
       })
   }
@@ -60,13 +60,13 @@ const LoginForm = ({
       <Input
         type = { 'text' }
         placeholder = 'email'
-        callback = { value => emailChange(value) }
+        callback = { value => loginFormInputActions.emailChange(value) }
         inputValue = { email }
       />
       <Input
         type = { 'password' }
         placeholder = 'password'
-        callback = { value => passwordChange(value) }
+        callback = { value => loginFormInputActions.passwordChange(value) }
         inputValue = { password }
       />
       <Input
