@@ -3,7 +3,7 @@ import FileItemStyled from '../../../styled/organisms/fileItemStyled'
 import colorScheme from '../../../../misc/colorScheme'
 import Icon from '../../atoms/Icon/Icon'
 import TextViewer from '../../molecules/TextViewer/TextViewer'
-import { removeFileAction } from '../../../../redux/actions/addFileAction'
+import { fileActions } from '../../../../redux/actions/fileActions'
 import { connect } from 'react-redux'
 import { fileItemTextGenerator } from '../../../../misc/fileItemText'
 
@@ -19,7 +19,7 @@ const FileItem = ({ fileObject, dispatch, ...props }) => {
   const [fileText] = useState(fileItemTextGenerator(fileObject.name, fileObject.size))
 
   const handleClick = () => {
-    dispatch(removeFileAction(fileObject))
+    dispatch(fileActions.removeFileAction(fileObject))
   }
 
   return (

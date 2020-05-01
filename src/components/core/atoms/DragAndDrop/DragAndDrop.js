@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import DragAndDropStyled from '../../../styled/atoms/dragAndDropStyled'
 import { connect } from 'react-redux'
-import { addOneFileAction } from '../../../../redux/actions/addFileAction'
+import { fileActions } from '../../../../redux/actions/fileActions'
 import Text from '../Text/Text'
 
 const DragAndDrop = ({ files, dispatch, height, ...props }) => {
@@ -16,7 +16,7 @@ const DragAndDrop = ({ files, dispatch, height, ...props }) => {
   }, [files])
 
   useEffect(() => {
-    dispatch(addOneFileAction(file))
+    dispatch(fileActions.addFileAction(file))
   }, [file, dispatch])
 
   /**
