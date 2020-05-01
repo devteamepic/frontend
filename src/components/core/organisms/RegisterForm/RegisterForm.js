@@ -8,6 +8,7 @@ import { emailErrorMessage, passwordErrorMessage, matchPasswordErrorMessage } fr
 import { request, success, failure } from '../../../../redux/actions/loginAction'
 import { validator } from '../../../../misc/services/validationService'
 import { emailChange, firstNameChange, lastNameChange, passwordChange, matchingPasswordChange } from '../../../../redux/actions/registerFormInputAction'
+import TextViewer from '../../molecules/TextViewer/TextViewer'
 import login from '../../../../misc/services/loginService'
 
 const RegisterForm = ({
@@ -21,6 +22,9 @@ const RegisterForm = ({
   ...props }) => {
   const [response, setResponse] = useState('')
   const [disabled, setDisabled] = useState(true)
+    const [registerFormLinks] = useState([
+      { component: 'link', link: '/login', textValue: 'Log in' },
+    ])
 
   /**
    * Handled the form submition and calls register service.
@@ -73,7 +77,7 @@ const RegisterForm = ({
     >
       { loggedIn && <Redirect to='/home'/> }
       <Input
-        height = '95%'
+        height = '100%'
         type = { 'text' }
         placeholder = 'email'
         callback = { value => emailChange(value) }
@@ -81,19 +85,19 @@ const RegisterForm = ({
         errorDispatch = { emailErrorMessage }
       />
       <Input
-        height = '95%'
+        height = '100%'
         type = { 'text' }
         placeholder = 'first name'
         callback = { value => firstNameChange(value) }
       />
       <Input
-        height = '95%'
+        height = '100%'
         type = { 'text' }
         placeholder = 'last name'
         callback = { value => lastNameChange(value) }
       />
       <Input
-        height = '95%'
+        height = '100%'
         type = { 'password' }
         placeholder = 'password'
         callback = { value => passwordChange(value) }
@@ -101,7 +105,7 @@ const RegisterForm = ({
         errorDispatch = { passwordErrorMessage }
       />
       <Input
-        height = '95%'
+        height = '100%'
         type = { 'password' }
         placeholder = 'repeat password'
         callback = { value => matchingPasswordChange(value) }
@@ -109,10 +113,15 @@ const RegisterForm = ({
         errorDispatch = { matchPasswordErrorMessage }
       />
       <Input
-        height = '95%'
+        height = '100%'
         type = { 'submit' }
         text = 'Register'
         disabled = { disabled }
+      />
+      <TextViewer
+        childrenData = { registerFormLinks }
+        notDescription = { true }
+        additionalStyles = { 'grid-area: 4 / 1 / span 4 / span 3;' }
       />
     </FormStyledWrapper>
   )
