@@ -17,6 +17,10 @@ const HomePage = ({ concern, files, dispatch, ...props }) => {
   const [fileArray, setFileArray] = useState(files)
   const [disabled, setDisabled] = useState(true)
 
+  /**
+   * Handles submition of form and sends files to backend.
+   * @param { Object } e Event.
+   */
   const handleSubmit = (e) => {
     e.preventDefault()
 
@@ -28,15 +32,18 @@ const HomePage = ({ concern, files, dispatch, ...props }) => {
           console.log(response)
         })
         .catch(error => {
-          console.log('asdf')
           alert(error)
           console.log(error)
         })
       return null
     })
-
   }
 
+  /**
+   * useEffect that handles the file upload.
+   * It also changes the concern. This useEffect was made to
+   * handle both of the changes (one useEffect is better than 2)
+   */
   useEffect(() => {
     setIsConcerned(concern.isConcerned)
     setFileArray(files)
@@ -82,12 +89,11 @@ const HomePage = ({ concern, files, dispatch, ...props }) => {
             color = 'steel'
           >
             { fileArray.map(file => (
-                <FileItem
-                  key = { file.size }
-                  fileObject = { file }
-                />
-              )
-            )}
+              <FileItem
+                key = { file.size }
+                fileObject = { file }
+              />
+            ))}
           </List>
         </div>
       </div>
