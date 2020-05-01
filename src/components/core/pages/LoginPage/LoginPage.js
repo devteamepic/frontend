@@ -8,30 +8,30 @@ import LogRegPagesStyled from '../../../styled/pages/logRegPagesStyled'
 import { loginPageText } from '../../../../misc/loginPageText'
 
 const LoginPage = ({ error, ...props }) => {
-    const [errorMessage, setErrorMessage] = useState(error)
+  const [errorMessage, setErrorMessage] = useState(error)
 
-    useEffect(() => {
-        setErrorMessage(error)
-    }, [error])
+  useEffect(() => {
+    setErrorMessage(error)
+  }, [error])
 
-    return (
-        <LogRegPagesStyled
-          colorScheme = { colorScheme }
-          isLogin = { true }
-        >
-          { errorMessage && <ErrorDialog/> }
-          <div style={{ height: '100%', width: '100%', backgroundColor: colorScheme.denim }}>
-            <TextViewer childrenData={ loginPageText }/>
-          </div>
-          <LoginForm
-            colorScheme = { colorScheme }
-          />
-        </LogRegPagesStyled>
-    )
+  return (
+    <LogRegPagesStyled
+      colorScheme = { colorScheme }
+      isLogin = { true }
+    >
+      { errorMessage && <ErrorDialog/> }
+      <div style={{ height: '100%', width: '100%', backgroundColor: colorScheme.denim }}>
+        <TextViewer
+          childrenData = { loginPageText }
+        />
+      </div>
+      <LoginForm />
+    </LogRegPagesStyled>
+  )
 }
 
 const mapStateToProps = (state) => {
-    return { error: state.validationErrorMessage }
+  return { error: state.validationErrorMessage }
 }
 
 export default connect(mapStateToProps) (LoginPage)
