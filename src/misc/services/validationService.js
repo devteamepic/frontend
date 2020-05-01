@@ -20,8 +20,13 @@ const validateEmail = (email) => {
     return { status: !re.test(String(email).toLowerCase()), message: message }
 }
 
+const validateNames = (name, surname) => {
+   return name && surname
+}
+
 export const validator = {
     passwordValidate,
     matchPasswords,
-    validateEmail
+    validateEmail,
+    validateNames
 }

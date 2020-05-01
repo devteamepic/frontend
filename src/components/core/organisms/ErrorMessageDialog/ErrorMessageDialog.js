@@ -8,34 +8,36 @@ const ErrorMessageDialog = ({
   errors,
   dispatch,
   ...props }) => {
-    const [errorsToDisplay, setErrorsToDisplay] = useState(errors)
+  const [errorsToDisplay, setErrorsToDisplay] = useState(errors)
 
-    const remover = (key) => {
-      setTimeout(() => {
-        dispatch(removeErrorMessage(key))
-      }, 5000)
+  /**
+   * Function that removes the error message automatically after 5s.
+   * @param { string } key Represents an error to be removed.
+   */
+  const remover = (key) => {
+    setTimeout(() => {
+      dispatch(removeErrorMessage(key))
+    }, 5000)
+  }
 
-    }
+  useEffect(() => {
+    setErrorsToDisplay(errors)
+  }, [errors])
 
-    useEffect(() => {
-        setErrorsToDisplay(errors)
-      }, [errors])
+  return (
+    <ErrorMessageDialogStyled>
+      { Object.keys(errorsToDisplay).map((error) => {
+        remover(error)
 
-    return (
-        <ErrorMessageDialogStyled>
-          { Object.keys(errorsToDisplay).map((error) => {
-
-              remover(error)
-
-            return (
-                <ErrorMessage
-                  key = { error }
-                  error = { errorsToDisplay[error] }
-                />
-            )
-          }) }
-        </ErrorMessageDialogStyled>
-    )
+        return (
+          <ErrorMessage
+            key = { error }
+            error = { errorsToDisplay[error] }
+          />
+        )
+      }) }
+    </ErrorMessageDialogStyled>
+  )
 }
 
 const mapStateToProps = (state) => {

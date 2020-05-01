@@ -14,6 +14,7 @@ const buttonInputStyles = ( colorScheme ) => {
     return (`
       cursor: pointer;
       background-color: ${ colorScheme.marigold };
+      box-sizing: border-box;
       &:disabled{
         border: 5px solid ${ colorScheme.marigold };
         background-color: ${ colorScheme.steel };
