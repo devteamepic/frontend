@@ -4,10 +4,10 @@ import Input from '../../atoms/Input/Input'
 import FormStyledWrapper from '../../../styled/molecules/formStyled'
 import register from '../../../../misc/services/registerService'
 import { Redirect } from 'react-router-dom'
-import { emailErrorMessage, passwordErrorMessage, matchPasswordErrorMessage } from '../../../../redux/actions/validationMessageAction'
-import { request, success, failure } from '../../../../redux/actions/loginAction'
+import { validationErrorActions } from '../../../../redux/actions/validationMessageActions'
+import { loginActions } from '../../../../redux/actions/loginActions'
 import { validator } from '../../../../misc/services/validationService'
-import { emailChange, firstNameChange, lastNameChange, passwordChange, matchingPasswordChange } from '../../../../redux/actions/registerFormInputAction'
+import { registerFormInputActions } from '../../../../redux/actions/registerFormInputActions'
 import TextViewer from '../../molecules/TextViewer/TextViewer'
 import login from '../../../../misc/services/loginService'
 
@@ -34,23 +34,21 @@ const RegisterForm = ({
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    dispatch(request({ email }))
-
     register(email, firstName, lastName, password)
       .then(response => {
         login(email, password)
           .then(response => {
             console.log(response)
             setResponse(JSON.parse(response))
-            dispatch(success({ email: response.email, fullName: response.full_name }))
+            dispatch(loginActions.success({ email: response.email, fullName: response.full_name }))
           })
           .catch(error => {
             console.log(error)
-            dispatch(failure(error))
+            dispatch(loginActions.failure(error))
           })
       })
       .catch(errorResponse => {
-        dispatch(failure(errorResponse))
+        dispatch(loginActions.failure(errorResponse))
       })
   }
 
@@ -80,37 +78,37 @@ const RegisterForm = ({
         height = '100%'
         type = { 'text' }
         placeholder = 'email'
-        callback = { value => emailChange(value) }
+        callback = { value => registerFormInputActions.emailChange(value) }
         validate = { validator.validateEmail(email) }
-        errorDispatch = { emailErrorMessage }
+        errorDispatch = { validationErrorActions.emailErrorMessage }
       />
       <Input
         height = '100%'
         type = { 'text' }
         placeholder = 'first name'
-        callback = { value => firstNameChange(value) }
+        callback = { value => registerFormInputActions.firstNameChange(value) }
       />
       <Input
         height = '100%'
         type = { 'text' }
         placeholder = 'last name'
-        callback = { value => lastNameChange(value) }
+        callback = { value => registerFormInputActions.lastNameChange(value) }
       />
       <Input
         height = '100%'
         type = { 'password' }
         placeholder = 'password'
-        callback = { value => passwordChange(value) }
+        callback = { value => registerFormInputActions.passwordChange(value) }
         validate = { validator.passwordValidate(password) }
-        errorDispatch = { passwordErrorMessage }
+        errorDispatch = { validationErrorActions.passwordErrorMessage }
       />
       <Input
         height = '100%'
         type = { 'password' }
         placeholder = 'repeat password'
-        callback = { value => matchingPasswordChange(value) }
+        callback = { value => registerFormInputActions.matchingPasswordChange(value) }
         validate = { validator.matchPasswords(password, matchingPassword) }
-        errorDispatch = { matchPasswordErrorMessage }
+        errorDispatch = { validationErrorActions.matchPasswordErrorMessage }
       />
       <Input
         height = '100%'
