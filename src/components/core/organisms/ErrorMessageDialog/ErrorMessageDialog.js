@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import ErrorMessage from '../../molecules/ErrorMessage/ErrorMessage'
 import ErrorMessageDialogStyled from '../../../styled/organisms/errorMessageDialogStyled'
 import { connect } from 'react-redux'
-import { removeErrorMessage } from '../../../../redux/actions/validationMessageAction'
+import { validationErrorActions } from '../../../../redux/actions/validationMessageActions'
 
 const ErrorMessageDialog = ({
   errors,
@@ -16,7 +16,7 @@ const ErrorMessageDialog = ({
    */
   const remover = (key) => {
     setTimeout(() => {
-      dispatch(removeErrorMessage(key))
+      dispatch(validationErrorActions.removeErrorMessage(key))
     }, 5000)
   }
 

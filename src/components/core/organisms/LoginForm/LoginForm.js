@@ -6,7 +6,7 @@ import FormStyledWrapper from '../../../styled/molecules/formStyled'
 import login from '../../../../misc/services/loginService'
 import { loginActions } from '../../../../redux/actions/loginActions'
 import { loginFormInputActions } from '../../../../redux/actions/loginFormInputActions'
-import { loginErrorMessage } from '../../../../redux/actions/validationMessageAction'
+import { validationErrorActions } from '../../../../redux/actions/validationMessageActions'
 import TextViewer from '../../molecules/TextViewer/TextViewer'
 import { loginFormLinks } from '../../../../misc/loginFormLinks'
 
@@ -47,7 +47,7 @@ const LoginForm = ({
       localStorage.setItem('userId', response.user_id)
     }
     else if (loggedIn === false) {
-      dispatch(loginErrorMessage('Invalid email or password. Or bad internet connection.'))
+      dispatch(validationErrorActions.loginErrorMessage('Invalid email or password. Or bad internet connection.'))
     }
   }, [response, loggedIn, dispatch, props])
 
