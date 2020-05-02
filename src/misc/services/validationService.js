@@ -1,17 +1,16 @@
 const passwordValidate = (password) => {
-    const message = 'Password length should at least be 6 characters long'
-    if (password.length < 6) {
-        return { status: true, message: message }
-    }
+  const message = 'Password length should at least be 6 characters long'
 
-    return { status: false, message: '' }
+  if (password.length < 6) return { status: true, message: message }
+
+  return { status: false, message: '' }
 }
 
 const matchPasswords = (password, matchingPassword) => {
-    const message = 'Passwords should match'
-    if (password !== matchingPassword) return { status: true, message: message }
+  const message = 'Passwords should match'
+  if (password !== matchingPassword) return { status: true, message: message }
 
-    return { status: false, message: message }
+  return { status: false, message: message }
 }
 
 const validateEmail = (email) => {
@@ -20,8 +19,14 @@ const validateEmail = (email) => {
     return { status: !re.test(String(email).toLowerCase()), message: message }
 }
 
+/**
+ * The only function that returns only boolean.
+ * It's because it does not create errors on login and register
+ * @param { string } name Name.
+ * @param { string } surname Surname.
+ */
 const validateNames = (name, surname) => {
-   return name && surname
+     return name && surname
 }
 
 export const validator = {
