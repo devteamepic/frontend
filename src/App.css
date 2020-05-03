@@ -81,10 +81,15 @@ body {
 }
 
 #register{
-  height: 60%;
+  margin-top: 10%;
+  height: 80%;
+  width: 80%;
   display: grid;
-  padding: 10% 0 0 10%;
-  grid-template-columns: auto auto;
-  grid-auto-flow: row;
-  row-gap: 8%;
+  padding: 10%;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 20% 20% 20% 20%;
+  grid-auto-flow: column;
+  grid-row-gap: 5%;
+  align-items: center;
+  justify-items: center;
 }
