@@ -1,13 +1,9 @@
 const passwordValidate = (password) => {
-  if (password.length < 6) return true
-
-  return false
+  return password.length < 6
 }
 
 const matchPasswords = (password, matchingPassword) => {
-  if (password !== matchingPassword) return true
-
-  return false
+  return password !== matchingPassword
 }
 
 const validateEmail = (email) => {
