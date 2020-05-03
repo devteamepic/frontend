@@ -16,10 +16,11 @@ const validationErrorMessage = (state = [], action) => {
         matchPasswordError: 'Passwords do not match.'
       }
     case 'REMOVE_ERROR_MESSAGE':
-      const index = state.indexOf(action.payload)
-      let newArray = [...state]
-      newArray.splice(index, 1)
-      return newArray
+      let newState = state
+      delete newState[action.payload]
+      return {
+        ...newState
+      }
     case 'LOGIN_ERROR':
       return {
         loginError: 'Login or password is incorrect.'
