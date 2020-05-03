@@ -4,7 +4,7 @@ import Icon from '../../atoms/Icon/Icon'
 import Text from '../../atoms/Text/Text'
 import TextViewer from '../../molecules/TextViewer/TextViewer'
 import colorScheme from '../../../../misc/colorScheme'
-import { profItemPreviewTextGenerator, profItemFullTextGenerator } from '../../../../misc/profItemText'
+import { profItemPreviewTextGenerator, profItemFullTextGenerator } from '../../../../misc/texts/profItemText'
 
 const ProfItem = ({ ...props }) => {
   const [isUpsideDown, setIsUpsideDown] = useState(false)

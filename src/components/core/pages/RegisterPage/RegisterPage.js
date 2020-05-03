@@ -5,7 +5,7 @@ import RegisterForm from '../../organisms/RegisterForm/RegisterForm'
 import colorScheme from '../../../../misc/colorScheme'
 import LogRegPagesStyled from '../../../styled/pages/logRegPagesStyled'
 import ErrorDialog from '../../organisms/ErrorMessageDialog/ErrorMessageDialog'
-import { registerPageText } from '../../../../misc/registerPageText'
+import { registerPageText } from '../../../../misc/texts/registerPageText'
 
 const RegisterPage = ({ error, ...props }) => {
   const [errorMessage, setErrorMessage] = useState(error)

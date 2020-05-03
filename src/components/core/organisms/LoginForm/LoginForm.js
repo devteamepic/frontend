@@ -8,7 +8,7 @@ import { loginActions } from '../../../../redux/actions/loginActions'
 import { loginFormInputActions } from '../../../../redux/actions/loginFormInputActions'
 import { validationErrorActions } from '../../../../redux/actions/validationMessageActions'
 import TextViewer from '../../molecules/TextViewer/TextViewer'
-import { loginFormLinks } from '../../../../misc/loginFormLinks'
+import { loginFormLinks } from '../../../../misc/texts/loginFormLinks'
 
 const LoginForm = ({
   dispatch,

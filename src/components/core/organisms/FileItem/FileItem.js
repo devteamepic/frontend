@@ -5,7 +5,7 @@ import Icon from '../../atoms/Icon/Icon'
 import TextViewer from '../../molecules/TextViewer/TextViewer'
 import { fileActions } from '../../../../redux/actions/fileActions'
 import { connect } from 'react-redux'
-import { fileItemTextGenerator } from '../../../../misc/fileItemText'
+import { fileItemTextGenerator } from '../../../../misc/texts/fileItemText'
 
 const FileItem = ({ fileObject, dispatch, ...props }) => {
   const [additionalStyles] = useState(`

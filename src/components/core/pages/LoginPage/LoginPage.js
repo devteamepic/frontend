@@ -5,7 +5,7 @@ import ErrorDialog from '../../organisms/ErrorMessageDialog/ErrorMessageDialog'
 import LoginForm from '../../organisms/LoginForm/LoginForm'
 import colorScheme from '../../../../misc/colorScheme'
 import LogRegPagesStyled from '../../../styled/pages/logRegPagesStyled'
-import { loginPageText } from '../../../../misc/loginPageText'
+import { loginPageText } from '../../../../misc/texts/loginPageText'
 
 const LoginPage = ({ error, ...props }) => {
   const [errorMessage, setErrorMessage] = useState(error)
