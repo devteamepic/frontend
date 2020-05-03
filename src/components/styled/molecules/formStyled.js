@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import colorScheme from '../../../misc/colorScheme'
-import { Link } from 'react-router-dom'
-import Text from '../../core/atoms/Text/Text'
 import '../../../App.css'
 
 const FormStyled = styled.div`
@@ -17,18 +15,18 @@ ${ props => props.type === 'register' && 'margin-top: 5%;' }
 const FormStyledWrapper = ({ children, callback, ...props }) => {
   const [incomingType] = useState(props.type)
 
-    return (
-        <FormStyled
-          type = { incomingType }
-        >
-          <form
-            id = { incomingType }
-            onSubmit = { (e) => callback(e) }
-          >
-            { children }
-          </form>
-        </FormStyled>
-    )
+  return (
+    <FormStyled
+      type = { incomingType }
+    >
+      <form
+        id = { incomingType }
+        onSubmit = { (e) => callback(e) }
+      >
+        { children }
+      </form>
+    </FormStyled>
+  )
 }
 
 export default FormStyledWrapper

@@ -1,7 +1,5 @@
 const passwordValidate = (password) => {
-  const message = 'Password length should at least be 6 characters long'
-
-  if (password.length < 6) return { status: true, message: message }
+  if (password.length < 6) return true
 
   return { status: false, message: '' }
 }

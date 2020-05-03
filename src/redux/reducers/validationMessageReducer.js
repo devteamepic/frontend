@@ -1,19 +1,19 @@
-const validationErrorMessage = (state = '', action) => {
+const validationErrorMessage = (state = [], action) => {
   switch(action.type) {
     case 'EMAIL_ERROR':
       return {
         ...state,
-        emailError: action.payload
+        emailError: 'Provide a valid email.'
       }
     case 'PASSWORD_ERROR':
       return {
         ...state,
-        passwordError: action.payload
+        passwordError: 'Password must contain at least 6 characters.'
       }
     case 'MATCH_PASSWORD_ERROR':
       return {
         ...state,
-        matchPasswordError: action.payload
+        matchPasswordError: 'Passwords do not match.'
       }
     case 'REMOVE_ERROR_MESSAGE':
       const index = state.indexOf(action.payload)
@@ -22,7 +22,7 @@ const validationErrorMessage = (state = '', action) => {
       return newArray
     case 'LOGIN_ERROR':
       return {
-        loginError: action.payload
+        loginError: 'Login or password is incorrect.'
       }
     default:
       return state

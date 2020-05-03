@@ -47,7 +47,7 @@ const LoginForm = ({
       localStorage.setItem('userId', response.user_id)
     }
     else if (loggedIn === false) {
-      dispatch(validationErrorActions.loginErrorMessage('Invalid email or password. Or bad internet connection.'))
+      dispatch(validationErrorActions.loginErrorMessage())
     }
   }, [response, loggedIn, dispatch, props])
 

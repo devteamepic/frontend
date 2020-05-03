@@ -1,21 +1,18 @@
-const emailErrorMessage = (message) => {
+const emailErrorMessage = () => {
   return {
-    type: 'EMAIL_ERROR',
-    payload: message
+    type: 'EMAIL_ERROR'
   }
 }
 
-const passwordErrorMessage = (message) => {
+const passwordErrorMessage = () => {
   return {
-    type: 'PASSWORD_ERROR',
-    payload: message
+    type: 'PASSWORD_ERROR'
   }
 }
 
-const matchPasswordErrorMessage = (message) => {
+const matchPasswordErrorMessage = () => {
   return {
-    type: 'MATCH_PASSWORD_ERROR',
-    payload: message
+    type: 'MATCH_PASSWORD_ERROR'
   }
 }
 
@@ -26,10 +23,9 @@ const removeErrorMessage = (key) => {
   }
 }
 
-const loginErrorMessage = (message) => {
+const loginErrorMessage = () => {
   return {
-    type: 'LOGIN_ERROR',
-    payload: message
+    type: 'LOGIN_ERROR'
   }
 }
 
