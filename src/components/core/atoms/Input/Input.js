@@ -23,7 +23,7 @@ const Input = ({
   const [textPlaceholder] = useState(placeholder)
   const [inputStyles, setInputStyles] = useState('')
   const [incomingHeight] = useState(height)
-  const [shouldValidate, setShouldValidate] = useState({ status: false, message: '' })
+  const [shouldValidate, setShouldValidate] = useState(false)
   const [isDisabled, setIsDisabled] = useState(disabled)
   const [value, setValue] = useState(inputValue)
 
@@ -39,8 +39,8 @@ const Input = ({
    * This useEffect is for style management
    */
   useEffect(() => {
-    if (shouldValidate && shouldValidate.status) {
-      dispatch(errorDispatch(shouldValidate.message))
+    if (shouldValidate) {
+      dispatch(errorDispatch())
       setInputStyles(`
         border: 5px solid ${ colorScheme.watermelon };
         box-sizing: border-box;

@@ -1,20 +1,18 @@
 const passwordValidate = (password) => {
   if (password.length < 6) return true
 
-  return { status: false, message: '' }
+  return false
 }
 
 const matchPasswords = (password, matchingPassword) => {
-  const message = 'Passwords should match'
-  if (password !== matchingPassword) return { status: true, message: message }
+  if (password !== matchingPassword) return true
 
-  return { status: false, message: message }
+  return false
 }
 
 const validateEmail = (email) => {
-    const message = 'Please provide a valid email'
     var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-    return { status: !re.test(String(email).toLowerCase()), message: message }
+    return !re.test(String(email).toLowerCase())
 }
 
 /**
