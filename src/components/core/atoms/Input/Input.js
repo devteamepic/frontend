@@ -13,6 +13,7 @@ const Input = ({
   validate,
   errorDispatch,
   height,
+  width,
   disabled,
   inputValue,
   ...props
@@ -22,7 +23,7 @@ const Input = ({
   const [buttonText] = useState(text)
   const [textPlaceholder] = useState(placeholder)
   const [inputStyles, setInputStyles] = useState('')
-  const [incomingHeight] = useState(height)
+  const [size] = useState({ height, width })
   const [shouldValidate, setShouldValidate] = useState(false)
   const [isDisabled, setIsDisabled] = useState(disabled)
   const [value, setValue] = useState(inputValue)
@@ -71,7 +72,7 @@ const Input = ({
       autoComplete = 'off'
       type = { typeOf }
       disabled = { isDisabled }
-      height = { incomingHeight }
+      size = { size }
       value = { buttonText || value }
       placeholder = { textPlaceholder }
       inputStyles = { inputStyles }
