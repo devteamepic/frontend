@@ -4,6 +4,7 @@ import reducers from './redux/reducers'
 import LoginPage from './components/core/pages/LoginPage/LoginPage'
 import RegisterPage from './components/core/pages/RegisterPage/RegisterPage'
 import HomePage from './components/core/pages/HomePage/HomePage'
+import Test from './components/core/pages/Test'
 import PrivateRoute from './components/core/atoms/PrivateRoute/PrivateRoute'
 import { Route, Switch, Redirect, BrowserRouter } from 'react-router-dom'
 import {applyMiddleware, createStore} from "redux";
@@ -19,6 +20,7 @@ function App(props) {
 
             <Switch>
               <Route exact path='/login' component={LoginPage}/>
+              <Route exact path='/test' component={Test}/>
               <Route exact path='/register' component={RegisterPage}/>
               <PrivateRoute exact path='/home' component={HomePage}/>
               <Route path='/openSourceWiki' component={() => {
