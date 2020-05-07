@@ -1,7 +1,6 @@
 import React from 'react'
-import Button from '../atoms/Button/Button'
-import TextArea from '../atoms/TextArea/TextArea'
-import Tip from '../organisms/Tip/Tip'
+import SubmissionItem from '../organisms/SubmissionItem/SubmissionItem'
+import List from '../organisms/List/List'
 
 const Test = () => {
     const testAlert = () => {
@@ -10,11 +9,12 @@ const Test = () => {
     }
 
     return (
-        <div style = {{ width: '100%', height: '100%' }}>
-          <Tip
-            height = '200px'
-            width = '250px'
-          />
+        <div style = {{ width: '50%', height: '100%' }}>
+          <List>
+            <SubmissionItem />
+            <SubmissionItem />
+            <SubmissionItem />
+          </List>
         </div>
     )
 }
