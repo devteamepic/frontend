@@ -9,10 +9,10 @@ const Test = () => {
     }
 
     return (
-        <div style = {{ width: '50%', height: '100%' }}>
-          <List>
-            <SubmissionItem />
-            <SubmissionItem />
+        <div style = {{ width: '60%', height: '100%' }}>
+          <List
+            color = { 'marigold' }
+          >
             <SubmissionItem />
           </List>
         </div>

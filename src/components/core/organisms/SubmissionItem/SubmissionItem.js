@@ -1,12 +1,16 @@
 import React, { useState } from 'react'
 import SubmissionItemStyled from '../../../styled/organisms/submissionItemStyled'
 import TextViewer from '../../molecules/TextViewer/TextViewer'
+import List from '../List/List'
 import Icon from '../../atoms/Icon/Icon'
+import Text from '../../atoms/Text/Text'
+import TextArea from '../../atoms/TextArea/TextArea'
+import ProfItem from '../ProfItem/ProfItem'
 import colorScheme from '../../../../misc/colorScheme'
+
 
 const SubmissionItem = () => {
   const [isUpsideDown, setIsUpsideDown] = useState(true)
-  const [display, setDisplay] = useState('')
   const [header] = useState([
     { component: 'text', size: 'large', textValue: '1st submission details' },
   ])
@@ -16,7 +20,6 @@ const SubmissionItem = () => {
 
   const handleClick = () => {
     setIsUpsideDown(!isUpsideDown)
-    isUpsideDown ? setDisplay('') : setDisplay('display: none;')
   }
 
   return (
@@ -31,7 +34,7 @@ const SubmissionItem = () => {
       <TextViewer
         childrenData = { text }
         notDescription = { true }
-        additionalStyles = { 'text-align: left;' + display }
+        additionalStyles = { 'text-align: left;' }
       />
       <button
         onClick = { handleClick }
@@ -57,11 +60,11 @@ const SubmissionItem = () => {
           style = {{
               gridColumn: '1/3',
               width: '100%',
-              height: '100%',
+              height: '500px',
               gridRow: '3/-1',
               display: 'grid',
-              gridTemplateColumns: '40% auto',
-              gridTemplateRows: 'auto auto',
+              gridTemplateColumns: '40% 60%',
+              gridTemplateRows: '40% 60%',
               padding: '0 10px 10px 0',
           }}
         >
@@ -70,14 +73,60 @@ const SubmissionItem = () => {
           >
           </div>
           <div
-            style = {{ width: '100%', height: '100%', backgroundColor: 'green' }}
+            style = {{ width: '100%', height: '100%', color: 'white', padding: '0 10px 10px 10px', boxSizing: 'border-box' }}
           >
+            <Text
+              size = { 'medium' }
+            >
+              Abstract:
+            </Text>
+            <TextArea
+              height = '95%'
+              width = '100%'
+              shouldDisable = { true }
+            >
+              asdf asdf asdf
+              asdf asdf asdf
+              asdf asdf asdf
+              asdf asdf asdf
+              asdf asdf asdf
+              asdf asdf asdf
+              asdf asdf asdf
+              asdf asdf asdf
+              asdf asdf asdf
+              asdf asdf asdf
+              asdf asdf asdf
+              asdf asdf asdf
+              asdf asdf asdf
+              asdf asdf asdf
+              asdf asdf asdf
+              asdf asdf asdf
+              asdf asdf asdf
+              asdf asdf asdf
+            </TextArea>
           </div>
           <div
-            style = {{ width: '100%', height: '100%', backgroundColor: 'blue' }}
+            style = {{ padding: '10px 10px 30px 10px', color: 'white', height: '100%', boxSizing: 'border-box' }}
           >
+            <Text
+              size = { 'medium' }
+            >
+              Results:
+            </Text>
+            <List
+              color = 'denim'
+              margin = 'none;'
+              heightParameter = '100%'
+            >
+              <ProfItem/>
+              <ProfItem/>
+              <ProfItem/>
+              <ProfItem/>
+              <ProfItem/>
+              <ProfItem/>
+            </List>
           </div>
-        </div>
+      </div>
       }
     </SubmissionItemStyled>
   )
