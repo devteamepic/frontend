@@ -69,8 +69,19 @@ const SubmissionItem = () => {
           }}
         >
           <div
-            style = {{ width: '100%', height: '100%', backgroundColor: 'red', gridRow: '1/3' }}
+            style = {{ width: '100%', height: '100%', color: 'white', gridRow: '1/3', boxSizing: 'border-box', padding: '0 10px 30px 10px' }}
           >
+            <Text
+              size = { 'medium' }
+            >
+              Submitted Files:
+            </Text>
+            <List
+              color = 'denim'
+              margin = 'none;'
+              heightParameter = '100%'
+            >
+            </List>
           </div>
           <div
             style = {{ width: '100%', height: '100%', color: 'white', padding: '0 10px 10px 10px', boxSizing: 'border-box' }}
