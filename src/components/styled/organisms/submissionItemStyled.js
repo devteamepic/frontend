@@ -7,7 +7,7 @@ const additionalStyles = `
 
 const SubmissionItemStyled = styled.li`
 height: fit-content;
-width: 70%;
+width: 80%;
 background-color: ${ colorScheme.steel };
 margin: auto;
 padding: 10px;
