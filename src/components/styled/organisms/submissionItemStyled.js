@@ -10,6 +10,7 @@ height: fit-content;
 width: 80%;
 background-color: ${ colorScheme.steel };
 margin: auto;
+margin-bottom: 50px;
 padding: 10px;
 display: grid;
 grid-template-columns: 90% auto;

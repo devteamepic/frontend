@@ -10,7 +10,7 @@ import colorScheme from '../../../../misc/colorScheme'
 
 
 const SubmissionItem = () => {
-  const [isUpsideDown, setIsUpsideDown] = useState(true)
+  const [isUpsideDown, setIsUpsideDown] = useState(false)
   const [header] = useState([
     { component: 'text', size: 'large', textValue: '1st submission details' },
   ])
@@ -96,24 +96,9 @@ const SubmissionItem = () => {
               width = '100%'
               shouldDisable = { true }
             >
-              asdf asdf asdf
-              asdf asdf asdf
-              asdf asdf asdf
-              asdf asdf asdf
-              asdf asdf asdf
-              asdf asdf asdf
-              asdf asdf asdf
-              asdf asdf asdf
-              asdf asdf asdf
-              asdf asdf asdf
-              asdf asdf asdf
-              asdf asdf asdf
-              asdf asdf asdf
-              asdf asdf asdf
-              asdf asdf asdf
-              asdf asdf asdf
-              asdf asdf asdf
-              asdf asdf asdf
+              Omnis cumque quibusdam hic et dolorem sapiente repudiandae iste. Cum est iusto reiciendis ea. Consectetur et ducimus est aperiam. Deserunt aut laudantium dolorum ut et quod. Ea quidem accusamus at distinctio autem. Ducimus saepe minima molestias maxime.
+
+              Recusandae est velit officia ratione. In aspernatur perspiciatis et sit omnis qui dolor vitae.
             </TextArea>
           </div>
           <div
