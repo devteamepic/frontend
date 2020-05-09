@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import HomePageStyled from '../../../styled/pages/homePageStyled'
 import colorScheme from '../../../../misc/colorScheme'
+import List from '../../organisms/List/List'
 import TextViewer from '../../molecules/TextViewer/TextViewer'
 import Icon from '../../atoms/Icon/Icon'
+import Button from '../../atoms/Button/Button'
 
 const HomePage = () => {
     const [homePageText] = useState([
@@ -28,6 +30,37 @@ const HomePage = () => {
               childrenData = { homePageText }
               additionalStyles = { 'margin-top: 15%;' }
             />
+          </div>
+          <div
+            style = {{ gridRow: '1/3' }}
+          >
+            <List
+              heightParameter = { '60%' }
+              margin = { '20%' }
+            >
+              <li
+                style = {{ width: '80%', marginLeft: '10%', marginBottom: '10%' }}
+              >
+                <Button>
+                  Your Profile
+                </Button>
+              </li>
+              <li
+                style = {{ width: '80%', marginLeft: '10%', marginBottom: '10%' }}
+              >
+                <Button>
+                  Find me an university!
+                </Button>
+              </li>
+              <li
+                style = {{ width: '80%', marginLeft: '10%' }}
+              >
+                <Button>
+                  About us
+                </Button>
+              </li>
+            </List>
+
           </div>
         </HomePageStyled>
     )

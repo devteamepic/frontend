@@ -9,6 +9,7 @@ outline: none;
 background-color: ${ colorScheme.denim };
 color: white;
 font-size: 32px;
+padding: 30px;
 `
 
 export default ButtonStyled
