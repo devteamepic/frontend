@@ -1,27 +1,31 @@
-import React from 'react'
-import Button from '../atoms/Button/Button'
-import TextArea from '../atoms/TextArea/TextArea'
+import React, { useState } from 'react'
+import SubmissionItem from '../organisms/SubmissionItem/SubmissionItem'
+import List from '../organisms/List/List'
 
 const Test = () => {
+  const [testArr] = useState([
+    'a', 'b', 'c'
+  ])
+
     const testAlert = () => {
-        window.location.href = '/home'
+      console.log('asdf')
+//        window.location.href = '/home'
     }
 
     return (
-        <div style = {{ width: '100%', height: '100%' }}>
-          <div style = {{ width: '750px', height: '100px' }}>
-            <Button
-              callback = { testAlert }
-            >
-              test
-            </Button>
-          </div>
-          <div style = {{ width: '750px', height: '100px' }}>
-            <TextArea
-              height = '100%'
-              width = '100%'
-            />
-          </div>
+        <div style = {{ width: '55%', height: '100%' }}>
+          <List
+            color = { 'marigold' }
+          >
+            { testArr.map(item => {
+              return (
+                <SubmissionItem
+                  key = { item }
+                  number = { testArr.indexOf(item) }
+                />
+              )
+            } )}
+          </List>
         </div>
     )
 }
