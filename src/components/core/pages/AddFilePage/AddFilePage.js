@@ -7,6 +7,7 @@ import DragAndDrop from '../../atoms/DragAndDrop/DragAndDrop'
 import List from '../../organisms/List/List'
 import FileItem from '../../organisms/FileItem/FileItem'
 import ProfItem from '../../organisms/ProfItem/ProfItem'
+import TextArea from '../../atoms/TextArea/TextArea'
 import CheckboxMessage from '../../molecules/CheckboxMessage/CheckboxMessage'
 import { concernTrigger } from '../../../../redux/actions/concernAction'
 import { connect } from 'react-redux'
@@ -59,12 +60,23 @@ const HomePage = ({ concern, files, dispatch, ...props }) => {
         <Text
           size = 'large'
         >
+          Write small abstract here.
+        </Text>
+        <div style={{ height: '50px' }}/>
+        <TextArea
+          width = { '100%' }
+          height = { '200px' }
+        />
+        <div style={{ height: '50px' }}/>
+        <Text
+          size = 'large'
+        >
           Drop your files here or click it.
         </Text>
-        <div style={{ height: '100px' }}/>
-        <div style={{ height: '500px' }}>
+        <div style={{ height: '50px' }}/>
+        <div style={{ height: '250px' }}>
           <DragAndDrop
-            height = '500px'
+            height = '250px'
           />
         </div>
         <div style={{ marginTop: '10%' }}>
