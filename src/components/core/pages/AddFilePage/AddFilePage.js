@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import HomePageStyled from '../../../styled/pages/homePageStyled'
+import AddFilePageStyled from '../../../styled/pages/addFilePageStyled'
 import colorScheme from '../../../../misc/colorScheme'
 import Text from '../../atoms/Text/Text'
 import Input from '../../atoms/Input/Input'
@@ -54,7 +54,7 @@ const HomePage = ({ concern, files, dispatch, ...props }) => {
   }, [fileArray, isConcerned])
 
   return (
-    <HomePageStyled>
+    <AddFilePageStyled>
       <div style={{ height: '80%', width: '80%', textAlign: 'center', margin: '10%' }}>
         <Text
           size = 'large'
@@ -127,7 +127,7 @@ const HomePage = ({ concern, files, dispatch, ...props }) => {
           </List>
         </div>
       </div>
-    </HomePageStyled>
+    </AddFilePageStyled>
   )
 }
 
