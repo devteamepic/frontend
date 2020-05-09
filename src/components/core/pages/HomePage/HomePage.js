@@ -11,6 +11,10 @@ const HomePage = () => {
         { component: 'text', size: 'medium', textValue: 'UNIFOUND will compare your diploma contents with our database. Its is not a plaguarism comparison! In fact it will try to match the most related article (by meaning) from our database with content of your diploma.' },
     ])
 
+    const redirectTo = (url) => {
+        window.location.href = url
+    }
+
     return(
         <HomePageStyled>
           <div
@@ -41,21 +45,27 @@ const HomePage = () => {
               <li
                 style = {{ width: '80%', marginLeft: '10%', marginBottom: '10%' }}
               >
-                <Button>
+                <Button
+                  callback = { () => redirectTo('/profile') }
+                >
                   Your Profile
                 </Button>
               </li>
               <li
                 style = {{ width: '80%', marginLeft: '10%', marginBottom: '10%' }}
               >
-                <Button>
+                <Button
+                  callback = { () => redirectTo('/findUni') }
+                >
                   Find me an university!
                 </Button>
               </li>
               <li
                 style = {{ width: '80%', marginLeft: '10%' }}
               >
-                <Button>
+                <Button
+                  callback = { () => redirectTo('/aboutUs') }
+                >
                   About us
                 </Button>
               </li>
