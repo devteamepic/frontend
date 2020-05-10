@@ -3,11 +3,11 @@ import TipStyled from '../../../styled/organisms/tipStyled'
 import TextViewer from '../../molecules/TextViewer/TextViewer'
 import Icon from '../../atoms/Icon/Icon'
 
-const Tip = ({ height, width, ...props }) => {
+const Tip = ({ height, width, value, additionalStyles, ...props }) => {
   const [size] = useState({ height, width })
   const [display, setDisplay] = useState('')
   const [text] = useState([
-    { component: 'text', size: 'small', textValue: 'Hi, this is your profile. All the data you’ve submitted will display here, including files and responses.' },
+    { component: 'text', size: 'small', textValue: value },
   ])
 
   const removeTip = () => {
@@ -18,6 +18,7 @@ const Tip = ({ height, width, ...props }) => {
     <TipStyled
       size = { size }
       style = {{ display: display }}
+      additionalStyles = { additionalStyles }
     >
       <button
         onClick = { removeTip }
