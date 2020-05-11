@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import ProfilePageStyled from '../../../styled/pages/profilePageStyled'
 import Tip from '../../organisms/Tip/Tip'
+import List from '../../organisms/List/List'
 import Text from '../../atoms/Text/Text'
+import ProfItem from '../../organisms/ProfItem/ProfItem'
 import TextViewer from '../../molecules/TextViewer/TextViewer'
 import colorScheme from '../../../../misc/colorScheme'
 import { userProfileTexts } from '../../../../misc/texts/userProfileText'
@@ -49,15 +51,28 @@ const ProfilePage = () => {
           >
             <Tip
               width = { '50%' }
-              height = { '30%' }
+              height = { '300px' }
               value = { 'Hi, this is your profile. All the data you’ve submitted will display here, including files and responses.' }
               additionalStyles = { 'margin-top: 50px;' }
             />
             <TextViewer
               childrenData = { userProfileTexts.userProfileTextGenerator(userFullName, userEmail) }
               notDescription = { true }
-              additionalStyles = { 'text-align: left; margin-left: 50px; margin-right: 50px; margin-top: 50px;' }
+              additionalStyles = { 'text-align: left; margin-left: 50px; margin-right: 50px; margin-top: 50px; height: fit-content; overflow: hidden;' }
             />
+            <div
+              style = {{ width: '70%', margin: 'auto', border: '1px solid' + colorScheme.marigold, marginTop: '50px', marginBottom: '50px' }}
+            >
+              <List
+                backgroundColor = { colorScheme.steel }
+                margin = { '0' }
+                heightParameter = { '500px' }
+              >
+                <ProfItem/>
+                <ProfItem/>
+                <ProfItem/>
+              </List>
+            </div>
           </div>
           <div
             style = {{ backgroundColor: colorScheme.blue }}

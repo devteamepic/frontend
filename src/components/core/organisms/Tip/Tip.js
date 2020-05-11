@@ -7,7 +7,7 @@ const Tip = ({ height, width, value, additionalStyles, ...props }) => {
   const [size] = useState({ height, width })
   const [display, setDisplay] = useState('')
   const [text] = useState([
-    { component: 'text', size: 'small', textValue: value },
+    { component: 'text', size: 'medium', textValue: value },
   ])
 
   const removeTip = () => {
