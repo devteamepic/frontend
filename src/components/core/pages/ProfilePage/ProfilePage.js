@@ -4,6 +4,7 @@ import Tip from '../../organisms/Tip/Tip'
 import List from '../../organisms/List/List'
 import Text from '../../atoms/Text/Text'
 import ProfItem from '../../organisms/ProfItem/ProfItem'
+import SubmissionItem from '../../organisms/SubmissionItem/SubmissionItem'
 import TextViewer from '../../molecules/TextViewer/TextViewer'
 import colorScheme from '../../../../misc/colorScheme'
 import { userProfileTexts } from '../../../../misc/texts/userProfileText'
@@ -75,8 +76,31 @@ const ProfilePage = () => {
             </div>
           </div>
           <div
-            style = {{ backgroundColor: colorScheme.blue }}
+
           >
+            <div
+              style = {{ minHeight: '500px', border: '5px solid ' + colorScheme.steel, marginTop: '50px', marginRight: '50px' }}
+            >
+              <List
+                height = { '400px' }
+              >
+                <SubmissionItem
+                  number = { 0 }
+                />
+                <SubmissionItem
+                  number = { 1 }
+                />
+                <SubmissionItem
+                  number = { 2 }
+                />
+                <SubmissionItem
+                  number = { 3 }
+                />
+                <SubmissionItem
+                  number = { 4 }
+                />
+              </List>
+            </div>
           </div>
         </ProfilePageStyled>
     )

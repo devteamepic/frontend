@@ -99,7 +99,7 @@ const SubmissionItem = ({ number, ...props }) => {
             </List>
           </div>
           <div
-            style = {{ width: '100%', height: '100%', color: 'white', padding: '0 10px 10px 10px', boxSizing: 'border-box' }}
+            style = {{ height: '100%', color: 'white', padding: '0 10px 10px 10px', boxSizing: 'border-box' }}
           >
             <Text
               size = { 'medium' }

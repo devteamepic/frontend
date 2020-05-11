@@ -6,7 +6,7 @@ width: 100%;
 min-height: 100%;
 display: grid;
 grid-template-columns: 45% 55%;
-grid-template-rows: 100px auto;
+grid-template-rows: 100px 90%;
 background-color: ${ colorScheme.marigold }
 `
 
