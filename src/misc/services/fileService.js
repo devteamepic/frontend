@@ -17,6 +17,35 @@ const send = (file, userId, token) => {
     .then(response => response.text())
 }
 
+const recieve = (userId, token) => {
+  var requestOptions = {
+    method: 'GET',
+    redirect: 'follow',
+    headers: new Headers({
+      'Authorization' : 'Bearer ' + token,
+    })
+  }
+
+  return fetch("http://134.122.65.136/api/v1/users/" + userId + "/documents", requestOptions)
+    .then(response => response.text())
+}
+
+const getImage = (url, userId, token) => {
+   var requestOptions = {
+    method: 'GET',
+    redirect: 'follow',
+    headers: new Headers({
+      'Authorization' : 'Bearer ' + token,
+    })
+  }
+
+  console.log('http://134.122.65.136' + url)
+  return fetch("http://134.122.65.136" + url, requestOptions)
+    .then(response => response.text())
+}
+
 export const fileService = {
-  send
+  send,
+  recieve,
+  getImage
 }
