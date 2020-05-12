@@ -9,7 +9,7 @@ import ProfItem from '../ProfItem/ProfItem'
 import colorScheme from '../../../../misc/colorScheme'
 
 
-const SubmissionItem = ({ number, ...props }) => {
+const SubmissionItem = ({ number, abstract, ...props }) => {
   const ordinalSuffix = (i) => {
     var j = i % 10,
         k = i % 100
@@ -110,11 +110,8 @@ const SubmissionItem = ({ number, ...props }) => {
               height = '95%'
               width = '100%'
               shouldDisable = { true }
-            >
-              Omnis cumque quibusdam hic et dolorem sapiente repudiandae iste. Cum est iusto reiciendis ea. Consectetur et ducimus est aperiam. Deserunt aut laudantium dolorum ut et quod. Ea quidem accusamus at distinctio autem. Ducimus saepe minima molestias maxime.
-
-              Recusandae est velit officia ratione. In aspernatur perspiciatis et sit omnis qui dolor vitae.
-            </TextArea>
+              value = { abstract }
+            />
           </div>
           <div
             style = {{ padding: '10px 10px 30px 10px', color: 'white', height: '100%', boxSizing: 'border-box' }}

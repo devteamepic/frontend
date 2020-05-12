@@ -14,24 +14,16 @@ import { fileService } from '../../../../misc/services/fileService'
 const ProfilePage = () => {
   const [userFullName, setUserFullName] = useState('')
   const [userEmail, setUserEmail] = useState('')
-  const [image, setImage] = useState()
+  const [submissionsArray, setSubmissionsArray] = useState([])
 
   useEffect(() => {
     userService.fetchUserData(localStorage.getItem('token'))
       .then(response => {
         setUserFullName(JSON.parse(response).full_name)
         setUserEmail(JSON.parse(response).email)
-        fileService.recieve(localStorage.getItem('userId'), localStorage.getItem('token'))
+        fileService.getSubmissions(localStorage.getItem('userId'), localStorage.getItem('token'))
           .then(response => {
-            console.table(JSON.parse(response))
-            setImage(JSON.parse(response)[0].file_preview)
-            fileService.getImage(JSON.parse(response)[0].file_preview, localStorage.getItem('userId'), localStorage.getItem('token'))
-              .then(response => {
-                console.log(response)
-              })
-              .catch(error => {
-                console.log(error)
-              })
+            setSubmissionsArray(JSON.parse(response))
           })
           .catch(error => {
             console.log(error)
@@ -98,21 +90,13 @@ const ProfilePage = () => {
           <List
             heightParameter = { '600px' }
           >
-            <SubmissionItem
-              number = { 0 }
-            />
-            <SubmissionItem
-              number = { 1 }
-            />
-            <SubmissionItem
-              number = { 2 }
-            />
-            <SubmissionItem
-              number = { 3 }
-            />
-            <SubmissionItem
-              number = { 4 }
-            />
+            { submissionsArray.map((item, index) => (
+              <SubmissionItem
+                key = { index }
+                abstract = { item.abstract }
+                number = { index }
+              />
+            )) }
           </List>
         </div>
       </div>

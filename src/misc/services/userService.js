@@ -7,7 +7,7 @@ const fetchUserData = (token) => {
         })
     }
 
-    return fetch('http://134.122.65.136/api/v1/users/me', requestOptions)
+    return fetch('https://unifound.me/api/v1/users/me', requestOptions)
         .then(response => response.text())
 }
 

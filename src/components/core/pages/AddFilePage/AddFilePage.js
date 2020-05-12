@@ -34,6 +34,7 @@ const HomePage = ({ concern, files, dispatch, ...props }) => {
           bufferArr.push(JSON.parse(response).id)
           setFileIdArray(bufferArr)
           if (fileIdArray.length === fileArray.length) {
+            console.log(typeof fileIdArray)
             fileService.sendSubmission(abstractValue, fileIdArray, localStorage.getItem('userId'), localStorage.getItem('token'))
               .then(response => {
                 console.log(response)

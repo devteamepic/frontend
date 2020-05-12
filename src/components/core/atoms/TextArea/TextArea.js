@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import TextAreaStyled from '../../../styled/atoms/textAreaStyled'
 import colorScheme from '../../../../misc/colorScheme'
 
-const TextArea = ({ height, width, shouldDisable, children, callback, ...props }) => {
+const TextArea = ({ height, width, shouldDisable, value, callback, ...props }) => {
   const [size] = useState({ height, width })
   const [disable] = useState(shouldDisable)
     const [numOfChars, setNumOfChars] = useState(1000)
@@ -25,7 +25,7 @@ const TextArea = ({ height, width, shouldDisable, children, callback, ...props }
         onChange = { handleKeyPress }
         disabled = { disable }
       >
-        { children }
+        { value }
       </TextAreaStyled>
       { !disable &&
         <input

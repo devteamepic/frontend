@@ -13,14 +13,16 @@ const sendFile = (file, userId, token) => {
     })
   }
 
-  return fetch("http://134.122.65.136/api/v1/users/" + userId + "/documents", requestOptions)
+  return fetch("https://unifound.me/api/v1/users/" + userId + "/documents", requestOptions)
     .then(response => response.text())
 }
 
 const sendSubmission = (abstract, idArray, userId, token) => {
   var formData = new FormData()
   formData.append('abstract', abstract)
-  formData.append('document_ids', idArray)
+  for (var i = 0; i < idArray.length; i++) {
+    formData.append('document_ids[]', idArray[i]);
+  }
 
   var requestOptions = {
     method: 'POST',
@@ -31,11 +33,11 @@ const sendSubmission = (abstract, idArray, userId, token) => {
     })
   }
 
-  return fetch("http://134.122.65.136/api/v1/users/" + userId + "/documents/submissions", requestOptions)
+  return fetch("https://unifound.me/api/v1/users/" + userId + "/documents/submissions", requestOptions)
     .then(response => response.text())
 }
 
-const recieve = (userId, token) => {
+const getSubmissions = (userId, token) => {
   var requestOptions = {
     method: 'GET',
     redirect: 'follow',
@@ -44,7 +46,7 @@ const recieve = (userId, token) => {
     })
   }
 
-  return fetch("http://134.122.65.136/api/v1/users/" + userId + "/documents", requestOptions)
+  return fetch("https://unifound.me/api/v1/users/" + userId + "/documents/submissions", requestOptions)
     .then(response => response.text())
 }
 
@@ -57,7 +59,6 @@ const getImage = (url, userId, token) => {
     })
   }
 
-  console.log('http://134.122.65.136' + url)
   return fetch("http://134.122.65.136" + url, requestOptions)
     .then(response => response.text())
 }
@@ -65,6 +66,6 @@ const getImage = (url, userId, token) => {
 export const fileService = {
   sendFile,
   sendSubmission,
-  recieve,
+  getSubmissions,
   getImage
 }
