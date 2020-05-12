@@ -24,6 +24,7 @@ const ProfilePage = () => {
         fileService.getSubmissions(localStorage.getItem('userId'), localStorage.getItem('token'))
           .then(response => {
             setSubmissionsArray(JSON.parse(response))
+            console.table(JSON.parse(response))
           })
           .catch(error => {
             console.log(error)
