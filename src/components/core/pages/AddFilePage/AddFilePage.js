@@ -16,7 +16,9 @@ import { fileService } from '../../../../misc/services/fileService'
 const HomePage = ({ concern, files, dispatch, ...props }) => {
   const [isConcerned, setIsConcerned] = useState(concern.isConcerned)
   const [fileArray, setFileArray] = useState(files)
+  const [fileIdArray, setFileIdArray] = useState([])
   const [disabled, setDisabled] = useState(true)
+  const [abstractValue, setAbstractValue] = useState('')
 
   /**
    * Handles submition of form and sends files to backend.
@@ -26,11 +28,20 @@ const HomePage = ({ concern, files, dispatch, ...props }) => {
     e.preventDefault()
 
     fileArray.map(file => {
-      console.log(file)
-      fileService.send(file, localStorage.getItem('userId'), localStorage.getItem('token'))
+      fileService.sendFile(file, localStorage.getItem('userId'), localStorage.getItem('token'))
         .then(response => {
-          alert(response)
-          console.log(response)
+          var bufferArr = fileIdArray
+          bufferArr.push(JSON.parse(response).id)
+          setFileIdArray(bufferArr)
+          if (fileIdArray.length === fileArray.length) {
+            fileService.sendSubmission(abstractValue, fileIdArray, localStorage.getItem('userId'), localStorage.getItem('token'))
+              .then(response => {
+                console.log(response)
+              })
+              .catch(error => {
+                console.log(error)
+              })
+          }
         })
         .catch(error => {
           alert(error)
@@ -51,8 +62,8 @@ const HomePage = ({ concern, files, dispatch, ...props }) => {
   }, [concern, files])
 
   useEffect(() => {
-    setDisabled(!(fileArray.length !== 0 && isConcerned))
-  }, [fileArray, isConcerned])
+    setDisabled(!(fileArray.length !== 0 && isConcerned && abstractValue !== ''))
+  }, [fileArray, isConcerned, abstractValue])
 
   return (
     <AddFilePageStyled>
@@ -66,6 +77,7 @@ const HomePage = ({ concern, files, dispatch, ...props }) => {
         <TextArea
           width = { '100%' }
           height = { '200px' }
+          callback = { value => setAbstractValue(value) }
         />
         <div style={{ height: '50px' }}/>
         <Text

@@ -1,4 +1,4 @@
-const send = (file, userId, token) => {
+const sendFile = (file, userId, token) => {
   var formData = new FormData()
   formData.append('file', file, file.name)
   formData.append('name', file.name)
@@ -14,6 +14,24 @@ const send = (file, userId, token) => {
   }
 
   return fetch("http://134.122.65.136/api/v1/users/" + userId + "/documents", requestOptions)
+    .then(response => response.text())
+}
+
+const sendSubmission = (abstract, idArray, userId, token) => {
+  var formData = new FormData()
+  formData.append('abstract', abstract)
+  formData.append('document_ids', idArray)
+
+  var requestOptions = {
+    method: 'POST',
+    body: formData,
+    redirect: 'follow',
+    headers: new Headers({
+      'Authorization' : 'Bearer ' + token,
+    })
+  }
+
+  return fetch("http://134.122.65.136/api/v1/users/" + userId + "/documents/submissions", requestOptions)
     .then(response => response.text())
 }
 
@@ -45,7 +63,8 @@ const getImage = (url, userId, token) => {
 }
 
 export const fileService = {
-  send,
+  sendFile,
+  sendSubmission,
   recieve,
   getImage
 }
