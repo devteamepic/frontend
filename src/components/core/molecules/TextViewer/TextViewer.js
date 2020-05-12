@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Text from '../../atoms/Text/Text'
 import { Link } from 'react-router-dom'
 import colorScheme from '../../../../misc/colorScheme'
@@ -6,7 +6,11 @@ import TextViewerStyled from '../../../styled/molecules/textViewerStyled'
 
 const TextViewer = ({ childrenData, color, notDescription, additionalStyles, ...props }) => {
   const [shouldChange] = useState(notDescription)
-  const [children] = useState(childrenData)
+  const [children, setChildren] = useState(childrenData)
+
+  useEffect(() => {
+    setChildren(childrenData)
+  }, [childrenData])
 
   return (
     <TextViewerStyled
