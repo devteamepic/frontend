@@ -96,6 +96,7 @@ const ProfilePage = () => {
                 key = { index }
                 abstract = { item.abstract }
                 number = { index }
+                documents = { item.documents }
               />
             )) }
           </List>

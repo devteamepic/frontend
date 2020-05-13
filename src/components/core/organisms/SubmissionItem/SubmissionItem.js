@@ -5,11 +5,12 @@ import List from '../List/List'
 import Icon from '../../atoms/Icon/Icon'
 import Text from '../../atoms/Text/Text'
 import TextArea from '../../atoms/TextArea/TextArea'
+import FileItemImage from '../../atoms/FileItemImage/FileItemImage'
 import ProfItem from '../ProfItem/ProfItem'
 import colorScheme from '../../../../misc/colorScheme'
 
 
-const SubmissionItem = ({ number, abstract, ...props }) => {
+const SubmissionItem = ({ number, abstract, documents, ...props }) => {
   const ordinalSuffix = (i) => {
     var j = i % 10,
         k = i % 100
@@ -26,6 +27,7 @@ const SubmissionItem = ({ number, abstract, ...props }) => {
   }
 
   const [isUpsideDown, setIsUpsideDown] = useState(false)
+  const [documentArray] = useState(documents)
   const [header] = useState([
     { component: 'text', size: 'large', textValue: ordinalSuffix(number + 1) + ' submission details' },
   ])
@@ -96,6 +98,12 @@ const SubmissionItem = ({ number, abstract, ...props }) => {
               margin = 'none;'
               heightParameter = '100%'
             >
+              { documentArray.map((item, index) => (
+                <FileItemImage
+                  text = { item.name }
+                  image = { item.file_preview}
+                />
+              )) }
             </List>
           </div>
           <div
