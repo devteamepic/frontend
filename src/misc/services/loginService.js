@@ -9,7 +9,7 @@ const login = (email, password) => {
     redirect: 'follow'
   };
 
-  return fetch("http://134.122.65.136/api/v1/auth/sign_in", requestOptions)
+  return fetch("https://unifound.me/api/v1/auth/sign_in", requestOptions)
     .then(response => {
       if (response.ok) return response.text()
 

@@ -8,7 +8,7 @@ padding: 20px 0px 1px 0;
 box-sizing: border-box;
 background-color: ${ props => props.backgroundColor };
 width: 100%;
-height: 700px;
+height: ${ props => props.height || '700px' };
 overflow: auto;
 scrollbar-width: none;
 -ms-overflow-style: none;
