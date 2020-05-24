@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import AddFilePageStyled from '../../../styled/pages/addFilePageStyled'
 import colorScheme from '../../../../misc/colorScheme'
 import Text from '../../atoms/Text/Text'
+import TextViewer from '../../molecules/TextViewer/TextViewer'
 import Input from '../../atoms/Input/Input'
 import DragAndDrop from '../../atoms/DragAndDrop/DragAndDrop'
 import List from '../../organisms/List/List'
@@ -27,6 +28,8 @@ const HomePage = ({ concern, files, dispatch, ...props }) => {
    */
   const handleSubmit = (e) => {
     e.preventDefault()
+
+    setSubmissionStatus('Waiting for a response')
 
     fileArray.map(file => {
       fileService.sendFile(file, localStorage.getItem('userId'), localStorage.getItem('token'))
@@ -139,22 +142,19 @@ const HomePage = ({ concern, files, dispatch, ...props }) => {
               />
             </form>
           </div>
-          <List
-            color = 'denim'
-            margin = 'calc(5% - 5px)'
-          >
-            <ProfItem/>
-            <ProfItem/>
-            <ProfItem/>
-            <ProfItem/>
-            <ProfItem/>
-            <ProfItem/>
-          </List>
-        </div>
-        <div
-          style = {{ color: 'white' }}
-        >
-          { submissionStatus }
+          <TextViewer
+            childrenData = {[
+              { component: 'text', size: 'large', textValue: 'Submission status:', isHeader: true },
+              { component: 'text', size: 'large', textValue: submissionStatus },
+              {  },
+              {  },
+              { component: 'text', size: 'medium', textValue: 'This is the status of current submisison, it will change as soon as you submit or recieve a response.' },
+              {  },
+              {  },
+              { component: 'text', size: 'medium', textValue: 'You may view your submissions here: ' },
+              { component: 'link', link: '/profile', textValue: 'here.' },
+            ]}
+          />
         </div>
       </div>
     </AddFilePageStyled>
