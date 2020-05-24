@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import FileItemImageStyled from '../../../styled/atoms/fileItemImageStyled'
-import Text from '../Text/Text'
+import FileItemImageStyled from '../../../styled/molecules/fileItemImageStyled'
+import Text from '../../atoms/Text/Text'
 
 const FileItemImage = ({ text, image, ...props }) => {
   const [caption] = useState(text)

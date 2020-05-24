@@ -5,10 +5,9 @@ import List from '../List/List'
 import Icon from '../../atoms/Icon/Icon'
 import Text from '../../atoms/Text/Text'
 import TextArea from '../../atoms/TextArea/TextArea'
-import FileItemImage from '../../atoms/FileItemImage/FileItemImage'
+import FileItemImage from '../../molecules/FileItemImage/FileItemImage'
 import ProfItem from '../ProfItem/ProfItem'
 import colorScheme from '../../../../misc/colorScheme'
-
 
 const SubmissionItem = ({ number, abstract, documents, ...props }) => {
   const ordinalSuffix = (i) => {
