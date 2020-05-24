@@ -19,6 +19,7 @@ const HomePage = ({ concern, files, dispatch, ...props }) => {
   const [fileIdArray, setFileIdArray] = useState([])
   const [disabled, setDisabled] = useState(true)
   const [abstractValue, setAbstractValue] = useState('')
+  const [submissionStatus, setSubmissionStatus] = useState('Not Submitted')
 
   /**
    * Handles submition of form and sends files to backend.
@@ -34,10 +35,9 @@ const HomePage = ({ concern, files, dispatch, ...props }) => {
           bufferArr.push(JSON.parse(response).id)
           setFileIdArray(bufferArr)
           if (fileIdArray.length === fileArray.length) {
-            console.log(typeof fileIdArray)
             fileService.sendSubmission(abstractValue, fileIdArray, localStorage.getItem('userId'), localStorage.getItem('token'))
               .then(response => {
-                console.log(response)
+                setSubmissionStatus(JSON.parse(response).status.name)
               })
               .catch(error => {
                 console.log(error)
@@ -150,6 +150,11 @@ const HomePage = ({ concern, files, dispatch, ...props }) => {
             <ProfItem/>
             <ProfItem/>
           </List>
+        </div>
+        <div
+          style = {{ color: 'white' }}
+        >
+          { submissionStatus }
         </div>
       </div>
     </AddFilePageStyled>
