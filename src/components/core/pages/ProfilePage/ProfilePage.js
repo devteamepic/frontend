@@ -15,6 +15,7 @@ const ProfilePage = () => {
   const [userFullName, setUserFullName] = useState('')
   const [userEmail, setUserEmail] = useState('')
   const [submissionsArray, setSubmissionsArray] = useState([])
+  const [counter, setCounter] = useState(0)
 
   useEffect(() => {
     userService.fetchUserData(localStorage.getItem('token'))
@@ -24,7 +25,7 @@ const ProfilePage = () => {
         fileService.getSubmissions(localStorage.getItem('userId'), localStorage.getItem('token'))
           .then(response => {
             setSubmissionsArray(JSON.parse(response))
-            console.table(JSON.parse(response))
+            console.log(JSON.parse(response))
           })
           .catch(error => {
             console.log(error)
@@ -34,6 +35,21 @@ const ProfilePage = () => {
         console.log(error)
       })
   }, [])
+
+  const test = (e) => {
+    e.preventDefault()
+
+    setCounter(counter + 1)
+    if (counter < submissionsArray.length) {
+      fileService.getSubmission(localStorage.getItem('userId'), localStorage.getItem('token'), submissionsArray[counter].id)
+               .then(response => {
+                 console.log(response)
+               })
+               .catch(error => {
+                 console.log(error)
+               })
+    }
+  }
 
   return (
     <ProfilePageStyled>
@@ -90,6 +106,7 @@ const ProfilePage = () => {
         >
           <List
             heightParameter = { '600px' }
+            onScrollCallback = { value => test(value) }
           >
             { submissionsArray.map((item, index) => (
               <SubmissionItem

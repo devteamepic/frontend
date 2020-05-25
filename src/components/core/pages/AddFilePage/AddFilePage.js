@@ -40,7 +40,8 @@ const HomePage = ({ concern, files, dispatch, ...props }) => {
           if (fileIdArray.length === fileArray.length) {
             fileService.sendSubmission(abstractValue, fileIdArray, localStorage.getItem('userId'), localStorage.getItem('token'))
               .then(response => {
-                setSubmissionStatus(JSON.parse(response).status.name)
+                console.log(JSON.parse(response))
+//                setSubmissionStatus(JSON.parse(response).status.name)
               })
               .catch(error => {
                 console.log(error)
