@@ -9,7 +9,8 @@ import FileItemImage from '../../molecules/FileItemImage/FileItemImage'
 import ProfItem from '../ProfItem/ProfItem'
 import colorScheme from '../../../../misc/colorScheme'
 
-const SubmissionItem = ({ number, abstract, documents, ...props }) => {
+const SubmissionItem = ({ number, abstract, documents, profData, ...props }) => {
+  console.log(profData)
   const ordinalSuffix = (i) => {
     var j = i % 10,
         k = i % 100
@@ -33,6 +34,7 @@ const SubmissionItem = ({ number, abstract, documents, ...props }) => {
   const [text] = useState([
     { component: 'text', size: 'small', textValue: 'Submitted on 02.04.2020' },
   ])
+  const [dataForList, setDataForList] = useState(profData)
 
   const handleClick = () => {
     setIsUpsideDown(!isUpsideDown)
@@ -132,13 +134,13 @@ const SubmissionItem = ({ number, abstract, documents, ...props }) => {
               color = 'denim'
               margin = 'none;'
               heightParameter = '100%'
+              onScrollCallback = { e => console.log('asdf') }
             >
-              <ProfItem/>
-              <ProfItem/>
-              <ProfItem/>
-              <ProfItem/>
-              <ProfItem/>
-              <ProfItem/>
+              { dataForList.map(result => (
+                <ProfItem
+                  profData = { result }
+                />
+              )) }
             </List>
           </div>
       </div>

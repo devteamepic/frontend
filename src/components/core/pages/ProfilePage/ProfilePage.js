@@ -15,7 +15,7 @@ const ProfilePage = () => {
   const [userFullName, setUserFullName] = useState('')
   const [userEmail, setUserEmail] = useState('')
   const [submissionsArray, setSubmissionsArray] = useState([])
-  const [counter, setCounter] = useState(0)
+  const [sOther, setSOther] = useState([])
 
   useEffect(() => {
     userService.fetchUserData(localStorage.getItem('token'))
@@ -25,7 +25,6 @@ const ProfilePage = () => {
         fileService.getSubmissions(localStorage.getItem('userId'), localStorage.getItem('token'))
           .then(response => {
             setSubmissionsArray(JSON.parse(response))
-            console.log(JSON.parse(response))
           })
           .catch(error => {
             console.log(error)
@@ -36,20 +35,29 @@ const ProfilePage = () => {
       })
   }, [])
 
-  const test = (e) => {
-    e.preventDefault()
-
-    setCounter(counter + 1)
-    if (counter < submissionsArray.length) {
-      fileService.getSubmission(localStorage.getItem('userId'), localStorage.getItem('token'), submissionsArray[counter].id)
+  useEffect(() => {
+    // FUCK IT I WILL HAVE TO REDO WHOLE DESIGN FROM SCRATCH FUCK YOU
+    // THIS SHIT IS A FUCKING MESS
+    // I CAN T TAKE IT
+    // I HAD THE DESIGN, YOUALL AGREED TO FOLLOW IT
+    // WHY NOW I HAVE TO REDO SHIT
+    // I TOLD YOU LAST WEEL "I AINT GONNA TOUCH FRONT"
+    // TO FOCUS ON A PRESENTATION
+    // I CANT TAKE IT
+    // I HATE IT WITH MY VERY SOUL
+    // :(
+    submissionsArray.map((item, index) => {
+      fileService.getSubmission(localStorage.getItem('userId'), localStorage.getItem('token'), submissionsArray[index].id)
                .then(response => {
-                 console.log(response)
+                 if (JSON.parse(response).length !== 0) {
+                   setSOther([...sOther, JSON.parse(response)])
+                 }
                })
                .catch(error => {
                  console.log(error)
                })
-    }
-  }
+    })
+  }, [submissionsArray])
 
   return (
     <ProfilePageStyled>
@@ -86,19 +94,6 @@ const ProfilePage = () => {
           notDescription = { true }
           additionalStyles = { 'text-align: left; margin-left: 50px; margin-right: 50px; margin-top: 50px; height: fit-content; overflow: hidden;' }
         />
-        <div
-          style = {{ width: '70%', margin: 'auto', border: '1px solid' + colorScheme.marigold, marginTop: '50px', marginBottom: '50px' }}
-        >
-          <List
-            backgroundColor = { colorScheme.steel }
-            margin = { '0' }
-            heightParameter = { '500px' }
-          >
-            <ProfItem/>
-            <ProfItem/>
-            <ProfItem/>
-          </List>
-        </div>
       </div>
       <div>
         <div
@@ -106,14 +101,15 @@ const ProfilePage = () => {
         >
           <List
             heightParameter = { '600px' }
-            onScrollCallback = { value => test(value) }
+            onScrollCallback = { e => console.log('asdf') }
           >
-            { submissionsArray.map((item, index) => (
+            { sOther.map((item, index) => (
               <SubmissionItem
+                profData = { item }
                 key = { index }
-                abstract = { item.abstract }
+                abstract = { submissionsArray[index].abstract }
                 number = { index }
-                documents = { item.documents }
+                documents = { submissionsArray[index].documents }
               />
             )) }
           </List>
