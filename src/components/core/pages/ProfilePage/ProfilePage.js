@@ -24,6 +24,7 @@ const ProfilePage = () => {
         setUserEmail(JSON.parse(response).email)
         fileService.getSubmissions(localStorage.getItem('userId'), localStorage.getItem('token'))
           .then(response => {
+            console.log(JSON.parse(response))
             setSubmissionsArray(JSON.parse(response))
           })
           .catch(error => {
@@ -35,29 +36,6 @@ const ProfilePage = () => {
       })
   }, [])
 
-  useEffect(() => {
-    // FUCK IT I WILL HAVE TO REDO WHOLE DESIGN FROM SCRATCH FUCK YOU
-    // THIS SHIT IS A FUCKING MESS
-    // I CAN T TAKE IT
-    // I HAD THE DESIGN, YOUALL AGREED TO FOLLOW IT
-    // WHY NOW I HAVE TO REDO SHIT
-    // I TOLD YOU LAST WEEL "I AINT GONNA TOUCH FRONT"
-    // TO FOCUS ON A PRESENTATION
-    // I CANT TAKE IT
-    // I HATE IT WITH MY VERY SOUL
-    // :(
-    submissionsArray.map((item, index) => {
-      fileService.getSubmission(localStorage.getItem('userId'), localStorage.getItem('token'), submissionsArray[index].id)
-               .then(response => {
-                 if (JSON.parse(response).length !== 0) {
-                   setSOther([...sOther, JSON.parse(response)])
-                 }
-               })
-               .catch(error => {
-                 console.log(error)
-               })
-    })
-  }, [submissionsArray])
 
   return (
     <ProfilePageStyled>
@@ -103,15 +81,17 @@ const ProfilePage = () => {
             heightParameter = { '600px' }
             onScrollCallback = { e => console.log('asdf') }
           >
-            { sOther.map((item, index) => (
+            { submissionsArray.map((item, index) => {
+              return (
               <SubmissionItem
-                profData = { item }
+                id = { item.id }
                 key = { index }
-                abstract = { submissionsArray[index].abstract }
+                abstract = { item.abstract }
                 number = { index }
-                documents = { submissionsArray[index].documents }
+                documents = { item.documents }
               />
-            )) }
+              )
+            }) }
           </List>
         </div>
       </div>

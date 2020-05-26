@@ -21,7 +21,7 @@ const TextArea = ({ height, width, shouldDisable, value, callback, ...props }) =
     >
       <TextAreaStyled
         size = { size }
-        maxlength = '5000'
+        maxLength = { 5000 }
         onChange = { handleKeyPress }
         disabled = { disable }
       >
