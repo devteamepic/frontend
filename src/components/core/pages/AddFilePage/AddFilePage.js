@@ -152,7 +152,7 @@ const HomePage = ({ concern, files, dispatch, ...props }) => {
               { component: 'text', size: 'medium', textValue: 'This is the status of current submisison, it will change as soon as you submit or recieve a response.' },
               {  },
               {  },
-              { component: 'text', size: 'medium', textValue: 'You may view your submissions here: ' },
+              { component: 'text', size: 'medium', textValue: 'You may view your submissions ' },
               { component: 'link', link: '/profile', textValue: 'here.' },
             ]}
           />
