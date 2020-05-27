@@ -45,7 +45,7 @@ const SubmissionItem = ({ number, abstract, documents, id, ...props }) => {
     { component: 'text', size: 'large', textValue: ordinalSuffix(number + 1) + ' submission details' },
   ])
   const [text] = useState([
-    { component: 'text', size: 'small', textValue: 'Submitted on 02.04.2020' },
+    { component: 'text', size: 'small', textValue: 'Submitted on 27.05.2020' },
   ])
   const [profId] = useState(id)
 
