@@ -24,8 +24,11 @@ const ProfilePage = () => {
         setUserEmail(JSON.parse(response).email)
         fileService.getSubmissions(localStorage.getItem('userId'), localStorage.getItem('token'))
           .then(response => {
-            console.log(JSON.parse(response))
-            setSubmissionsArray(JSON.parse(response))
+            var buf = JSON.parse(response)
+            buf.sort((a, b) => {
+              return parseFloat(a.id) - parseFloat(b.id)
+            })
+            setSubmissionsArray(buf)
           })
           .catch(error => {
             console.log(error)
@@ -35,7 +38,6 @@ const ProfilePage = () => {
         console.log(error)
       })
   }, [])
-
 
   return (
     <ProfilePageStyled>
