@@ -48,6 +48,7 @@ const ProfItem = ({ profData, ...props }) => {
         heightParam = '110px'
         widthParam = '80px'
         icon = 'person'
+        callback = { e => alert('Related abstract: ' + profData.professor_submission.abstract) }
       />
       <TextViewer
         childrenData={ preview }
